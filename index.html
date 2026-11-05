@@ -243,7 +243,7 @@ function emBox(h){var m=$("#emm");m.innerHTML='<div class="emm-in"><div class="e
 function emOpen(sid){EMS.sid=sid;EMS.cid="";EMS.who="";var m=$("#emm");if(!m){m=document.createElement("div");m.id="emm";m.className="emm";document.body.appendChild(m);m.addEventListener("click",emClick)}
   m.hidden=false;document.body.style.overflow="hidden";emBox('<p class="hint">Chargement…</p>');emLoad()}
 function emClose(){var m=$("#emm");if(m){m.hidden=true;m.innerHTML=""}document.body.style.overflow="";EMS.sid=""}
-function emLoad(){api({api:"emstate",code:CODE,sid:EMS.sid},function(r){if(r&&r.ok&&!r.cids)r={ok:false,msg:"Le service Google répond avec l'ancienne version : l'émargement n'y est pas encore. Dans Apps Script : Déployer › Gérer les déploiements › crayon › Version : Nouvelle version › Déployer."};EMS.st=r;if(r&&r.ok&&!EMS.cid)EMS.cid=r.cur||"";try{emDraw()}catch(x){emBox('<div class="emm-err">Erreur d\'affichage : '+esc(x&&x.message||x)+'</div>')}},function(x){EMS.st={ok:false,msg:"Le service Google ne répond pas ("+(x&&x.message||x)+"). Vérifiez le réseau, puis que la nouvelle version est bien déployée."};emDraw()})}
+function emLoad(){api({api:"emstate",code:CODE,ses:EMS.sid},function(r){if(r&&r.ok&&!r.cids)r={ok:false,msg:"Le service Google répond avec l'ancienne version : l'émargement n'y est pas encore. Dans Apps Script : Déployer › Gérer les déploiements › crayon › Version : Nouvelle version › Déployer."};EMS.st=r;if(r&&r.ok&&!EMS.cid)EMS.cid=r.cur||"";try{emDraw()}catch(x){emBox('<div class="emm-err">Erreur d\'affichage : '+esc(x&&x.message||x)+'</div>')}},function(x){EMS.st={ok:false,msg:"Le service Google ne répond pas ("+(x&&x.message||x)+"). Vérifiez le réseau, puis que la nouvelle version est bien déployée."};emDraw()})}
 function emHM(t){var d=new Date(t);return ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2)}
 function emDraw(msg){var r=EMS.st;if(!r||!r.ok){emBox('<div class="emm-err">'+esc(r&&r.msg||"Erreur")+'</div>');return}
   var top='<div class="emm-t">'+esc(r.intitule||"")+'</div><div class="hint">'+esc([r.entreprise,r.lieu].filter(Boolean).join(" · "))+'</div>'+(msg?'<div class="emm-ok">'+esc(msg)+'</div>':'');
@@ -274,11 +274,11 @@ function emClick(e){var b=e.target.closest("button");if(!b)return;
   if(b.getAttribute("data-emsig")){emPad(b.getAttribute("data-emsig"),b.getAttribute("data-who")||"");return}
   if(b.getAttribute("data-emclr")){EMS.pad&&EMS.pad.size();return}
   if(b.getAttribute("data-emback")){emDraw();return}
-  if(b.getAttribute("data-emabs")){b.disabled=true;api({api:"emabs",code:CODE,sid:EMS.sid,cid:EMS.cid,k:b.getAttribute("data-emabs"),on:b.getAttribute("data-on")},function(r){if(!r||!r.ok)alert(r&&r.msg||"Erreur");emLoad()},function(){alert("Connexion impossible.");b.disabled=false});return}
+  if(b.getAttribute("data-emabs")){b.disabled=true;api({api:"emabs",code:CODE,ses:EMS.sid,cid:EMS.cid,k:b.getAttribute("data-emabs"),on:b.getAttribute("data-on")},function(r){if(!r||!r.ok)alert(r&&r.msg||"Erreur");emLoad()},function(){alert("Connexion impossible.");b.disabled=false});return}
   if(b.getAttribute("data-emok")){if(b.disabled||!EMS.pad)return;b.disabled=true;b.textContent="Enregistrement…";var P=EMS.pad;
     emPost({api:"emsign",code:CODE,sid:EMS.sid,cid:P.cid,who:P.who,img:P.get(),dev:emDev(),ua:navigator.userAgent},function(r){
       if(!r||!r.ok){b.disabled=false;b.textContent="Valider ma signature";alert(r&&r.msg||"Erreur");return}
-      EMS.pad=null;api({api:"emstate",code:CODE,sid:EMS.sid},function(s){EMS.st=s;emDraw(EMS.st.role==="formateur"?"Signature enregistrée.":"Présence enregistrée à "+(r.t||"")+". Merci !")},function(){emClose()})});return}}
+      EMS.pad=null;api({api:"emstate",code:CODE,ses:EMS.sid},function(s){EMS.st=s;emDraw(EMS.st.role==="formateur"?"Signature enregistrée.":"Présence enregistrée à "+(r.t||"")+". Merci !")},function(){emClose()})});return}}
 document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-emopen]");if(b){e.preventDefault();emOpen(b.getAttribute("data-emopen"))}});
 </script>
 </body></html>
