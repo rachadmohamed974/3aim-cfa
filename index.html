@@ -1,423 +1,284 @@
-<!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>3AIM CFA – Centre de formation & CFA à Saint-André, La Réunion</title>
-<meta name="description" content="3AIM CFA, organisme de formation et CFA certifié Qualiopi à Saint-André (La Réunion) : SST, PRAP, AIPR, autorisations de conduite, titres professionnels et apprentissage.">
-<meta property="og:title" content="3AIM CFA – Centre de formation & CFA à La Réunion">
-<meta property="og:description" content="Formations sécurité, autorisations de conduite, titres professionnels et apprentissage. Certifié Qualiopi.">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><title>Espace en ligne · 3AIM CFA</title><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--navy:#1A3A6B;--navy2:#12213F;--or:#E87722;--bg:#F3F5F9;--card:#fff;--ink:#14213D;--mut:#5B6478;--line:#E1E5EE;--ok:#1F8A5B;--okbg:#E7F5EE;--wait:#B26A00;--waitbg:#FFF4E2}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.5}
+header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:18px 16px 22px;border-bottom:4px solid var(--or)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.top{display:flex;align-items:center;gap:12px}.top img{height:44px;background:#fff;border-radius:8px;padding:4px}.top .org{font-weight:800;font-size:18px}.top small{display:block;opacity:.8;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.hello{margin-top:14px;font-size:22px;font-weight:800}.hello span{display:block;font-size:14px;font-weight:400;opacity:.85}
+main{padding:18px 0 40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 1px 2px rgba(20,33,61,.04)}
+h2{font-size:18px;margin:0 0 4px}h3{font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);margin:16px 0 8px}
+.meta{display:grid;gap:8px;margin-top:10px}.meta div{display:flex;gap:10px;align-items:flex-start}.meta b{min-width:92px;color:var(--mut);font-weight:600;font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;padding:11px 14px;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;background:var(--navy);color:#fff}
+.btn.or{background:var(--or)}.btn.ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}.btn[disabled]{opacity:.6}
+.list{display:flex;flex-direction:column;gap:8px}.item{display:flex;align-items:center;gap:10px;justify-content:space-between;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.item span{min-width:0;overflow-wrap:anywhere}.tag{font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.tag.ok{background:var(--okbg);color:var(--ok)}.tag.wait{background:var(--waitbg);color:var(--wait)}.tag.todo{background:#EEF1F7;color:var(--mut)}
+.login{max-width:420px;margin:30px auto}.login input{width:100%;font-size:20px;letter-spacing:.12em;text-transform:uppercase;padding:12px;border:1px solid var(--line);border-radius:10px;margin:10px 0;text-align:center}
+.err{color:#B42318;font-size:14px;min-height:20px}.hint{color:var(--mut);font-size:14px}
+.steps{display:flex;flex-direction:column;gap:6px;margin-top:6px}.step{display:flex;justify-content:space-between;gap:10px;font-size:15px;border-bottom:1px dashed var(--line);padding:5px 0}
+footer{color:var(--mut);font-size:13px;text-align:center;padding:10px 16px 30px}
+a{color:var(--navy)}
+@media (max-width:480px){.meta b{min-width:80px}.hello{font-size:20px}}
+details.fold{padding:0}details.fold>summary{list-style:none;cursor:pointer;padding:14px 16px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.fold>summary::-webkit-details-marker{display:none}details.fold>summary:after{content:"+";font-size:20px;color:var(--or);font-weight:700}details.fold[open]>summary:after{content:"–"}
+details.fold>.in{padding:0 16px 16px}details.fold .sub{display:block;font-weight:400;color:var(--mut);font-size:13px;margin-top:2px}
+.sec{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:22px 2px 8px;font-weight:700}
+.guide{margin:0;padding-left:18px;line-height:1.6}.guide li{margin-bottom:4px}.rgpd p{margin:0 0 8px;font-size:14px;line-height:1.55}
+.wrap.wide{max-width:1040px}
+.shell{display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:start;margin-top:18px}
+.nav{position:sticky;top:12px;display:flex;flex-direction:column;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px}
+.nav button{display:flex;align-items:center;gap:10px;justify-content:flex-start;border:0;background:none;padding:11px 12px;border-radius:10px;font:inherit;font-weight:600;color:var(--ink);cursor:pointer;text-align:left}
+.nav button:hover{background:var(--bg)}.nav button[aria-current=true]{background:var(--navy);color:#fff}
+.nav .ic{width:20px;text-align:center}.nav .bd{margin-left:auto;background:var(--or);color:#fff;border-radius:999px;font-size:12px;padding:1px 8px;font-weight:700}
+.nav hr{border:0;border-top:1px solid var(--line);margin:4px 6px}
+.vt{font-size:20px;margin:2px 2px 4px;font-weight:800;color:var(--ink)}.vs{color:var(--mut);font-size:14px;margin:0 2px 14px}
+.grp{font-weight:700;margin:4px 0 8px}
+.tag.sign{background:#FDECEC;color:#B42318;margin-left:6px}.signhint{display:block;font-size:13px;color:var(--mut);margin-top:3px}
+.cal-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}.cal-h b{font-size:17px;text-transform:capitalize}
+.cal-h button{border:1px solid var(--line);background:var(--bg);border-radius:8px;width:38px;height:34px;font-size:18px;cursor:pointer;color:var(--ink)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.cal .dn{font-size:12px;font-weight:700;color:var(--mut);text-align:center;padding:4px 0;text-transform:uppercase}
+.cal .d{min-height:74px;border:1px solid var(--line);border-radius:8px;padding:4px 5px;font-size:12px;background:#fff;overflow:hidden}.cal .d.o{background:transparent;border-color:transparent}
+.cal .d .n{font-weight:700;font-size:13px;color:var(--mut)}.cal .d.t{border-color:var(--or);box-shadow:inset 0 0 0 1px var(--or)}.cal .d.t .n{color:var(--or)}
+.cal .ev{display:block;background:var(--navy);color:#fff;border-radius:5px;padding:2px 5px;margin-top:3px;font-size:11px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;border:0;width:100%;text-align:left;font-family:inherit}
+.cal .ev.past{background:#9AA3B5}
+.agenda .row2{display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}.agenda .row2:last-child{border-bottom:0}
+.agenda .dt{flex:0 0 78px;text-align:center;background:var(--bg);border-radius:10px;padding:6px 4px;font-weight:700;line-height:1.15}.agenda .dt small{display:block;font-weight:600;color:var(--mut);font-size:11px;text-transform:uppercase}.agenda .dt big{display:block;font-size:22px;color:var(--navy)}
+@media(max-width:820px){.cal .d{min-height:46px;padding:3px}.cal .ev{font-size:0;height:6px;padding:0;margin-top:4px;border-radius:3px}}
+.tag.new{background:var(--or);color:#fff;margin-left:6px}
+details.sess>summary{align-items:flex-start}details.sess .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+details.sess .sum{flex:1;min-width:0}details.sess .ttl{font-size:16px}
+.chip{font-size:12px;font-weight:700;border-radius:999px;padding:2px 9px;background:var(--bg);color:var(--mut);border:1px solid var(--line)}
+.chip.now{background:#E7F5EE;color:#1F8A5B;border-color:#CBE9DA}.chip.soon{background:#EAF0FA;color:#1A3A6B;border-color:#D3DEF0}.chip.n{background:var(--or);color:#fff;border-color:var(--or)}
+details.sess[open]>summary{border-bottom:1px solid var(--line);margin-bottom:12px}
+@media(max-width:820px){.shell{grid-template-columns:1fr;gap:12px;margin-top:12px}
+ .nav{flex-direction:row;flex-wrap:wrap;padding:6px;top:0;z-index:5;border-radius:12px;gap:4px}.nav::-webkit-scrollbar{display:none}
+ .nav button{flex:1 1 auto;justify-content:center;padding:8px 10px;white-space:nowrap;font-size:14px;background:var(--bg)}.nav hr{display:none}}
+.emm{position:fixed;inset:0;z-index:60;background:rgba(10,15,30,.55);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:16px}
+.emm-in{background:#fff;border-radius:16px;width:100%;max-width:640px;padding:16px;margin:auto 0;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+.emm-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.emm-h b{font-size:17px}
+.emm-t{font-weight:700;font-size:17px}.emm-err{background:#FDECEC;color:#B42318;padding:12px;border-radius:10px;font-weight:600}.emm-ok{background:var(--okbg);color:var(--ok);padding:10px 12px;border-radius:10px;font-weight:600;margin-top:10px}
+.emm-list{border-top:1px solid var(--line)}.emm-li{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:11px 0;border-bottom:1px solid var(--line)}.emm-n{flex:1 1 170px;font-weight:600}
+.emm-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:space-between;margin-top:10px}
+.emm-chips{display:flex;gap:6px;overflow-x:auto;padding:12px 0 4px}.emm-chip{flex:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;color:var(--ink)}.emm-chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.emm-pad{display:block;width:100%;height:220px;border:2px dashed #C9CCE0;border-radius:12px;background:#fff;touch-action:none}
+.btn.sm{padding:7px 11px;font-size:13px}.btn.ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}
+</style></head>
 <body>
-
-<header>
-  <div class="wrap nav">
-    <a class="logo" href="#"><span class="mark">3A<b>i</b></span>3AIM CFA</a>
-    <nav class="menu">
-      <a href="#formations">Formations</a>
-      <a href="#apprentissage">Apprentissage</a>
-      <a href="#qualite">Résultats & Qualiopi</a>
-      <a href="#accessibilite">Handicap</a>
-      <a href="#contact">Contact</a>
-      <a class="btn" href="#demande">Demande de devis</a>
-    </nav>
-    <button class="burger" aria-label="Ouvrir le menu">☰</button>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="wrap">
-    <span class="eyebrow">Centre de formation & CFA · Saint-André, La Réunion</span>
-    <h1>Former vos équipes, <span>qualifier vos talents</span>.</h1>
-    <p>Prévention et sécurité au travail, autorisations de conduite, titres professionnels et apprentissage : 3AIM CFA accompagne entreprises, salariés et demandeurs d'emploi partout à La Réunion.</p>
-    <div class="ctas">
-      <a class="btn" href="#demande">Demander un devis</a>
-      <a class="btn ghost" href="#formations">Voir les formations</a>
-    </div>
-    <div class="badges">
-      <span class="badge"><b>✓</b> Certifié Qualiopi</span>
-      <span class="badge"><b>✓</b> Formations en intra-entreprise</span>
-      <span class="badge"><b>✓</b> Prise en charge OPCO, CPF, France Travail</span>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <span class="eyebrow">Pourquoi 3AIM CFA</span>
-    <h2>Un partenaire de proximité pour vos compétences</h2>
-    <div class="grid g4" style="margin-top:28px">
-      <div class="card"><div class="icon">🎯</div><h3>Sur mesure</h3><p>Programmes adaptés à votre activité, dans nos salles ou directement sur votre site.</p></div>
-      <div class="card"><div class="icon">🛠️</div><h3>Pratique avant tout</h3><p>Mises en situation réelles, matériel professionnel, formateurs issus du terrain.</p></div>
-      <div class="card"><div class="icon">💶</div><h3>Financement simplifié</h3><p>Nous montons avec vous les dossiers OPCO (Constructys, Akto, Uniformation…), CPF et apprentissage.</p></div>
-      <div class="card"><div class="icon">📄</div><h3>Zéro paperasse</h3><p>Conventions, émargements, attestations : tout est disponible dans votre espace en ligne.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="formations" class="soft">
-  <div class="wrap">
-    <span class="eyebrow">Catalogue</span>
-    <h2>Nos formations</h2>
-    <p class="lead">Toutes nos formations sont réalisables en inter ou en intra-entreprise. Dates, durées et tarifs sur demande.</p>
-    <div class="filters">
-      <button class="chip active" data-f="all">Toutes</button>
-      <button class="chip" data-f="securite">Prévention & sécurité</button>
-      <button class="chip" data-f="conduite">Autorisations de conduite</button>
-      <button class="chip" data-f="tp">Titres professionnels</button>
-    </div>
-    <div class="grid g3" id="formations-grid"></div>
-    <div class="access-box">
-      <h3>Modalités et délai d'accès – toutes formations</h3>
-      <p><b>Modalités d'accès :</b> inscription par l'entreprise, le financeur ou le stagiaire via le <a href="#demande">formulaire en ligne</a>, par mail (contact@3aim.fr) ou par téléphone (0692 09 85 92). Un devis et le programme sont envoyés ; l'inscription est confirmée à réception du devis signé ou de l'accord de prise en charge. Un questionnaire de positionnement est transmis avant l'entrée en formation.</p>
-      <p><b>Délai d'accès :</b> 1 mois en moyenne entre la demande et le début de la formation, variable selon les dates de session, les places disponibles et le délai de prise en charge du financeur. La date prévisionnelle est communiquée dès validation de la demande.</p>
-      <p><b>Accessibilité :</b> formations accessibles aux personnes en situation de handicap – contactez notre référent handicap, Rachad MOHAMED (0692 09 85 92), pour étudier ensemble les adaptations possibles.</p>
-    </div>
-  </div>
-</section>
-
-<section id="apprentissage">
-  <div class="wrap">
-    <div class="band">
-      <div>
-        <span class="eyebrow">Apprentissage · ouverture prochaine</span>
-        <h2>Bientôt, nos titres professionnels en apprentissage</h2>
-        <p>Un contrat d'apprentissage pour se former gratuitement tout en étant rémunéré, et une solution de recrutement aidée pour les entreprises. Rythme prévu : 1 jour par semaine au CFA, le reste en entreprise. Entreprises et futurs apprentis : faites-vous connaître dès maintenant.</p>
-        <a class="btn" href="#demande" style="margin-top:12px">Je me pré-inscris</a>
-      </div>
-      <div class="stats">
-        <div class="stat"><b>0 €</b><span>pour l'apprenti</span></div>
-        <div class="stat"><b>1 j/sem</b><span>au CFA</span></div>
-        <div class="stat"><b>OPCO</b><span>finance la formation</span></div>
-        <div class="stat"><b>Diplôme</b><span>titre professionnel reconnu</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="soft">
-  <div class="wrap">
-    <span class="eyebrow">Comment ça marche</span>
-    <h2>De la demande à l'attestation</h2>
-    <div class="grid g4 steps" style="margin-top:28px">
-      <div class="step"><h3>Votre demande</h3><p>Formulaire en ligne ou appel : nous analysons votre besoin.</p></div>
-      <div class="step"><h3>Devis & financement</h3><p>Devis sous 48 h et accompagnement pour la prise en charge.</p></div>
-      <div class="step"><h3>Positionnement</h3><p>Évaluation des acquis pour adapter la formation à chacun.</p></div>
-      <div class="step"><h3>Formation & suivi</h3><p>Formation, évaluation, attestations et suivi à froid.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="qualite">
-  <div class="wrap">
-    <span class="eyebrow">Qualité & résultats</span>
-    <h2>Nos indicateurs de résultats</h2>
-    <p class="lead">Chiffres calculés sur les formations terminées, mis à jour chaque trimestre.</p>
-
-    <div class="kpis">
-      <div class="kpi">
-        <div class="lab">Taux de satisfaction 2025</div>
-        <div class="val">100 %</div>
-        <p>dont 64 % de « très satisfaits »<br>Calculé sur <b>102 avis exploitables</b> (155 questionnaires reçus) · 30 sessions · 206 participants<br>Période : du 17/02/2025 au 03/10/2025</p>
-      </div>
-      <div class="kpi navy">
-        <div class="lab">Taux de réussite 2025</div>
-        <div class="val">100 %</div>
-        <p><b>206 stagiaires ont réussi</b> sur 206 présentés à l'évaluation · 30 sessions<br>Période : du 17/02/2025 au 03/10/2025</p>
-      </div>
-    </div>
-
-    <div class="tbl-wrap">
-      <table class="ind">
-        <thead><tr><th>Année</th><th>Satisfaction</th><th>Réussite</th><th>Avis exploitables / questionnaires reçus</th><th>Sessions · participants</th><th>Période</th></tr></thead>
-        <tbody>
-          <tr><td>2026 (en cours)</td><td>100 %</td><td>100 %</td><td>30 / 41</td><td>96 · 466</td><td>29/01 – 05/11/2026</td></tr>
-          <tr><td>2025</td><td>100 %</td><td>100 %</td><td>102 / 155</td><td>30 · 206</td><td>17/02 – 03/10/2025</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <details class="detail">
-      <summary>Voir le détail par formation</summary>
-      <div class="tbl-wrap">
-        <table class="ind">
-          <thead><tr><th>Année</th><th>Formation</th><th>Sessions</th><th>Participants</th><th>Avis exploitables</th><th>Satisfaction</th><th>Réussite</th></tr></thead>
-          <tbody>
-            <tr><td>2026</td><td>SST</td><td>27</td><td>134</td><td>9</td><td>100 %</td><td>100 %</td></tr>
-            <tr><td>2026</td><td>PRAP</td><td>7</td><td>52</td><td>0</td><td>pas d'avis exploitable</td><td>100 %</td></tr>
-            <tr><td>2026</td><td>AIPR</td><td>11</td><td>64</td><td>5</td><td>100 %</td><td>100 %</td></tr>
-            <tr><td>2026</td><td>Travail en hauteur / échafaudage</td><td>15</td><td>60</td><td>0</td><td>pas d'avis exploitable</td><td>100 %</td></tr>
-            <tr><td>2026</td><td>Autorisation de conduite</td><td>27</td><td>88</td><td>7</td><td>100 %</td><td>100 %</td></tr>
-            <tr><td>2026</td><td>Habilitation électrique</td><td>7</td><td>49</td><td>9</td><td>100 %</td><td>100 %</td></tr>
-            <tr><td>2026</td><td>Autre</td><td>2</td><td>19</td><td>0</td><td>pas d'avis exploitable</td><td>100 %</td></tr>
-            <tr class="tot"><td>2026</td><td>Toutes formations</td><td>96</td><td>466</td><td>30</td><td>100 %</td><td>100 %</td></tr>
-            <tr><td>2025</td><td>SST</td><td>12</td><td>109</td><td>39</td><td>100 %</td><td>100 %</td></tr>
-            <tr><td>2025</td><td>PRAP</td><td>4</td><td>36</td><td>25</td><td>100 %</td><td>100 %</td></tr>
-            <tr><td>2025</td><td>AIPR</td><td>6</td><td>45</td><td>33</td><td>100 %</td><td>100 %</td></tr>
-            <tr><td>2025</td><td>Travail en hauteur / échafaudage</td><td>5</td><td>11</td><td>3</td><td>100 %</td><td>100 %</td></tr>
-            <tr><td>2025</td><td>Autorisation de conduite</td><td>3</td><td>5</td><td>2</td><td>100 %</td><td>100 %</td></tr>
-            <tr class="tot"><td>2025</td><td>Toutes formations</td><td>30</td><td>206</td><td>102</td><td>100 %</td><td>100 %</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </details>
-
-    <p class="note">Méthode : taux de satisfaction = avis « satisfait » ou « très satisfait » (notes 3 à 5 sur 5) ÷ avis exploitables du questionnaire de fin de formation ; une absence de réponse n'est pas comptée comme une insatisfaction. Taux de réussite = stagiaires certifiés ou déclarés aptes ÷ stagiaires présentés à l'évaluation finale. Données agrégées, sans information nominative. Mise à jour le 05/11/2026.</p>
-
-    <div class="cert">
-      <div>
-        <b style="font-size:1.05rem;color:var(--navy)">3AIM CFA est certifié Qualiopi</b> – certificat n° 535011-1 (Certifopac), valable jusqu'au 10/02/2028.<br>
-        La certification qualité a été délivrée au titre de la catégorie d'actions suivante : <b>actions de formation</b>.<br>
-        <span style="color:var(--muted);font-size:.88rem">Déclaration d'activité n° 04973634297 (cet enregistrement ne vaut pas agrément de l'État).</span>
-      </div>
-      <a class="btn" href="https://drive.google.com/uc?export=download&id=1KRCLfm2cR58u3-cPsYJyE75qorBFBVvh" target="_blank" rel="noopener">Télécharger le certificat (PDF)</a>
-    </div>
-  </div>
-</section>
-
-<section id="accessibilite" class="soft">
-  <div class="wrap grid g2">
-    <div>
-      <span class="eyebrow">Accessibilité</span>
-      <h2>Handicap et mobilité</h2>
-      <p class="lead">Nos formations sont ouvertes aux personnes en situation de handicap. Notre référent handicap étudie avec vous les adaptations possibles (rythme, supports, matériel, accessibilité des locaux) et vous oriente vers les partenaires spécialisés si nécessaire.</p>
-    </div>
-    <div class="card">
-      <h3>Référent handicap & mobilité</h3>
-      <p>Rachad MOHAMED<br>📞 <a href="tel:+262692098592">0692 09 85 92</a><br>✉️ <a href="mailto:stagiaire@3aim.fr">stagiaire@3aim.fr</a></p>
-    </div>
-  </div>
-</section>
-
-<section id="demande">
-  <div class="wrap grid g2" style="align-items:start">
-    <div>
-      <span class="eyebrow">Demande de devis ou d'inscription</span>
-      <h2>Parlons de votre projet</h2>
-      <p class="lead">Remplissez ce formulaire : nous revenons vers vous sous 48 h ouvrées avec une proposition adaptée et les solutions de financement possibles.</p>
-      <ul class="contact-list">
-        <li><span>📞</span><span><a href="tel:+262692098592">0692 09 85 92</a></span></li>
-        <li><span>🏢</span><span>Entreprises : <a href="mailto:contact@3aim.fr">contact@3aim.fr</a></span></li>
-        <li><span>🎓</span><span>Stagiaires : <a href="mailto:stagiaire@3aim.fr">stagiaire@3aim.fr</a></span></li>
-      </ul>
-    </div>
-
-    <form id="demande-form">
-      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="new-password" aria-hidden="true">
-
-      <label>Vous êtes</label>
-      <div class="radios">
-        <label><input type="radio" name="Profil" value="Entreprise" checked> Une entreprise</label>
-        <label><input type="radio" name="Profil" value="Particulier"> Un particulier</label>
-        <label><input type="radio" name="Profil" value="Futur apprenti"> Futur apprenti</label>
-      </div>
-
-      <div class="row">
-        <div><label for="f-nom">Nom et prénom *</label><input id="f-nom" name="Nom" required></div>
-        <div><label for="f-ent">Entreprise / structure</label><input id="f-ent" name="Entreprise"></div>
-      </div>
-      <div class="row">
-        <div><label for="f-mail">E-mail *</label><input id="f-mail" type="email" name="email" required></div>
-        <div><label for="f-tel">Téléphone *</label><input id="f-tel" type="tel" name="Telephone" required></div>
-      </div>
-      <label for="f-formation">Formation souhaitée *</label>
-      <select id="f-formation" name="Formation" required><option value="">— Choisir —</option></select>
-      <div class="row">
-        <div><label for="f-nb">Nombre de participants</label><input id="f-nb" type="number" min="1" name="Participants" value="1"></div>
-        <div><label for="f-fin">Financement envisagé</label>
-          <select id="f-fin" name="Financement">
-            <option>OPCO (plan de développement des compétences)</option>
-            <option>Contrat d'apprentissage</option>
-            <option>CPF</option>
-            <option>France Travail</option>
-            <option>Autofinancement</option>
-            <option>Je ne sais pas</option>
-          </select></div>
-      </div>
-      <label for="f-msg">Votre besoin (dates souhaitées, lieu, précisions)</label>
-      <textarea id="f-msg" name="Message"></textarea>
-      <label class="consent" style="font-weight:400"><input type="checkbox" name="Consentement RGPD" value="Oui" required> <span>J'accepte que mes données soient utilisées par 3AIM CFA pour traiter ma demande (voir la <a href="mentions-legales.html#rgpd">politique de confidentialité</a>).</span></label>
-      <button class="btn" type="submit">Envoyer ma demande</button>
-      <div id="form-msg" class="msg" role="status"></div>
-    </form>
-  </div>
-</section>
-
-<section id="contact" class="soft">
-  <div class="wrap grid g2" style="align-items:center">
-    <div>
-      <span class="eyebrow">Nous trouver</span>
-      <h2>Centre de formation</h2>
-      <ul class="contact-list">
-        <li><span>📍</span><span>548 Rue de Cambuston<br>97440 Saint-André, La Réunion</span></li>
-        <li><span>📞</span><span><a href="tel:+262692098592">0692 09 85 92</a></span></li>
-        <li><span>✉️</span><span><a href="mailto:contact@3aim.fr">contact@3aim.fr</a> · <a href="mailto:stagiaire@3aim.fr">stagiaire@3aim.fr</a></span></li>
-        <li><span>🔐</span><span><a href="https://rachadmohamed974.github.io/portail-cfa/">Espace entreprise & formateur</a></span></li>
-      </ul>
-    </div>
-    <iframe class="map" loading="lazy" title="Plan d'accès 3AIM CFA" src="https://maps.google.com/maps?q=548%20Rue%20de%20Cambuston%2C%2097440%20Saint-Andr%C3%A9&z=15&output=embed"></iframe>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <h4>3AIM CFA</h4>
-        <p>Organisme de formation certifié Qualiopi (actions de formation), au service des entreprises et des talents de La Réunion.</p>
-      </div>
-      <div>
-        <h4>Liens</h4>
-        <a href="#formations">Formations</a><br><a href="#apprentissage">Apprentissage</a><br><a href="#demande">Demande de devis</a><br><a href="https://rachadmohamed974.github.io/portail-cfa/">Espace client</a>
-      </div>
-      <div>
-        <h4>Informations</h4>
-        <a href="mentions-legales.html">Mentions légales</a><br><a href="mentions-legales.html#rgpd">Confidentialité</a><br><a href="#accessibilite">Accessibilité</a>
-      </div>
-    </div>
-    <div class="legal">© <span id="year"></span> 3AIM CFA · SIRET 937 988 905 00017 · NDA 04973634297 · Certifié Qualiopi n° 535011-1</div>
-  </div>
-</footer>
-
+<header><div class="wrap"><div class="top" id="top"><div><div class="org">3AIM CFA</div><small>Espace en ligne</small></div></div><div class="hello" id="hello"></div></div></header>
+<main class="wrap" id="app"><div class="card"><p class="hint">Chargement…</p></div></main>
+<footer id="foot">Espace sécurisé : vos informations ne sont visibles qu'avec votre code personnel.</footer>
 <script>
-// ===== Catalogue des formations (modifier ici pour ajouter / retirer une formation) =====
-// cat : "securite" | "conduite" | "tp" (titre professionnel)
-// p : programmes PDF téléchargeables -> [libellé, identifiant du fichier Google Drive partagé "lecture par lien"]
-const FORMATIONS = [
-  {cat:"securite", t:"Sauveteur Secouriste du Travail (SST)", d:"Intervenir face à un accident du travail ou un malaise et contribuer à la prévention dans l'entreprise. Certificat SST (référentiel INRS).", m:"Formation initiale · MAC",
-    p:[["Programme SST initial","1O_z0gvrlcEzquFdxlbBFRalpGu-oshkq"],["Programme MAC SST","1SBPc1f7Y_suKrN1EezI4WGLmjoHkELZV"]]},
-  {cat:"securite", t:"Prévention des risques liés à l'activité physique (PRAP)", d:"Devenir acteur de sa propre prévention : analyse de sa situation de travail, principes de sécurité physique et d'économie d'effort.", m:"PRAP IBC",
-    p:[["Programme PRAP IBC","1voY3SCcVj6-JY4-9ROn_fUcF3N_Un5Yt"]]},
-  {cat:"securite", t:"AIPR – opérateur, encadrant, concepteur", d:"Réglementation DT-DICT, lecture de plans, travaux à proximité des réseaux. Examen QCM officiel du Ministère.", m:"Examen inclus",
-    p:[["Programme AIPR opérateur","1a187E5yOs8deRI12vYUFQzAB0erg6IuQ"],["Programme AIPR encadrant","1LSMhaCQ0-jYDBYQ3rVkabI0Fe7poZ5lr"]]},
-  {cat:"securite", t:"Habilitation électrique (H0B0, BS, BE manœuvre, HE)", d:"Travailler en sécurité sur ou à proximité d'installations électriques, conformément à la norme NF C 18-510.", m:"Non électricien",
-    p:[["Programme H0B0","1jGKVgbWlCDP5bV3bGNM26VYCHH6xCSdi"],["Programme BS / BE / HE","1v_jafVGi_nNNwDuUqCrEmvCfTzgsKLjf"]]},
-  {cat:"securite", t:"Travail en hauteur et port du harnais", d:"Identifier les risques de chute, choisir un ancrage, régler et utiliser un harnais antichute.", m:"1 ou 2 jours",
-    p:[["Programme 1 jour","13YTjJwW0OVPFFI-AJ3T5ktNJKiyc21wo"],["Programme 2 jours","1cqB6Vgsz7CRuNdzbW7ajYYOJ8ZA-1PZ3"]]},
-  {cat:"securite", t:"Montage et démontage des échafaudages", d:"Monter, démonter et vérifier un échafaudage en sécurité selon la notice du fabricant.", m:"2 jours",
-    p:[["Programme échafaudage","1fsW3ZL3ktphoLREpEEz58e7N92KhQ4Bc"]]},
-  {cat:"securite", t:"Évaluation des risques – Document unique (DUERP)", d:"Conduire l'évaluation des risques, rédiger et mettre à jour le document unique, bâtir un plan d'actions.", m:"Pour dirigeants et référents",
-    p:[["Programme DUERP","1WD7nfM2iFAd_GuRI-h-IQVbbPW4Ktw8E"]]},
-  {cat:"securite", t:"Manipulation des extincteurs", d:"Connaître le triangle du feu, les classes de feux et les types d'extincteurs, et savoir intervenir sur un départ de feu.", m:"Théorie et pratique",
-    p:[["Programme extincteurs","1veywfLVl0lDRtOG6cNHb_LWiI7jGNb__"]]},
-  {cat:"securite", t:"Gestion des conflits et des incivilités", d:"Prévenir les tensions, adopter la bonne posture et désamorcer les situations conflictuelles avec le public.", m:"Accueil · relation client",
-    p:[["Programme gestion des conflits","1dnVlwLOuu3E4h5QD9B8ZYxYPif6wH1Cy"]]},
-  {cat:"securite", t:"Soudage à l'arc électrode enrobée (111)", d:"Initiation au procédé de soudage à l'arc à l'électrode enrobée : sécurité, réglages et réalisation de cordons.", m:"Initiation"},
-  {cat:"conduite", t:"Autorisation de conduite – nacelles (PEMP)", d:"Conduite en sécurité des plates-formes élévatrices mobiles de personnes. Évaluations théorique et pratique.", m:"Initial et recyclage",
-    p:[["Programme initial","1nWUT4UuIwHdrqBvhQhjMVv7mmE3recHs"],["Programme recyclage","1gjKoYgoDGiSYHpuGoNTr7QAXQOJq9i57"]]},
-  {cat:"conduite", t:"Autorisation de conduite – engins de chantier", d:"Pelles, chargeuses, tractopelles, mini-engins… Réglementation, vérifications, conduite en situation réelle.", m:"3 ou 5 jours",
-    p:[["Programme 3 jours","1Tng3gtPg4sgdxe-zOorq3yn7Oa7czv9D"],["Programme 5 jours","1O_YOlXvgOO6Opcf7q0ZsWYUE4WJWilFs"]]},
-  {cat:"conduite", t:"Autorisation de conduite – grue de chargement", d:"Stabilisation, lecture d'abaques, élingage et manutention de charges en sécurité.", m:"Initial et recyclage",
-    p:[["Programme initial","1JTatyid3s5h4XLOYIebFQIHryJ4LCyAw"],["Programme recyclage","1mfQ-9evkvyvp6QQQUuRooMfoNBBSe0nv"]]},
-  {cat:"conduite", t:"Autorisation de conduite – chariots élévateurs", d:"Conduite en sécurité des chariots automoteurs à conducteur porté : règles de circulation, stabilité, manutention.", m:"Initial et recyclage",
-    p:[["Programme initial","1-Oyo8lMPJoQ-4xTJNwT7VFaCgs4hnCC2"],["Programme recyclage","1beBHq2Rxzm6STdUNksD-b6snU8yO7t8V"]]},
-  {cat:"tp", t:"Agent de médiation, information, services (AMIS)", d:"Titre professionnel – accueillir, informer, orienter et assurer une présence de médiation auprès des publics.", m:"Titre professionnel · niveau 3"},
-  {cat:"tp", t:"Médiateur social accès aux droits et services (MSADS)", d:"Titre professionnel – accompagner les publics dans l'accès aux droits et aux services, prévenir et gérer les conflits.", m:"Titre professionnel · niveau 4",
-    p:[["Programme MSADS (500 h)","1xmFDWt5aNbF4y8aA2Ds049K_qvHlijOm"]]},
-  {cat:"tp", t:"Conseiller en insertion professionnelle (CIP)", d:"Titre professionnel – accompagner les personnes dans leur parcours d'insertion sociale et professionnelle.", m:"Titre professionnel · niveau 5"},
-  {cat:"tp", t:"Formateur professionnel d'adultes (FPA)", d:"Titre professionnel – préparer, animer et évaluer des actions de formation pour adultes.", m:"Titre professionnel · niveau 5"},
-  {cat:"tp", t:"Assistant de direction", d:"Titre professionnel – assister un dirigeant dans l'organisation, la communication et le suivi des dossiers.", m:"Titre professionnel · niveau 5"},
-  {cat:"tp", t:"Secrétaire assistant médico-administratif (SAMA)", d:"Titre professionnel – accueil, gestion administrative et coordination dans les structures médicales et médico-sociales.", m:"Titre professionnel · niveau 4"},
-  {cat:"tp", t:"Assistant de vie aux familles (ADVF)", d:"Titre professionnel – accompagner les personnes à domicile dans les actes de la vie quotidienne.", m:"Titre professionnel · niveau 3"},
-  {cat:"tp", t:"Agent de propreté et d'hygiène (APH)", d:"Titre professionnel – réaliser des prestations de nettoyage et de remise en état dans tous types de locaux.", m:"Titre professionnel · niveau 3"},
-  {cat:"tp", t:"Agent de maintenance des bâtiments (AMB)", d:"Titre professionnel – maintenance et petits travaux en électricité, plomberie, menuiserie et finitions.", m:"Titre professionnel · niveau 3"},
-  {cat:"tp", t:"Conseiller commercial", d:"Titre professionnel – prospecter, conseiller et vendre auprès d'une clientèle de professionnels ou de particuliers.", m:"Titre professionnel · niveau 4",
-    p:[["Programme Conseiller commercial","19-Lpuq6DE41yuBiu-oBYPFKEYQPCDiWS"]]},
-  {cat:"tp", t:"Conseiller de vente", d:"Titre professionnel – accueillir, conseiller et vendre en magasin, participer à la tenue de l'espace de vente.", m:"Titre professionnel · niveau 4"},
-];
-
-const DL = id => "https://drive.google.com/uc?export=download&id=" + id;
-const grid = document.getElementById("formations-grid");
-const select = document.getElementById("f-formation");
-const LABEL = {securite:"Prévention & sécurité", conduite:"Autorisation de conduite", tp:"Titre professionnel"};
-
-function render(filter){
-  grid.innerHTML = "";
-  FORMATIONS.filter(f => filter==="all" || f.cat===filter).forEach(f=>{
-    const el = document.createElement("article");
-    el.className = "card formation";
-    const progs = (f.p||[]).map(([l,id])=>`<a class="dl" href="${DL(id)}" target="_blank" rel="noopener">⬇ ${l} (PDF)</a>`).join("");
-    el.innerHTML = `<span class="tag ${f.cat==='tp'?'tp':''}">${LABEL[f.cat]}</span>
-      <h3>${f.t}</h3><p>${f.d}</p>
-      <div class="meta">${f.m}</div>
-      <div class="progs">${progs || '<span class="noprog">Programme détaillé sur simple demande</span>'}</div>
-      <details class="acces"><summary>Modalités et délai d'accès</summary>
-        <p><b>Accès :</b> inscription via le formulaire, par mail (contact@3aim.fr) ou par téléphone (0692 09 85 92). Devis et programme envoyés ; inscription confirmée à réception du devis signé ou de l'accord de prise en charge. Questionnaire de positionnement avant l'entrée en formation.</p>
-        <p><b>Délai :</b> 1 mois en moyenne entre la demande et le début de la formation, selon les dates de session, les places et le délai de prise en charge du financeur.</p>
-        <p><b>Handicap :</b> formation accessible – contactez notre référent handicap, Rachad MOHAMED (0692 09 85 92).</p>
-      </details>
-      <a class="ask" href="#demande" data-f="${f.t}">Demander un devis / s'inscrire →</a>`;
-    grid.appendChild(el);
-  });
+var API = "https://script.google.com/macros/s/AKfycbwvKgk0-_aHsSybtgHRgZaNm6kY45E19P5s_HRXmicnYNtH_bvqYmx5tj0xZa3ONBs3/exec";
+var CODE = (function(){try{var q=new URLSearchParams(location.search);return q.get("code")||q.get("c")||""}catch(e){return ""}})();
+function api(params,ok,ko){var u=API+"?"+Object.keys(params).map(function(k){return k+"="+encodeURIComponent(params[k])}).join("&");fetch(u,{credentials:"omit",redirect:"follow"}).then(function(r){return r.json()}).then(ok).catch(ko)}
+var DATA = null;
+function $(s){return document.querySelector(s)}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function fd(d){try{return new Date(d+"T12:00:00").toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long",year:"numeric"})}catch(e){return d}}
+function store(k,v){try{if(v==null)sessionStorage.removeItem(k);else sessionStorage.setItem(k,v)}catch(e){}}
+function read(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
+function login(msg){
+  $("#hello").textContent="";
+  $("#app").innerHTML='<div class="card login"><h2>Accéder à mon espace</h2><p class="hint">Saisissez le code personnel reçu par e-mail de 3AIM CFA.</p><input id="code" autocomplete="one-time-code" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="24"><div class="err" id="err">'+esc(msg||"")+'</div><button class="btn or" id="go" style="width:100%">Entrer</button><p class="hint" style="margin-top:14px">Pas de code ? Contactez 3AIM CFA au <a href="tel:+262692098592">0692 09 85 92</a>.</p></div>';
+  $("#go").onclick=function(){go($("#code").value)};$("#code").onkeydown=function(e){if(e.key==="Enter")go($("#code").value)};$("#code").focus();
 }
-render("all");
-
-// options du formulaire
-["securite","conduite","tp"].forEach(c=>{
-  const g = document.createElement("optgroup"); g.label = LABEL[c];
-  FORMATIONS.filter(f=>f.cat===c).forEach(f=>{const o=document.createElement("option");o.textContent=f.t;g.appendChild(o);});
-  select.appendChild(g);
-});
-const other = document.createElement("option"); other.textContent = "Autre / je ne sais pas encore"; select.appendChild(other);
-
-document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{
-  document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));
-  c.classList.add("active"); render(c.dataset.f);
-}));
-
-// clic "Demander un devis" -> pré-remplit la formation
-grid.addEventListener("click", e=>{
-  const a = e.target.closest("a.ask"); if(!a) return;
-  select.value = a.dataset.f;
-});
-
-// menu mobile
-document.querySelector(".burger").addEventListener("click",()=>document.querySelector(".menu").classList.toggle("open"));
-document.querySelectorAll(".menu a").forEach(a=>a.addEventListener("click",()=>document.querySelector(".menu").classList.remove("open")));
-
-// envoi du formulaire (Google Apps Script -> e-mail + tableur)
-const form = document.getElementById("demande-form");
-const msg = document.getElementById("form-msg");
-// champ obligatoire oublié -> message clair près du bouton
-let warned = false;
-form.addEventListener("invalid", e=>{
-  if(warned) return; warned = true; setTimeout(()=>warned=false, 300);
-  const champ = e.target.closest("div, label")?.querySelector("label")?.textContent?.replace("*","").trim() || "un champ obligatoire";
-  msg.className = "msg err";
-  msg.textContent = "Merci de compléter : " + (e.target.type==="checkbox" ? "la case d'accord (données personnelles)" : champ) + ".";
-}, true);
-
-const DEVIS_API = "https://script.google.com/macros/s/AKfycbzCn1y8IK2k95smmorZjSs2AmjasTS7inyLANH9Yd18aKsroXRXgI09jECwCkirDNL0/exec"; // service Google Apps Script « Devis 3AIM CFA »
-form.addEventListener("submit", async e=>{
-  e.preventDefault();
-  const btn = form.querySelector("button[type=submit]");
-  btn.disabled = true; btn.textContent = "Envoi en cours…";
-  msg.className = "msg"; msg.textContent = "";
-  const data = new URLSearchParams(new FormData(form));
-  try{
-    const ctl = new AbortController(); const to = setTimeout(()=>ctl.abort(), 20000);
-    const r = await fetch(DEVIS_API, {method:"POST", body:data, signal:ctl.signal});
-    clearTimeout(to);
-    const j = await r.json();
-    if(!j.ok) throw new Error(j.msg||"");
-    msg.className = "msg ok";
-    msg.textContent = "Merci ! Votre demande a bien été envoyée" + (j.ref ? " (réf. " + j.ref + ")" : "") + ". Un e-mail de confirmation vous a été adressé. Nous vous recontactons sous 48 h ouvrées.";
-    form.reset();
-  }catch(err){
-    const corps = [...new FormData(form)].filter(([k])=>!k.startsWith("_")).map(([k,v])=>k+" : "+v).join("\n");
-    const mailto = "mailto:contact@3aim.fr?subject=" + encodeURIComponent("Demande de devis – site 3AIM CFA") + "&body=" + encodeURIComponent(corps);
-    msg.className = "msg err";
-    msg.innerHTML = "L'envoi n'a pas abouti. <a href=\"" + mailto + "\">Cliquez ici pour envoyer votre demande par e-mail</a> ou appelez-nous au <a href=\"tel:+262692098592\">0692 09 85 92</a>.";
-  }
-  btn.disabled = false; btn.textContent = "Envoyer ma demande";
-});
-
-document.getElementById("year").textContent = new Date().getFullYear();
-
+function go(c){
+  c=String(c||"").trim();if(!c){login("Saisissez votre code.");return}
+  var b=$("#go");if(b){b.disabled=true;b.textContent="Vérification…"}
+  api({api:"espace",code:c},function(r){
+    if(!r||!r.ok){store("c",null);login(r&&r.msg||"Code inconnu.");return}
+    CODE=c;store("c",c);DATA=r.data;render();
+    try{history.replaceState(null,"",location.pathname)}catch(e){}
+  },function(e){login("Service momentanément indisponible. Réessayez dans un instant.")});
+}
+var SEEN={};
+function seenKey(){return "seen_"+String(CODE||"").toUpperCase().replace(/[^A-Z0-9]/g,"")}
+function loadSeen(){SEEN={};(DATA&&DATA.seen||[]).forEach(function(i){SEEN[i]=1});try{JSON.parse(localStorage.getItem(seenKey())||"[]").forEach(function(i){SEEN[i]=1})}catch(e){}}
+function markSeen(id){SEEN[id]=1;try{localStorage.setItem(seenKey(),JSON.stringify(Object.keys(SEEN)))}catch(e){}
+  Array.prototype.forEach.call(document.querySelectorAll('[data-new="'+id+'"]'),function(x){x.remove()});
+  Array.prototype.forEach.call(document.querySelectorAll('[data-dl="'+id+'"]'),function(b){b.textContent="Téléchargé ✓"});
+  if(VIEW==="docs"){Array.prototype.forEach.call(document.querySelectorAll('[data-item="'+id+'"]'),function(x){x.style.opacity=".55"})}
+  updBadges()}
+function allDocs(p){var a=(p.docs||[]).slice();(p.sessions||[]).forEach(function(s){a=a.concat(s.docs||[])});var u={};return a.filter(function(d){if(u[d.id])return false;u[d.id]=1;return true})}
+function newCount(docs){return (docs||[]).filter(function(d){return !SEEN[d.id]}).length}
+function updBadges(){var n=newCount(allDocs(DATA)),b=document.querySelector('[data-v="docs"] .bd');if(b){if(n)b.textContent=n;else b.remove()}
+  Array.prototype.forEach.call(document.querySelectorAll("[data-sn]"),function(x){var s=(DATA.sessions||[])[+x.getAttribute("data-sn")],k=newCount(s&&s.docs);if(k)x.textContent=k+" nouveau"+(k>1?"x":"");else x.remove()})}
+function dl(id,btn){
+  var t=btn.textContent;btn.disabled=true;btn.textContent="Ouverture…";
+  api({api:"file",code:CODE,id:id},function(f){
+    if(!f||!f.b64){btn.disabled=false;btn.textContent="Indisponible";alert("Ce document n'est pas disponible pour le moment.");return}
+    var bin=atob(f.b64),u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);
+    var url=URL.createObjectURL(new Blob([u],{type:f.mime||"application/pdf"}));var a=document.createElement("a");a.href=url;a.download=f.nom;document.body.appendChild(a);a.click();a.remove();
+    setTimeout(function(){URL.revokeObjectURL(url)},60000);btn.disabled=false;btn.textContent=t;markSeen(id);
+  },function(e){btn.disabled=false;btn.textContent="Indisponible";alert("Ce document n'est pas disponible pour le moment.")});
+}
+function docsHTML(docs){if(!docs||!docs.length)return "";return '<div class="list">'+docs.map(function(d){var n=!SEEN[d.id];return '<div class="item" data-item="'+esc(d.id)+'"><span>📄 '+esc(d.label||d.nom)+(d.sign?' <span class="tag sign">À signer</span>':'')+(n?' <span class="tag new" data-new="'+esc(d.id)+'">Nouveau</span>':'')+(d.sign?'<span class="signhint">✍️ '+esc(d.sign)+'</span>':'')+'</span><button class="btn ghost" data-dl="'+esc(d.id)+'">'+(n?"Télécharger":"Télécharger à nouveau")+'</button></div>'}).join("")+'</div>'}
+function qk(u){return 'qc_'+String(u||'').slice(-48)}
+function questHTML(q){if(!q||!q.length)return "";return '<div class="list">'+q.map(function(x){var c=0;try{c=+localStorage.getItem(qk(x.url))||0}catch(e){}return '<div class="item"><span>📝 '+esc(x.label)+(c&&!x.fait?'<br><small class="hint">Réponse envoyée ? Elle sera prise en compte dans quelques minutes, puis ce questionnaire disparaîtra.</small>':'')+'</span>'+(x.fait?'<span class="tag ok">✓ Répondu</span>':'<a class="btn or" data-qurl="'+esc(x.url)+'" href="'+esc(x.url)+'" target="_blank" rel="noopener">'+(c?'Rouvrir':'Répondre')+'</a>')+'</div>'}).join("")+'</div>'}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-qurl]');if(!a)return;try{localStorage.setItem(qk(a.getAttribute('data-qurl')),String(Date.now()))}catch(x){}setTimeout(function(){try{render()}catch(x){}},600)});
+var RL={client:"entreprise",stagiaire:"stagiaire",formateur:"formateur"};
+function today(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function sessionBody(s,role){var dates=(s.dates||[]).map(fd);
+  return '<div class="meta">'+(dates.length?'<div><b>Date'+(dates.length>1?'s':'')+'</b><span>'+dates.map(esc).join("<br>")+'</span></div>':'<div><b>Dates</b><span>À fixer</span></div>')+
+    (s.horaires?'<div><b>Horaires</b><span>'+esc(s.horaires)+'</span></div>':'')+
+    (s.lieu?'<div><b>Lieu</b><span>'+esc(s.lieu)+(s.lieuAdr?'<br>'+esc(s.lieuAdr)+'<br><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(s.lieuAdr)+'" target="_blank" rel="noopener">Voir sur la carte</a>':'')+'</span></div>':'')+
+    (s.entreprise&&role==="formateur"?'<div><b>Entreprise</b><span>'+esc(s.entreprise)+'</span></div>':'')+
+    (s.formateur?'<div><b>Formateur</b><span>'+esc(s.formateur)+'</span></div>':'')+
+    (s.stagiaires?'<div><b>Stagiaires</b><span>'+esc(s.stagiaires)+'</span></div>':'')+'</div>'+
+    (s.etapes&&s.etapes.length?'<h3>Avancement</h3><div class="steps">'+s.etapes.map(function(e){return '<div class="step"><span>'+esc(e.l)+'</span><span class="tag '+(e.e==="ok"?"ok":e.e==="wait"?"wait":"todo")+'">'+esc(e.t)+'</span></div>'}).join("")+'</div>':'')+
+    (s.infos?'<h3>À savoir</h3><p style="margin:0">'+esc(s.infos)+'</p>':'')+(s.em?'<h3>Émargement</h3><p style="margin:0 0 10px">'+(role==="formateur"?"Suis les présences de chaque demi-journée, note les absents et signe en fin de séance.":"Signez votre présence à chaque demi-journée, pendant la formation.")+'</p><button class="btn or" type="button" data-emopen="'+esc(s.sid)+'">✍️ '+(role==="formateur"?"Ouvrir l\'émargement":"Signer ma présence")+'</button>':'')+
+    (s.quest&&s.quest.length?'<h3>Questionnaires</h3>'+questHTML(s.quest):'')+
+    (s.docs&&s.docs.length?'<h3>Documents</h3>'+docsHTML(s.docs):'')}
+function guideHTML(role){
+  var g=role==="client"?["<b>Vos formations</b> : cliquez sur une formation pour l'ouvrir ou la refermer ; chaque carte correspond à une formation, avec ses dates, son lieu et la liste de vos salariés inscrits.","<b>Avancement</b> : suivez chaque étape (devis, convention, convocations, émargement, facture). Une pastille verte signifie que c'est fait, orange que nous attendons quelque chose de votre part.","<b>Documents</b> : ouvrez une formation pour retrouver tous ses documents (devis, convention, factures, certificats). La rubrique « Nouveaux documents » ne montre que ceux que vous n'avez pas encore téléchargés.","<b>Questionnaire</b> : en fin de formation, cliquez sur « Répondre » pour nous donner votre avis.","<b>Le menu</b> : à gauche (ou en haut sur téléphone), passez de vos formations à vos documents, questionnaires et contacts. Les formations passées sont rangées en bas de « Mes formations »."]
+   :role==="formateur"?["<b>Tes sessions</b> : clique sur une session pour l'ouvrir ; chaque carte correspond à une intervention, avec les dates, les horaires, le lieu, l'entreprise et les stagiaires.","<b>Calendrier</b> : toutes tes dates d'intervention d'un coup d'œil, avec la liste des prochaines dates.","<b>Mes documents</b> : ce que tu dois faire signer (convention si tu es indépendant, feuille d'émargement) et les documents pas encore consultés.","<b>Émargement</b> : imprime la feuille, fais-la signer à chaque demi-journée et remets-la au centre en fin de session.","<b>Bilan de session</b> : après l'intervention, clique sur « Répondre » pour remplir le bilan en ligne.","<b>Le menu</b> : à gauche (ou en haut sur téléphone), passe de tes sessions aux documents, aux bilans et aux contacts. Les sessions passées sont rangées en bas de « Mes sessions »."]
+   :["<b>Votre formation</b> : retrouvez les dates, les horaires et le lieu (avec le lien « Voir sur la carte »).","<b>Documents</b> : ouvrez votre formation pour télécharger votre convocation et le programme. La rubrique « Nouveaux documents » signale ce qui vient d'arriver.","<b>Questionnaires</b> : cliquez sur « Répondre ». Il y en a un avant la formation, un à la fin et un quelques mois après. Une fois envoyé, il passe en « Répondu ».","<b>Le menu</b> : à gauche (ou en haut sur téléphone), passez de votre formation à vos documents et questionnaires.</li><li><b>Sur téléphone</b> : ajoutez cette page à votre écran d'accueil pour la retrouver facilement."];
+  return '<details class="card fold"><summary><span>Comment utiliser '+(role==="formateur"?"ton":"votre")+' espace<span class="sub">Le mode d\'emploi en quelques lignes</span></span></summary><div class="in"><ol class="guide">'+g.map(function(x){return "<li>"+x+"</li>"}).join("")+'</ol></div></details>'}
+function rgpdHTML(role,o){var T=role==="formateur";
+  return '<details class="card fold rgpd"><summary><span>'+(T?"Tes":"Vos")+' données personnelles (RGPD)<span class="sub">Qui voit quoi, et '+(T?"tes":"vos")+' droits</span></span></summary><div class="in">'+
+  '<p><b>Qui voit '+(T?"tes":"vos")+' informations ?</b> Seulement '+(T?"toi":"vous")+' et l\'équipe de '+esc(o.nom||"3AIM CFA")+'. Chaque espace est protégé par un code personnel unique : personne d\'autre ne peut consulter '+(T?"tes":"vos")+' formations ou '+(T?"tes":"vos")+' documents.</p>'+
+  '<p><b>Pourquoi ces données ?</b> Pour organiser et suivre la formation, établir les documents obligatoires (conventions, convocations, émargement, attestations, factures) et répondre aux exigences de qualité Qualiopi.</p>'+
+  '<p><b>Combien de temps ?</b> Le temps de la formation, puis la durée imposée par la réglementation (pièces comptables et preuves de réalisation). Les connexions à cet espace sont enregistrées (date, action) pour la sécurité et le suivi qualité.</p>'+
+  '<p><b>'+(T?"Tes":"Vos")+' droits</b> : '+(T?"tu peux":"vous pouvez")+' demander à tout moment l\'accès à '+(T?"tes":"vos")+' données, leur correction ou leur suppression (dans la limite des obligations légales), en écrivant à <a href="mailto:'+esc(o.email||"")+'">'+esc(o.email||"")+'</a>. '+(T?"Tu peux":"Vous pouvez")+' aussi saisir la CNIL (cnil.fr).</p>'+
+  '<p><b>Un conseil</b> : '+(T?"ton":"votre")+' lien et '+(T?"ton":"votre")+' code sont personnels, ne '+(T?"les transmets":"les transmettez")+' pas. Sur un ordinateur partagé, '+(T?"pense":"pensez")+' à cliquer sur « Se déconnecter ».</p></div></details>'}
+var VIEW=null;
+function sortS(p){return (p.sessions||[]).slice().sort(function(a,b){return String((a.dates||["9"])[0]).localeCompare(String((b.dates||["9"])[0]))})}
+function sTitle(s){var d=s.dates||[];return esc(s.intitule)+'<span class="sub">'+(d.length?esc(fd(d[0]))+(d.length>1?" → "+esc(fd(d[d.length-1])):""):"Dates à fixer")+(s.numero?" · Réf. "+esc(s.numero):"")+'</span>'}
+function infoBody(s,role){var dates=(s.dates||[]).map(fd);
+  return '<div class="meta">'+(dates.length?'<div><b>Date'+(dates.length>1?'s':'')+'</b><span>'+dates.map(esc).join("<br>")+'</span></div>':'<div><b>Dates</b><span>À fixer</span></div>')+
+    (s.horaires?'<div><b>Horaires</b><span>'+esc(s.horaires)+'</span></div>':'')+
+    (s.lieu?'<div><b>Lieu</b><span>'+esc(s.lieu)+(s.lieuAdr?'<br>'+esc(s.lieuAdr)+'<br><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(s.lieuAdr)+'" target="_blank" rel="noopener">Voir sur la carte</a>':'')+'</span></div>':'')+
+    (s.entreprise&&role==="formateur"?'<div><b>Entreprise</b><span>'+esc(s.entreprise)+'</span></div>':'')+
+    (s.formateur?'<div><b>Formateur</b><span>'+esc(s.formateur)+'</span></div>':'')+
+    (s.stagiaires?'<div><b>Stagiaires</b><span>'+esc(s.stagiaires)+'</span></div>':'')+'</div>'+
+    (s.etapes&&s.etapes.length?'<h3>Avancement</h3><div class="steps">'+s.etapes.map(function(e){return '<div class="step"><span>'+esc(e.l)+'</span><span class="tag '+(e.e==="ok"?"ok":e.e==="wait"?"wait":"todo")+'">'+esc(e.t)+'</span></div>'}).join("")+'</div>':'')+
+    (s.infos?'<h3>À savoir</h3><p style="margin:0">'+esc(s.infos)+'</p>':'')+(s.em?'<h3>Émargement</h3><p style="margin:0 0 10px">'+(role==="formateur"?"Suis les présences de chaque demi-journée, note les absents et signe en fin de séance.":"Signez votre présence à chaque demi-journée, pendant la formation.")+'</p><button class="btn or" type="button" data-emopen="'+esc(s.sid)+'">✍️ '+(role==="formateur"?"Ouvrir l\'émargement":"Signer ma présence")+'</button>':'')}
+function sessCard(s,role,idx,open){var d=s.dates||[],t=today(),st=!d.length?["À programmer",""]:d[d.length-1]<t?["Terminée",""]:d[0]<=t?["En cours","now"]:["À venir","soon"],n=newCount(s.docs),nq=(s.quest||[]).filter(function(q){return !q.fait}).length;
+  var lieu=s.lieu?esc(s.lieu):"";
+  return '<details class="card fold sess" data-sid="'+idx+'"'+(open||OPEN===idx?' open':'')+'><summary><span class="sum"><span class="ttl">'+esc(s.intitule)+'</span><span class="sub">'+(d.length?esc(fd(d[0]))+(d.length>1?" → "+esc(fd(d[d.length-1])):""):"Dates à fixer")+(lieu?" · "+lieu:"")+(s.numero?" · Réf. "+esc(s.numero):"")+'</span>'+
+    '<span class="chips"><span class="chip '+st[1]+'">'+st[0]+'</span>'+(n?'<span class="chip n" data-sn="'+idx+'">'+n+' nouveau'+(n>1?'x':'')+'</span>':'')+(nq?'<span class="chip n">'+nq+' questionnaire'+(nq>1?'s':'')+' à remplir</span>':'')+((s.docs||[]).filter(function(x){return x.sign}).length?'<span class="chip" style="background:#FDECEC;color:#B42318;border-color:#F7CFCF">✍️ '+(s.docs||[]).filter(function(x){return x.sign}).length+' à signer</span>':'')+'</span></span></summary>'+
+    '<div class="in">'+infoBody(s,role)+(s.quest&&s.quest.length?'<h3>'+(role==="formateur"?"Bilan":"Questionnaires")+'</h3>'+questHTML(s.quest):'')+(s.docs&&s.docs.length?'<h3>Documents de la '+(role==="formateur"?"session":"formation")+'</h3>'+docsHTML(s.docs):'')+'</div></details>'}
+function addDays(iso,n){var d=new Date(iso+"T12:00:00");d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)}
+function viewSessions(p,role){var T=role==="formateur",t=today(),all=p.sessions||[],h="";
+  var idx=function(s){return all.indexOf(s)};
+  var ss=sortS(p),now=ss.filter(function(s){var d=s.dates||[];return !d.length||d[d.length-1]>=t}),past=ss.filter(function(s){var d=s.dates||[];return d.length&&d[d.length-1]<t}).reverse();
+  if(!now.length)h+='<div class="card"><p class="hint" style="margin:0">'+(past.length?"Aucune "+(T?"session":"formation")+" à venir pour le moment.":"Rien pour le moment : "+(T?"tes sessions":"vos formations")+" apparaîtront ici dès qu'elles seront programmées.")+'</p></div>';
+  else if(T){var wk=addDays(t,7),mo=addDays(t,31),G=[["En cours et cette semaine",[]],["Dans le mois",[]],["Plus tard",[]],["Dates à fixer",[]]];
+    now.forEach(function(s){var d=s.dates||[];if(!d.length)G[3][1].push(s);else if(d[0]<=wk)G[0][1].push(s);else if(d[0]<=mo)G[1][1].push(s);else G[2][1].push(s)});
+    var first=true;G.forEach(function(g){if(!g[1].length)return;h+='<div class="sec" style="margin-top:4px">'+g[0]+' ('+g[1].length+')</div>';g[1].forEach(function(s){h+=sessCard(s,role,idx(s),first&&g===G[0]);first=false})})}
+  else{h+='<div class="sec" style="margin-top:4px">En cours et à venir ('+now.length+')</div>';now.forEach(function(s){h+=sessCard(s,role,idx(s),all.length===1)})}
+  if(past.length){h+='<div class="sec">'+(T?"Sessions passées":"Formations passées")+' ('+past.length+')</div>';past.forEach(function(s){h+=sessCard(s,role,idx(s),false)})}
+  return h}
+var CALM=null,OPEN=null;
+function viewCal(p){var t=today(),ev={},all=p.sessions||[];
+  all.forEach(function(s,i){(s.dates||[]).forEach(function(d){(ev[d]=ev[d]||[]).push(i)})});
+  if(!CALM){var nx=Object.keys(ev).sort().filter(function(d){return d>=t})[0];CALM=(nx||t).slice(0,7)}
+  var y=+CALM.slice(0,4),m=+CALM.slice(5,7)-1,first=new Date(y,m,1,12),off=(first.getDay()+6)%7,days=new Date(y,m+1,0).getDate();
+  var h='<div class="card"><div class="cal-h"><button type="button" data-cal="-1" aria-label="Mois précédent">‹</button><b>'+first.toLocaleDateString("fr-FR",{month:"long",year:"numeric"})+'</b><button type="button" data-cal="1" aria-label="Mois suivant">›</button></div><div class="cal">'+
+    ["lun","mar","mer","jeu","ven","sam","dim"].map(function(x){return '<div class="dn">'+x+'</div>'}).join("");
+  for(var k=0;k<off;k++)h+='<div class="d o"></div>';
+  for(var dd=1;dd<=days;dd++){var iso=CALM+"-"+String(dd).padStart(2,"0"),L=ev[iso]||[];
+    h+='<div class="d'+(iso===t?' t':'')+'"><span class="n">'+dd+'</span>'+L.map(function(i){var s=all[i];return '<button type="button" class="ev'+(iso<t?' past':'')+'" data-open="'+i+'" title="'+esc(s.intitule)+'">'+esc(s.intitule)+'</button>'}).join("")+'</div>'}
+  h+='</div></div>';
+  var up=Object.keys(ev).sort().filter(function(d){return d>=t}).slice(0,20);
+  h+='<div class="sec">Prochaines dates</div><div class="card agenda">'+(up.length?up.map(function(d){var x=new Date(d+"T12:00:00");return ev[d].map(function(i){var s=all[i];return '<div class="row2"><div class="dt"><small>'+x.toLocaleDateString("fr-FR",{weekday:"short"})+'</small><big>'+x.getDate()+'</big><small>'+x.toLocaleDateString("fr-FR",{month:"short"})+'</small></div><div><b>'+esc(s.intitule)+'</b><div class="hint">'+esc(s.horaires||"")+'</div><div class="hint">'+esc(s.lieu||"")+(s.lieuAdr?" – "+esc(s.lieuAdr):"")+'</div>'+(s.entreprise?'<div class="hint">'+esc(s.entreprise)+'</div>':'')+'</div></div>'}).join("")}).join(""):'<p class="hint" style="margin:0">Aucune date à venir pour le moment.</p>')+'</div>';
+  return h}
+function signDocs(p){var a=[];(p.sessions||[]).forEach(function(s){var t=today(),d=s.dates||[];(s.docs||[]).forEach(function(x){if(x.sign)a.push([s,x])})});return a}
+function viewTodo(p){var h="",S=signDocs(p);
+  h+='<div class="sec" style="margin-top:4px">À signer ('+S.length+')</div>';
+  h+=S.length?'<div class="card">'+S.map(function(z){return '<div class="grp" style="margin-top:6px">'+esc(z[0].intitule)+' <span class="hint" style="font-weight:400">· '+((z[0].dates||[]).length?esc(fd(z[0].dates[0])):"dates à fixer")+'</span></div>'+docsHTML([z[1]])}).join("")+'</div>':'<div class="card"><p class="hint" style="margin:0">✓ Rien à signer pour le moment.</p></div>';
+  var U=allDocs(p).filter(function(d){return !SEEN[d.id]&&!d.sign});
+  h+='<div class="sec">Pas encore vus ('+U.length+')</div>';
+  if(!U.length)h+='<div class="card"><p class="hint" style="margin:0">✓ Tu as tout consulté. Tous les documents restent disponibles dans chaque session.</p></div>';
+  else (p.sessions||[]).forEach(function(s){var L=(s.docs||[]).filter(function(d){return U.indexOf(d)>=0});if(L.length)h+='<div class="card"><div class="grp">'+esc(s.intitule)+' <span class="hint" style="font-weight:400">· '+((s.dates||[]).length?esc(fd(s.dates[0])):"dates à fixer")+'</span></div>'+docsHTML(L)+'</div>'});
+  return h}
+function viewNew(p){var h="",any=false;
+  if(p.docs&&newCount(p.docs)){any=true;h+='<div class="card"><div class="grp">Documents généraux</div>'+docsHTML(p.docs.filter(function(d){return !SEEN[d.id]}))+'</div>'}
+  sortS(p).reverse().forEach(function(s){var L=(s.docs||[]).filter(function(d){return !SEEN[d.id]});if(!L.length)return;any=true;h+='<div class="card"><div class="grp">'+esc(s.intitule)+' <span class="hint" style="font-weight:400">· '+((s.dates||[]).length?esc(fd(s.dates[0])):"dates à fixer")+'</span></div>'+docsHTML(L)+'</div>'});
+  return any?h:'<div class="card"><p style="margin:0 0 6px;font-weight:700">✓ Tout est à jour</p><p class="hint" style="margin:0">Aucun nouveau document. Tous les documents restent disponibles dans chaque '+(p.role==="formateur"?"session":"formation")+', rubrique « '+(p.role==="formateur"?"Mes sessions":p.role==="client"?"Mes formations":"Ma formation")+' ».</p></div>'}
+function viewList(p,key,html,empty){var ss=sortS(p).reverse().filter(function(s){return s[key]&&s[key].length}),h="";
+  if(key==="docs"&&p.docs&&p.docs.length)h+='<div class="card"><div class="grp">Documents généraux</div>'+docsHTML(p.docs)+'</div>';
+  ss.forEach(function(s){h+='<div class="card"><div class="grp">'+esc(s.intitule)+' <span class="hint" style="font-weight:400">· '+((s.dates||[]).length?esc(fd(s.dates[0])):"dates à fixer")+'</span></div>'+html(s[key])+'</div>'});
+  return h||'<div class="card"><p class="hint" style="margin:0">'+empty+'</p></div>'}
+function viewContact(p,role,o){var T=role==="formateur";
+  return '<div class="card"><h2>Une question ?</h2><div class="meta"><div><b>Téléphone</b><span><a href="tel:'+esc((o.tel||"").replace(/\s/g,""))+'">'+esc(o.tel||"")+'</a></span></div><div><b>E-mail</b><span><a href="mailto:'+esc(o.email||"")+'">'+esc(o.email||"")+'</a></span></div><div><b>Adresse</b><span>'+esc(o.adresse||"")+'</span></div>'+(o.referent&&!T?'<div><b>Handicap</b><span>Référent handicap : '+esc(o.referent)+' — nous adaptons la formation si besoin.</span></div>':'')+'</div></div>'+
+    rgpdHTML(role,o).replace('<details class="card fold rgpd">','<details class="card fold rgpd" open>')}
+function render(){
+  var p=DATA,o=p.org||{},role=p.role||"stagiaire",T=role==="formateur";
+  $("#app").className="wrap wide";var hw=document.querySelector("header .wrap");if(hw)hw.classList.add("wide");
+  $("#top").innerHTML=(o.logo?'<img src="'+o.logo+'" alt="">':'')+'<div><div class="org">'+esc(o.nom||"3AIM CFA")+'</div><small>Espace '+RL[role]+'</small></div>';
+  $("#hello").innerHTML="Bonjour "+esc(role==="client"?(p.contact||p.entreprise||""):(p.prenom||p.nom||""))+'<span>'+(role==="client"?esc(p.entreprise||"")+" · vos formations avec 3AIM CFA":T?"Tes interventions pour 3AIM CFA":"Toutes les informations sur votre formation")+'</span>';
+  loadSeen();var ss=p.sessions||[],nd=T?signDocs(p).length+allDocs(p).filter(function(d){return !SEEN[d.id]&&!d.sign}).length:newCount(allDocs(p)),nq=0,todo=0;ss.forEach(function(s){(s.quest||[]).forEach(function(q){nq++;if(!q.fait)todo++})});
+  var V=[["sessions","📅",T?"Mes sessions":role==="client"?"Mes formations":"Ma formation",T?"Dates, lieux, entreprises et stagiaires de tes interventions.":"Dates, horaires, lieu et avancement."],
+    ["docs","📄",T?"Mes documents":"Nouveaux documents",T?"Ce que tu dois faire signer, et les documents que tu n'as pas encore consultés. Tous les documents restent aussi dans chaque session.":T?"Les documents que tu n'as pas encore téléchargés. Tous les autres restent dans chaque session.":"Les documents que vous n'avez pas encore téléchargés. Tous les autres restent dans chaque formation."]];
+  if(T)V.splice(1,0,["cal","📆","Calendrier","Toutes tes dates d'intervention. Clique sur une session pour l'ouvrir."]);
+  if(nq)V.push(["quest","📝",T?"Bilans":"Questionnaires",T?"Le bilan à remplir après chaque session.":"Les questionnaires à remplir. Une fois envoyés, ils passent en « Répondu »."]);
+  V.push(["aide","❓","Mode d'emploi","Comment utiliser "+(T?"ton":"votre")+" espace."],["contact","☎️","Contact et données",T?"Nous joindre, et tes données personnelles (RGPD).":"Nous joindre, et vos données personnelles (RGPD)."]);
+  if(!VIEW)VIEW=read("v")||"sessions";if(!V.some(function(v){return v[0]===VIEW}))VIEW="sessions";
+  var cur=V.filter(function(v){return v[0]===VIEW})[0],body="";
+  if(VIEW==="sessions")body=viewSessions(p,role);
+  else if(VIEW==="docs")body=T?viewTodo(p):viewNew(p);
+  else if(VIEW==="cal")body=viewCal(p);
+  else if(VIEW==="quest")body=viewList(p,"quest",questHTML,"Aucun questionnaire pour le moment.");
+  else if(VIEW==="aide")body=guideHTML(role).replace('<details class="card fold">','<details class="card fold" open>');
+  else body=viewContact(p,role,o);
+  var nav=V.map(function(v,i){var b=v[0]==="docs"&&nd?nd:v[0]==="quest"&&todo?todo:0;return (v[0]==="aide"?"<hr>":"")+'<button type="button" data-v="'+v[0]+'" aria-current="'+(v[0]===VIEW)+'"><span class="ic">'+v[1]+'</span>'+esc(v[2])+(b?'<span class="bd">'+b+'</span>':'')+'</button>'}).join("")+'<hr><button type="button" id="out"><span class="ic">⎋</span>Se déconnecter</button>';
+  $("#app").innerHTML='<div class="shell"><nav class="nav" aria-label="Menu">'+nav+'</nav><div><div class="vt">'+esc(cur[2])+'</div><p class="vs">'+esc(cur[3])+'</p>'+body+'</div></div>';
+  $("#foot").textContent="Informations mises à jour le "+(p.maj?new Date(p.maj).toLocaleDateString("fr-FR"):"")+" · "+(o.nom||"3AIM CFA")+(o.qualiopi?" · Certifié Qualiopi n° "+o.qualiopi:"");
+  Array.prototype.forEach.call(document.querySelectorAll("[data-dl]"),function(b){b.onclick=function(){dl(b.getAttribute("data-dl"),b)}});
+  Array.prototype.forEach.call(document.querySelectorAll("[data-cal]"),function(b){b.onclick=function(){var y=+CALM.slice(0,4),m=+CALM.slice(5,7)-1+(+b.getAttribute("data-cal"));var d=new Date(y,m,1,12);CALM=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");render()}});
+  Array.prototype.forEach.call(document.querySelectorAll("[data-open]"),function(b){b.onclick=function(){OPEN=+b.getAttribute("data-open");VIEW="sessions";store("v",VIEW);render();var el=document.querySelector('[data-sid="'+OPEN+'"]');if(el){el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"})}OPEN=null}});
+  Array.prototype.forEach.call(document.querySelectorAll("[data-v]"),function(b){b.onclick=function(){VIEW=b.getAttribute("data-v");store("v",VIEW);render();window.scrollTo(0,0)}});
+  $("#out").onclick=function(){store("c",null);store("v",null);VIEW=null;CODE="";DATA=null;$("#app").className="wrap";login("")};
+}
+/* AUTOREFRESH : recharge les données toutes les minutes et au retour sur l'onglet */var LASTREF=0;function refresh(force){if(!CODE||!DATA)return;if(document.hidden&&!force)return;if(Date.now()-LASTREF<20000&&!force)return;LASTREF=Date.now();api({api:'espace',code:CODE},function(r){if(!r||!r.ok||!r.data)return;if(DATA&&r.data.maj===DATA.maj)return;var op=[];Array.prototype.forEach.call(document.querySelectorAll('details[open][data-sid]'),function(d){op.push(d.getAttribute('data-sid'))});var y=window.scrollY;DATA=r.data;render();op.forEach(function(i){var d=document.querySelector('details[data-sid="'+i+'"]');if(d)d.open=true});window.scrollTo(0,y)},function(){})}setInterval(function(){refresh(false)},60000);document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh(false)});window.addEventListener('focus',function(){refresh(false)});(function(){var c=CODE||read("c");if(c)go(c);else login("")})();
+/* ===== ÉMARGEMENT EN LIGNE (signature depuis l'espace) ===== */
+var EMS={sid:"",st:null,cid:"",pad:null,who:""};
+function emDev(){var k="em_dev",v="";try{v=localStorage.getItem(k)||""}catch(e){}if(!v){v="d"+Math.random().toString(36).slice(2,10)+Date.now().toString(36);try{localStorage.setItem(k,v)}catch(e){}}return v}
+function emPost(body,ok){fetch(API,{method:"POST",credentials:"omit",redirect:"follow",body:JSON.stringify(body)}).then(function(r){return r.json()}).then(ok).catch(function(){ok({ok:false,msg:"Connexion impossible. Vérifiez le réseau et réessayez."})})}
+function emBox(h){var m=$("#emm");m.innerHTML='<div class="emm-in"><div class="emm-h"><b>✍️ Émargement</b><button class="btn ghost sm" data-emx="1" type="button">Fermer</button></div>'+h+'</div>'}
+function emOpen(sid){EMS.sid=sid;EMS.cid="";EMS.who="";var m=$("#emm");if(!m){m=document.createElement("div");m.id="emm";m.className="emm";document.body.appendChild(m);m.addEventListener("click",emClick)}
+  m.hidden=false;document.body.style.overflow="hidden";emBox('<p class="hint">Chargement…</p>');emLoad()}
+function emClose(){var m=$("#emm");if(m){m.hidden=true;m.innerHTML=""}document.body.style.overflow="";EMS.sid=""}
+function emLoad(){api({api:"emstate",code:CODE,sid:EMS.sid},function(r){if(r&&r.ok&&!r.cids)r={ok:false,msg:"Le service Google répond avec l'ancienne version : l'émargement n'y est pas encore. Dans Apps Script : Déployer › Gérer les déploiements › crayon › Version : Nouvelle version › Déployer."};EMS.st=r;if(r&&r.ok&&!EMS.cid)EMS.cid=r.cur||"";try{emDraw()}catch(x){emBox('<div class="emm-err">Erreur d\'affichage : '+esc(x&&x.message||x)+'</div>')}},function(x){EMS.st={ok:false,msg:"Le service Google ne répond pas ("+(x&&x.message||x)+"). Vérifiez le réseau, puis que la nouvelle version est bien déployée."};emDraw()})}
+function emHM(t){var d=new Date(t);return ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2)}
+function emDraw(msg){var r=EMS.st;if(!r||!r.ok){emBox('<div class="emm-err">'+esc(r&&r.msg||"Erreur")+'</div>');return}
+  var top='<div class="emm-t">'+esc(r.intitule||"")+'</div><div class="hint">'+esc([r.entreprise,r.lieu].filter(Boolean).join(" · "))+'</div>'+(msg?'<div class="emm-ok">'+esc(msg)+'</div>':'');
+  if(r.role!=="formateur"){
+    emBox(top+'<p style="margin:12px 0 8px">Signez à chaque demi-journée, <b>pendant</b> la formation. La signature n\'est possible que le jour même.</p><div class="emm-list">'+r.cids.map(function(c){
+      return '<div class="emm-li"><span class="emm-n">'+esc(c.l)+'</span>'+(c.t?'<span class="tag ok">✓ Signé à '+esc(c.t)+'</span>':c.abs?'<span class="tag sign">Absent</span>':c.open?'<button class="btn or sm" type="button" data-emsig="'+esc(c.id)+'">Signer maintenant</button>':c.past?'<span class="tag todo">Non signé</span>':'<span class="tag todo">À venir</span>')+'</div>'}).join("")+'</div>');return}
+  var cur=r.cids.filter(function(x){return x.id===EMS.cid})[0]||r.cids[0]||{},s=(r.slots||{})[cur.id]||{sigs:{},abs:{},fo:null},sg=s.sigs||{},ab=s.abs||{},n=r.roster.filter(function(p){return sg[p.k]}).length;EMS.cid=cur.id;
+  emBox(top+'<div class="emm-chips">'+r.cids.map(function(x){return '<button type="button" class="emm-chip'+(x.id===cur.id?' on':'')+'" data-emc="'+esc(x.id)+'">'+esc(x.l)+(x.open?' ●':'')+'</button>'}).join("")+'</div>'+
+    '<div class="emm-row"><b>Présences</b><span class="tag '+(n===r.roster.length?'ok':'wait')+'">'+n+' / '+r.roster.length+' signé'+(n>1?'s':'')+'</span><button class="btn ghost sm" type="button" data-emr="1">↻ Actualiser</button></div><div class="emm-list">'+
+    r.roster.map(function(p){var g=sg[p.k];return '<div class="emm-li"><span class="emm-n">'+esc(p.n)+'</span>'+(g?'<span class="tag ok">✓ '+emHM(g.t)+'</span>':ab[p.k]?'<span class="tag sign">Absent</span><button class="btn ghost sm" type="button" data-emabs="'+esc(p.k)+'" data-on="0">Annuler</button>':(cur.open?'<button class="btn or sm" type="button" data-emsig="'+esc(cur.id)+'" data-who="'+esc(p.k)+'">Signer ici</button>':'')+'<button class="btn ghost sm" type="button" data-emabs="'+esc(p.k)+'" data-on="1">Absent</button>')+'</div>'}).join("")+'</div>'+
+    '<p class="hint" style="margin:8px 0 0">Chaque stagiaire signe depuis son propre espace. « Signer ici » : il signe sur ton téléphone (s\'il n\'a pas accès à son espace).</p>'+
+    '<div class="emm-row" style="margin-top:14px"><b>Ta signature de formateur</b>'+(s.fo?'<span class="tag ok">✓ Signé à '+emHM(s.fo.t)+'</span>':'<button class="btn sm" type="button" data-emsig="'+esc(cur.id)+'" data-who="fo">Signer en fin de demi-journée</button>')+'</div>')}
+function emPad(cid,who){var r=EMS.st,c=r.cids.filter(function(x){return x.id===cid})[0]||{},p=who&&who!=="fo"?r.roster.filter(function(x){return x.k===who})[0]:null;
+  var nm=r.role!=="formateur"?r.n:who==="fo"?"Formateur : "+(r.fo||""):p?p.n:"",txt=who==="fo"?"J'atteste que les présences indiquées sont exactes et que la séance s'est déroulée.":"J'atteste être présent(e) à cette séance de la formation « "+(r.intitule||"")+" ».";
+  emBox('<span class="tag wait">'+esc(c.l||"")+'</span><div class="emm-t" style="margin-top:10px">'+esc(nm)+'</div><p style="margin:4px 0 10px">'+esc(txt)+'</p><canvas class="emm-pad"></canvas><div class="emm-row"><span class="hint">Signez avec le doigt dans le cadre</span><button class="btn ghost sm" type="button" data-emclr="1">Effacer</button></div><div class="emm-row" style="margin-top:12px"><button class="btn ghost" type="button" data-emback="1">‹ Retour</button><button class="btn or" type="button" id="em-ok" data-emok="1" disabled style="flex:1">Valider ma signature</button></div>');
+  var cv=document.querySelector(".emm-pad"),ctx,n=0,dr=false,last=null;
+  function size(){var b=cv.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);cv.width=b.width*d;cv.height=b.height*d;ctx=cv.getContext("2d");ctx.scale(d,d);ctx.lineWidth=2.6;ctx.lineCap="round";ctx.lineJoin="round";ctx.strokeStyle="#0B1A4A";n=0;$("#em-ok").disabled=true}
+  function pt(e){var b=cv.getBoundingClientRect();return [e.clientX-b.left,e.clientY-b.top]}
+  cv.addEventListener("pointerdown",function(e){e.preventDefault();cv.setPointerCapture(e.pointerId);dr=true;last=pt(e)});
+  cv.addEventListener("pointermove",function(e){if(!dr)return;var q=pt(e);ctx.beginPath();ctx.moveTo(last[0],last[1]);ctx.lineTo(q[0],q[1]);ctx.stroke();last=q;if(++n===12)$("#em-ok").disabled=false});
+  ["pointerup","pointercancel","pointerleave"].forEach(function(t){cv.addEventListener(t,function(){dr=false})});
+  EMS.pad={cid:cid,who:who||"",size:size,get:function(){var o=document.createElement("canvas"),W=360;o.width=W;o.height=Math.round(W*cv.height/cv.width);o.getContext("2d").drawImage(cv,0,0,o.width,o.height);return o.toDataURL("image/png")}};
+  setTimeout(size,30)}
+function emClick(e){var b=e.target.closest("button");if(!b)return;
+  if(b.getAttribute("data-emx")){emClose();return}
+  if(b.getAttribute("data-emc")){EMS.cid=b.getAttribute("data-emc");emDraw();return}
+  if(b.getAttribute("data-emr")){emBox('<p class="hint">Actualisation…</p>');emLoad();return}
+  if(b.getAttribute("data-emsig")){emPad(b.getAttribute("data-emsig"),b.getAttribute("data-who")||"");return}
+  if(b.getAttribute("data-emclr")){EMS.pad&&EMS.pad.size();return}
+  if(b.getAttribute("data-emback")){emDraw();return}
+  if(b.getAttribute("data-emabs")){b.disabled=true;api({api:"emabs",code:CODE,sid:EMS.sid,cid:EMS.cid,k:b.getAttribute("data-emabs"),on:b.getAttribute("data-on")},function(r){if(!r||!r.ok)alert(r&&r.msg||"Erreur");emLoad()},function(){alert("Connexion impossible.");b.disabled=false});return}
+  if(b.getAttribute("data-emok")){if(b.disabled||!EMS.pad)return;b.disabled=true;b.textContent="Enregistrement…";var P=EMS.pad;
+    emPost({api:"emsign",code:CODE,sid:EMS.sid,cid:P.cid,who:P.who,img:P.get(),dev:emDev(),ua:navigator.userAgent},function(r){
+      if(!r||!r.ok){b.disabled=false;b.textContent="Valider ma signature";alert(r&&r.msg||"Erreur");return}
+      EMS.pad=null;api({api:"emstate",code:CODE,sid:EMS.sid},function(s){EMS.st=s;emDraw(EMS.st.role==="formateur"?"Signature enregistrée.":"Présence enregistrée à "+(r.t||"")+". Merci !")},function(){emClose()})});return}}
+document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-emopen]");if(b){e.preventDefault();emOpen(b.getAttribute("data-emopen"))}});
 </script>
-</body>
-</html>
+</body></html>
