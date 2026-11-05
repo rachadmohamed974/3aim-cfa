@@ -206,11 +206,7 @@
       </ul>
     </div>
 
-    <form id="demande-form" action="https://formsubmit.co/contact@3aim.fr" method="POST">
-      <input type="hidden" name="_subject" value="Nouvelle demande – site 3AIM CFA">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://cfa.3aim.fr/#demande">
+    <form id="demande-form">
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="new-password" aria-hidden="true">
 
       <label>Vous êtes</label>
@@ -383,7 +379,7 @@ grid.addEventListener("click", e=>{
 document.querySelector(".burger").addEventListener("click",()=>document.querySelector(".menu").classList.toggle("open"));
 document.querySelectorAll(".menu a").forEach(a=>a.addEventListener("click",()=>document.querySelector(".menu").classList.remove("open")));
 
-// envoi du formulaire (FormSubmit -> e-mail)
+// envoi du formulaire (Google Apps Script -> e-mail + tableur)
 const form = document.getElementById("demande-form");
 const msg = document.getElementById("form-msg");
 // champ obligatoire oublié -> message clair près du bouton
@@ -395,34 +391,27 @@ form.addEventListener("invalid", e=>{
   msg.textContent = "Merci de compléter : " + (e.target.type==="checkbox" ? "la case d'accord (données personnelles)" : champ) + ".";
 }, true);
 
+const DEVIS_API = "https://script.google.com/macros/s/AKfycbzCn1y8IK2k95smmorZjSs2AmjasTS7inyLANH9Yd18aKsroXRXgI09jECwCkirDNL0/exec"; // service Google Apps Script « Devis 3AIM CFA »
 form.addEventListener("submit", async e=>{
   e.preventDefault();
-  // (anti-spam : le champ _honey est filtré par FormSubmit côté serveur, plus de blocage silencieux ici)
   const btn = form.querySelector("button[type=submit]");
   btn.disabled = true; btn.textContent = "Envoi en cours…";
-  msg.className = "msg";
+  msg.className = "msg"; msg.textContent = "";
+  const data = new URLSearchParams(new FormData(form));
   try{
-    const ctl = new AbortController(); const to = setTimeout(()=>ctl.abort(), 15000);
-    const r = await fetch(form.action.replace("formsubmit.co/","formsubmit.co/ajax/"), {
-      method:"POST", headers:{Accept:"application/json"}, body:new FormData(form), signal:ctl.signal
-    });
+    const ctl = new AbortController(); const to = setTimeout(()=>ctl.abort(), 20000);
+    const r = await fetch(DEVIS_API, {method:"POST", body:data, signal:ctl.signal});
     clearTimeout(to);
-    const j = await r.json().catch(()=>({}));
-    if(!r.ok || String(j.success)==="false"){
-      if(/activ/i.test(j.message||"")){
-        msg.className = "msg err";
-        msg.innerHTML = "Le formulaire doit d'abord être activé : un e-mail « Activate Form » a été envoyé à contact@3aim.fr.";
-        btn.disabled = false; btn.textContent = "Envoyer ma demande"; return;
-      }
-      throw new Error(j.message||"");
-    }
+    const j = await r.json();
+    if(!j.ok) throw new Error(j.msg||"");
     msg.className = "msg ok";
-    msg.textContent = "Merci ! Votre demande a bien été envoyée. Nous vous recontactons sous 48 h ouvrées.";
+    msg.textContent = "Merci ! Votre demande a bien été envoyée" + (j.ref ? " (réf. " + j.ref + ")" : "") + ". Un e-mail de confirmation vous a été adressé. Nous vous recontactons sous 48 h ouvrées.";
     form.reset();
-  }catch(_){
-    // secours : envoi classique (ouvre la page de confirmation FormSubmit)
-    form.submit();
-    return;
+  }catch(err){
+    const corps = [...new FormData(form)].filter(([k])=>!k.startsWith("_")).map(([k,v])=>k+" : "+v).join("\n");
+    const mailto = "mailto:contact@3aim.fr?subject=" + encodeURIComponent("Demande de devis – site 3AIM CFA") + "&body=" + encodeURIComponent(corps);
+    msg.className = "msg err";
+    msg.innerHTML = "L'envoi n'a pas abouti. <a href=\"" + mailto + "\">Cliquez ici pour envoyer votre demande par e-mail</a> ou appelez-nous au <a href=\"tel:+262692098592\">0692 09 85 92</a>.";
   }
   btn.disabled = false; btn.textContent = "Envoyer ma demande";
 });
