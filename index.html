@@ -16,13 +16,12 @@
 
 <header>
   <div class="wrap nav">
-    <a class="logo" href="#"><span class="mark">3A<b>i</b></span>3AIM CFA</a>
+    <a class="logo" href="#accueil"><span class="mark">3A<b>i</b></span>3AIM CFA</a>
     <nav class="menu">
       <a href="#formations">Formations</a>
       <a href="#calendrier">Calendrier</a>
       <a href="#apprentissage">Apprentissage</a>
-      <a href="#qualite">Résultats & Qualiopi</a>
-      <a href="#accessibilite">Handicap</a>
+      <a href="#qualite">Résultats & Qualité</a>
       <a href="#contact">Contact</a>
       <a class="btn" href="#demande">Demande de devis</a>
     </nav>
@@ -30,7 +29,7 @@
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" data-page="accueil">
   <div class="wrap">
     <span class="eyebrow">Centre de formation & CFA · Saint-André, La Réunion</span>
     <h1>Former vos équipes, <span>qualifier vos talents</span>.</h1>
@@ -47,7 +46,19 @@
   </div>
 </section>
 
-<section>
+<section class="portes" data-page="accueil">
+  <div class="wrap">
+    <span class="eyebrow">Par où commencer ?</span>
+    <h2>Vous êtes…</h2>
+    <div class="grid g3" style="margin-top:24px">
+      <a class="card porte" href="#formations" data-filtre="securite"><div class="icon">🏢</div><h3>Une entreprise</h3><p>Former vos salariés à la sécurité, aux autorisations de conduite ou à un titre professionnel, dans nos salles ou sur votre site.</p><span class="go">Voir les formations →</span></a>
+      <a class="card porte" href="#apprentissage"><div class="icon">🎓</div><h3>Un futur apprenti</h3><p>Préparer un titre professionnel en étant payé, avec une formation gratuite financée par l'OPCO de votre employeur.</p><span class="go">Découvrir l'apprentissage →</span></a>
+      <a class="card porte" href="#formations" data-filtre="tp"><div class="icon">🚀</div><h3>Un particulier ou demandeur d'emploi</h3><p>Vous reconvertir ou obtenir un diplôme reconnu, avec un financement CPF, France Travail ou Région.</p><span class="go">Voir les titres professionnels →</span></a>
+    </div>
+  </div>
+</section>
+
+<section data-page="accueil">
   <div class="wrap">
     <span class="eyebrow">Pourquoi 3AIM CFA</span>
     <h2>Un partenaire de proximité pour vos compétences</h2>
@@ -60,11 +71,11 @@
   </div>
 </section>
 
-<section id="formations" class="soft">
+<section id="formations" class="soft" data-page="formations">
   <div class="wrap">
     <span class="eyebrow">Catalogue</span>
     <h2>Nos formations</h2>
-    <p class="lead">Toutes nos formations sont réalisables en inter ou en intra-entreprise. La durée, les objectifs, les prérequis, les méthodes et les modalités d'évaluation figurent dans le programme de chaque formation, téléchargeable ci-dessous ou envoyé sur simple demande. Les dates sont dans le calendrier ci-dessous ; les tarifs sont communiqués sur devis, selon le nombre de participants et le lieu.</p>
+    <p class="lead">Toutes nos formations sont réalisables en inter ou en intra-entreprise. La durée, les objectifs, les prérequis, les méthodes et les modalités d'évaluation figurent dans le programme de chaque formation, téléchargeable ci-dessous ou envoyé sur simple demande. Les dates sont dans le <a href="#calendrier">calendrier</a> ; les tarifs sont communiqués sur devis, selon le nombre de participants et le lieu.</p>
     <div class="filters">
       <button class="chip active" data-f="all">Toutes</button>
       <button class="chip" data-f="securite">Prévention & sécurité</button>
@@ -81,7 +92,7 @@
   </div>
 </section>
 
-<section id="calendrier">
+<section id="calendrier" data-page="calendrier">
   <div class="wrap">
     <span class="eyebrow">Prochaines sessions</span>
     <h2>Calendrier des formations</h2>
@@ -124,7 +135,7 @@
   function inscrire(s,type){var sel=document.getElementById("f-formation"),msg=document.getElementById("f-msg");
     if(sel){var b=String(s.f).toLowerCase(),o=[].slice.call(sel.options).filter(function(x){var a=x.text.toLowerCase();return x.value&&(a.indexOf(b.slice(0,12))>=0||b.indexOf(a.slice(0,12))>=0)})[0];if(o)sel.value=o.value}
     if(msg)msg.value=(type==="i"?"Inscription":"Demande de devis")+" – session « "+s.f+" » du "+fdl(s.d)+(s.e&&s.e!==s.d?" au "+fdl(s.e):"")+" ("+(s.lieu||"Saint-André")+").\nNombre de participants : ";
-    document.getElementById("demande").scrollIntoView({behavior:"smooth"});setTimeout(function(){if(msg)msg.focus()},700)}
+    window.goTo("demande");setTimeout(function(){if(msg)msg.focus()},500)}
   function card(s,i){var d=P(s.d),e=P(s.e||s.d),pl=+s.pl||0,rest=pl?Math.max(0,pl-(+s.ins||0)):null,full=s.st==="complet"||(pl&&rest===0);
     var o={weekday:"long",day:"numeric",month:"long"},when=s.d===(s.e||s.d)?d.toLocaleDateString("fr-FR",o):"Du "+d.toLocaleDateString("fr-FR",o)+" au "+e.toLocaleDateString("fr-FR",o);
     return '<article class="cal-c"><div class="cal-d"><b>'+d.getDate()+'</b><span>'+d.toLocaleDateString("fr-FR",{month:"short"})+'</span></div>'+
@@ -146,7 +157,7 @@
 })();
 </script>
 
-<section id="apprentissage">
+<section id="apprentissage" data-page="apprentissage">
   <div class="wrap">
     <div class="band">
       <div>
@@ -175,7 +186,7 @@
   </div>
 </section>
 
-<section class="soft">
+<section class="soft" data-page="accueil">
   <div class="wrap">
     <span class="eyebrow">Comment ça marche</span>
     <h2>De la demande à l'attestation</h2>
@@ -188,7 +199,7 @@
   </div>
 </section>
 
-<section id="qualite">
+<section id="qualite" data-page="qualite">
   <div class="wrap">
     <span class="eyebrow">Qualité & résultats</span>
     <h2>Nos indicateurs de résultats</h2>
@@ -256,7 +267,7 @@
   </div>
 </section>
 
-<section id="accessibilite" class="soft">
+<section id="accessibilite" class="soft" data-page="qualite">
   <div class="wrap grid g2">
     <div>
       <span class="eyebrow">Accessibilité</span>
@@ -270,7 +281,7 @@
   </div>
 </section>
 
-<section id="demande">
+<section id="demande" data-page="contact">
   <div class="wrap grid g2" style="align-items:start">
     <div>
       <span class="eyebrow">Demande de devis ou d'inscription</span>
@@ -328,7 +339,7 @@
   </div>
 </section>
 
-<section id="contact" class="soft">
+<section id="contact" class="soft" data-page="contact">
   <div class="wrap grid g2" style="align-items:center">
     <div>
       <span class="eyebrow">Nous trouver</span>
@@ -341,6 +352,13 @@
       </ul>
     </div>
     <iframe class="map" loading="lazy" title="Plan d'accès 3AIM CFA" src="https://maps.google.com/maps?q=548%20Rue%20de%20Cambuston%2C%2097440%20Saint-Andr%C3%A9&z=15&output=embed"></iframe>
+  </div>
+</section>
+
+<section class="cta-band" data-page="accueil formations calendrier apprentissage qualite">
+  <div class="wrap">
+    <div><h2>Un projet de formation ?</h2><p>Réponse sous 48 h ouvrées avec un devis et les solutions de financement.</p></div>
+    <div class="ctas"><a class="btn" href="#demande">Demander un devis</a><a class="btn ghost" href="tel:+262692098592">0692 09 85 92</a></div>
   </div>
 </section>
 
@@ -518,5 +536,39 @@ form.addEventListener("submit", async e=>{
 document.getElementById("year").textContent = new Date().getFullYear();
 
 </script>
+<style>
+[data-page][hidden]{display:none!important}
+section[data-page]{scroll-margin-top:84px}
+.menu a.on{color:var(--orange)}
+.menu a.btn.on{color:#fff}
+.porte{display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s}
+.porte:hover{transform:translateY(-3px)}
+.porte .go{margin-top:auto;padding-top:10px;font-weight:600;color:var(--orange)}
+.cta-band{background:var(--navy);color:#fff}
+.cta-band .wrap{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+.cta-band h2{color:#fff;margin:0 0 4px}.cta-band p{margin:0;opacity:.85}
+.cta-band .btn.ghost{background:transparent!important;color:#fff!important;border:1px solid rgba(255,255,255,.6)!important}
+</style>
+<script>
+// ===== Navigation par pages (un seul fichier, une "page" par rubrique) =====
+(function(){
+  const TITRES={accueil:"3AIM CFA – Centre de formation & CFA à Saint-André, La Réunion",formations:"Formations – 3AIM CFA",calendrier:"Calendrier des sessions – 3AIM CFA",apprentissage:"Apprentissage – 3AIM CFA",qualite:"Résultats, qualité et handicap – 3AIM CFA",contact:"Devis et contact – 3AIM CFA"};
+  const secs=[...document.querySelectorAll("[data-page]")];
+  function route(){
+    const id=decodeURIComponent(location.hash.slice(1));
+    let el=id&&id!=="accueil"?document.getElementById(id):null, page="accueil";
+    if(el){const s=el.closest("[data-page]");if(s)page=s.dataset.page.split(" ")[0];}
+    secs.forEach(s=>s.hidden=!s.dataset.page.split(" ").includes(page));
+    document.querySelectorAll(".menu a").forEach(a=>{const t=document.getElementById(a.getAttribute("href").slice(1));a.classList.toggle("on",!!t&&t.closest("[data-page]").dataset.page===page&&page!=="accueil")});
+    document.title=TITRES[page]||TITRES.accueil;
+    const first=secs.find(s=>!s.hidden);
+    if(!el||el===first) window.scrollTo(0,0); else el.scrollIntoView();
+  }
+  window.goTo=function(id){if(location.hash==="#"+id)route();else location.hash=id;};
+  document.querySelectorAll(".porte[data-filtre]").forEach(a=>a.addEventListener("click",()=>{const c=document.querySelector('.chip[data-f="'+a.dataset.filtre+'"]');if(c)c.click();}));
+  window.addEventListener("hashchange",route);route();
+})();
+</script>
+
 </body>
 </html>
