@@ -151,3 +151,7 @@ details.detail summary{cursor:pointer;font-weight:600;color:var(--navy-2)}
 .cert{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;background:#fff;border-radius:var(--radius);padding:22px;margin-top:28px;box-shadow:var(--shadow)}
 .cert div{flex:1 1 300px;font-size:.95rem}
 @media (max-width:760px){.kpis{grid-template-columns:1fr}.kpi .val{font-size:2.3rem}}
+
+.formation .meta.app{margin-top:6px;padding-top:0;color:#b85710}
+.access-box h3{margin-top:0}
+.access-box p{margin:.55em 0 0}
