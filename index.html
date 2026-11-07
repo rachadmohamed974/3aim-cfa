@@ -267,7 +267,7 @@
     <h2>Nos indicateurs de résultats</h2>
     <p class="lead">Chiffres calculés automatiquement à partir des formations terminées, mis à jour à chaque fin de session.</p>
     <div id="res-live"><p class="cal-msg">Chargement des résultats…</p></div>
-    <p class="note">Méthode : taux de satisfaction = participants ayant donné la note 3 ou 4 sur 4 au questionnaire de fin de formation ÷ répondants ; une absence de réponse n'est pas comptée comme une insatisfaction. Taux de réussite = stagiaires certifiés, déclarés aptes ou ayant obtenu un avis favorable ÷ stagiaires présentés à l'évaluation finale. Données agrégées, sans information nominative.</p>
+    <p class="note">Méthode : taux de satisfaction = participants ayant donné la note 3 ou 4 sur 4 au questionnaire de fin de formation ÷ répondants ; une absence de réponse n'est pas comptée comme une insatisfaction. Taux de réussite = stagiaires certifiés, déclarés aptes ou ayant obtenu un avis favorable ÷ stagiaires présentés à l'évaluation finale. Données agrégées, sans information nominative. Échelle de notation : nos questionnaires actuels sont notés de 1 à 4, alors que nos résultats antérieurs (2025 – 2026) proviennent d'anciens questionnaires notés de 1 à 5 ; dans les deux cas, seules les réponses « satisfait » et « très satisfait » sont comptées comme satisfaites.</p>
     <p class="note"><b>Apprentissage :</b> les taux d'obtention du diplôme, de poursuite d'études, d'interruption en cours de formation et d'insertion professionnelle (dispositif InserJeunes) seront publiés dès la fin de la première promotion d'apprentis.</p>
     <p><a class="btn out" href="#resultats-anterieurs">Voir nos résultats antérieurs (2025 – 2026) →</a></p>
     <h3 style="margin-top:34px">Nos engagements qualité</h3>
@@ -423,7 +423,7 @@
       </div>
     </details>
 
-    <p class="note">Méthode : taux de satisfaction = avis « satisfait » ou « très satisfait » (notes 3 à 5 sur 5) ÷ avis exploitables du questionnaire de fin de formation ; une absence de réponse n'est pas comptée comme une insatisfaction. Taux de réussite = stagiaires certifiés ou déclarés aptes ÷ stagiaires présentés à l'évaluation finale. Données agrégées, sans information nominative. Mise à jour le 05/11/2026.</p>
+    <p class="note">Méthode : taux de satisfaction = avis « satisfait » ou « très satisfait » (notes 3 à 5 sur 5) ÷ avis exploitables du questionnaire de fin de formation ; une absence de réponse n'est pas comptée comme une insatisfaction. Taux de réussite = stagiaires certifiés ou déclarés aptes ÷ stagiaires présentés à l'évaluation finale. Données agrégées, sans information nominative. Ces résultats proviennent de nos anciens questionnaires, notés de 1 à 5 ; nos questionnaires actuels sont notés de 1 à 4 (voir les résultats en cours). Dans les deux cas, seules les réponses « satisfait » et « très satisfait » sont comptées comme satisfaites. Mise à jour le 05/11/2026.</p>
     <p><a class="btn out" href="#qualite">← Voir les résultats en cours</a></p>
   </div>
 </section>
@@ -578,29 +578,29 @@
 // p : programmes PDF téléchargeables -> [libellé, identifiant du fichier Google Drive partagé "lecture par lien"]
 const FORMATIONS = [
   {cat:"securite", t:"Sauveteur Secouriste du Travail (SST)", k:["sst"], d:"Intervenir face à un accident du travail ou un malaise et contribuer à la prévention dans l'entreprise. Certificat SST (référentiel INRS).", m:"Formation initiale · 2 jours (14 h)", prix:"300 € / participant",
-    p:[["Programme SST initial","1O_z0gvrlcEzquFdxlbBFRalpGu-oshkq"]]},
+    p:[["Programme SST initial","fiches/FP_SST_INITIAL.pdf"]]},
   {cat:"securite", t:"MAC SST – Maintien et actualisation des compétences", k:["sst"], d:"Recyclage obligatoire tous les 24 mois du Sauveteur Secouriste du Travail : actualisation des gestes de secours et de la prévention, prolongation du certificat SST.", m:"Recyclage · 1 jour (7 h)", prix:"180 € / participant",
     p:[["Programme MAC SST","fiches/FP_MAC_SST.pdf"]]},
   {cat:"ergonomie", t:"Prévention des risques liés à l'activité physique (PRAP)", k:["prap"], d:"Devenir acteur de sa propre prévention : analyse de sa situation de travail, principes de sécurité physique et d'économie d'effort.", m:"PRAP IBC · Formation initiale · 2 jours (14 h)", prix:"300 € / participant",
-    p:[["Programme PRAP IBC","1voY3SCcVj6-JY4-9ROn_fUcF3N_Un5Yt"]]},
+    p:[["Programme PRAP IBC","fiches/FP_PRAP_IBC_INITIAL.pdf"]]},
   {cat:"ergonomie", t:"MAC Acteur PRAP IBC – Maintien et actualisation des compétences", k:["prap"], d:"Recyclage tous les 24 mois de l'acteur PRAP IBC : réanalyse de sa situation de travail, propositions d'amélioration et principes d'économie d'effort, prolongation du certificat.", m:"Recyclage · 1 jour (7 h)", prix:"180 € / participant",
     p:[["Programme MAC PRAP IBC","fiches/FP_MAC_PRAP_IBC.pdf"]]},
-  {cat:"securite", t:"AIPR – opérateur, encadrant, concepteur", k:["aipr"], d:"Réglementation DT-DICT, lecture de plans, travaux à proximité des réseaux. Examen QCM officiel du Ministère.", m:"1 jour (7 h) · examen inclus", prix:"Opérateur 180 € · Encadrant 250 € / participant",
-    p:[["Programme AIPR opérateur","1a187E5yOs8deRI12vYUFQzAB0erg6IuQ"],["Programme AIPR encadrant","1LSMhaCQ0-jYDBYQ3rVkabI0Fe7poZ5lr"]]},
+  {cat:"securite", t:"AIPR – opérateur, encadrant, concepteur", k:["aipr"], d:"Réglementation DT-DICT, lecture de plans, travaux à proximité des réseaux. Examen QCM officiel du Ministère.", m:"1 jour (7 h) · examen inclus", prix:"Opérateur 180 € · Encadrant et concepteur 250 € / participant",
+    p:[["Programme AIPR opérateur","fiches/FP_AIPR_OPERATEUR.pdf"],["Programme AIPR encadrant","fiches/FP_AIPR_ENCADRANT.pdf"],["Programme AIPR concepteur","fiches/FP_AIPR_CONCEPTEUR.pdf"]]},
   {cat:"securite", t:"Habilitation électrique (H0B0, BS, BE manœuvre, HE)", k:["habilitation","h0b0","b0","bs","be manoeuvre"], d:"Travailler en sécurité sur ou à proximité d'installations électriques, conformément à la norme NF C 18-510.", m:"Non électricien · 1 jour (7 h)", prix:"180 € / participant",
-    p:[["Programme H0B0","1jGKVgbWlCDP5bV3bGNM26VYCHH6xCSdi"],["Programme BS / BE / HE","1v_jafVGi_nNNwDuUqCrEmvCfTzgsKLjf"]]},
+    p:[["Programme H0B0","fiches/FP_HAB_H0B0.pdf"],["Programme BS / BE / HE","fiches/FP_HAB_BS_BE_HE.pdf"]]},
   {cat:"securite", t:"Travail en hauteur et port du harnais", k:["hauteur","harnais"], d:"Identifier les risques de chute, choisir un ancrage, régler et utiliser un harnais antichute.", m:"1 ou 2 jours", prix:"180 € (1 jour) · 300 € (2 jours) / participant",
-    p:[["Programme 1 jour","13YTjJwW0OVPFFI-AJ3T5ktNJKiyc21wo"],["Programme 2 jours","1cqB6Vgsz7CRuNdzbW7ajYYOJ8ZA-1PZ3"]]},
+    p:[["Programme 1 jour","fiches/FP_HARNAIS_1J.pdf"],["Programme 2 jours","fiches/FP_HARNAIS_2J.pdf"]]},
   {cat:"incendie", t:"Manipulation des extincteurs", k:["extincteur","extincteurs","incendie"], d:"Connaître le triangle du feu, les classes de feux et les types d'extincteurs, et savoir intervenir sur un départ de feu.", m:"Théorie et pratique · ½ journée", prix:"100 € / participant",
-    p:[["Programme extincteurs","1veywfLVl0lDRtOG6cNHb_LWiI7jGNb__"]]},
+    p:[["Programme extincteurs","fiches/FP_EXTINCTEURS.pdf"]]},
   {cat:"conduite", t:"Autorisation de conduite – nacelles (PEMP)", k:["nacelle","nacelles","pemp"], d:"Conduite en sécurité des plates-formes élévatrices mobiles de personnes. Évaluations théorique et pratique.", m:"Initial 3 jours · recyclage 2 jours", prix:"Initial 450 € · Recyclage 300 € / participant",
-    p:[["Programme initial","1nWUT4UuIwHdrqBvhQhjMVv7mmE3recHs"],["Programme recyclage","1gjKoYgoDGiSYHpuGoNTr7QAXQOJq9i57"]]},
+    p:[["Programme initial","fiches/FP_R486_INITIAL.pdf"],["Programme recyclage","fiches/FP_R486_RECYCLAGE.pdf"]]},
   {cat:"conduite", t:"Autorisation de conduite – engins de chantier", k:["engins de chantier","engin de chantier","r482"], d:"Pelles, chargeuses, tractopelles, mini-engins… Réglementation, vérifications, conduite en situation réelle.", m:"Initial 3 jours · recyclage 2 jours", prix:"Initial 450 € · Recyclage 300 € / participant",
     p:[["Programme initial (3 jours)","fiches/FP_R482_INITIAL.pdf"],["Programme recyclage (2 jours)","fiches/FP_R482_RECYCLAGE.pdf"]]},
   {cat:"conduite", t:"Autorisation de conduite – grue de chargement", k:["grue"], d:"Stabilisation, lecture d'abaques, élingage et manutention de charges en sécurité.", m:"Initial 3 jours · recyclage 2 jours", prix:"Initial 450 € · Recyclage 300 € / participant",
-    p:[["Programme initial","1JTatyid3s5h4XLOYIebFQIHryJ4LCyAw"],["Programme recyclage","1mfQ-9evkvyvp6QQQUuRooMfoNBBSe0nv"]]},
+    p:[["Programme initial","fiches/FP_R490_INITIAL.pdf"],["Programme recyclage","fiches/FP_R490_RECYCLAGE.pdf"]]},
   {cat:"conduite", t:"Autorisation de conduite – chariots élévateurs", k:["chariot","chariots","r489"], d:"Conduite en sécurité des chariots automoteurs à conducteur porté : règles de circulation, stabilité, manutention.", m:"Initial 3 jours · recyclage 2 jours", prix:"Initial 450 € · Recyclage 300 € / participant",
-    p:[["Programme initial","1-Oyo8lMPJoQ-4xTJNwT7VFaCgs4hnCC2"],["Programme recyclage","1beBHq2Rxzm6STdUNksD-b6snU8yO7t8V"]]},
+    p:[["Programme initial","fiches/FP_R489_INITIAL.pdf"],["Programme recyclage","fiches/FP_R489_RECYCLAGE.pdf"]]},
   {cat:"tp", t:"Agent de médiation, information, services (AMIS)", rncp:"RNCP37722", prix:"Formation continue : 12 € / heure en centre · Apprentissage : 0 € pour l'apprenti (financé par l'OPCO)", deb:"Agent de médiation sociale, agent de prévention et de médiation, correspondant de nuit, agent d'ambiance.", pas:"Poursuite possible vers le titre Médiateur social accès aux droits et services (MSADS, niveau 4).", res:"Première session à venir : le taux d'obtention sera publié après la première session d'examen.", d:"Titre professionnel – accueillir, informer, orienter et assurer une présence de médiation auprès des publics.", m:"Titre professionnel · niveau 3",
     p:[["Fiche programme – formation continue", "1GyIy12FJF4ouWIYDojUUq343MSuvOEcs"], ["Fiche programme – apprentissage", "fiches/FP_TP_AMIS_APPRENTISSAGE.pdf"]]},
   {cat:"tp", t:"Médiateur social accès aux droits et services (MSADS)", rncp:"RNCP36241", prix:"Formation continue : 12 € / heure en centre · Apprentissage : 0 € pour l'apprenti (financé par l'OPCO)", deb:"Médiateur social (santé, scolaire, culturel), médiateur de ville, médiateur d'accès aux droits et au numérique.", pas:"Poursuite possible vers le titre Conseiller en insertion professionnelle (CIP, niveau 5).", res:"Première promotion en cours en formation continue : le taux d'obtention sera publié après la première session d'examen.", d:"Titre professionnel – accompagner les publics dans l'accès aux droits et aux services, prévenir et gérer les conflits.", m:"Titre professionnel · niveau 4",
