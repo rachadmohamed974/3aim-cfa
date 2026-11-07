@@ -390,15 +390,19 @@
 // cat : "securite" | "conduite" | "tp" (titre professionnel)
 // p : programmes PDF téléchargeables -> [libellé, identifiant du fichier Google Drive partagé "lecture par lien"]
 const FORMATIONS = [
-  {cat:"securite", t:"Sauveteur Secouriste du Travail (SST)", d:"Intervenir face à un accident du travail ou un malaise et contribuer à la prévention dans l'entreprise. Certificat SST (référentiel INRS).", m:"Formation initiale · MAC",
-    p:[["Programme SST initial","1O_z0gvrlcEzquFdxlbBFRalpGu-oshkq"],["Programme MAC SST (recyclage)","fiches/FP_MAC_SST.pdf"]]},
-  {cat:"ergonomie", t:"Prévention des risques liés à l'activité physique (PRAP)", d:"Devenir acteur de sa propre prévention : analyse de sa situation de travail, principes de sécurité physique et d'économie d'effort.", m:"PRAP IBC · Formation initiale · MAC",
-    p:[["Programme PRAP IBC","1voY3SCcVj6-JY4-9ROn_fUcF3N_Un5Yt"],["Programme MAC PRAP IBC (recyclage)","fiches/FP_MAC_PRAP_IBC.pdf"]]},
+  {cat:"securite", t:"Sauveteur Secouriste du Travail (SST)", d:"Intervenir face à un accident du travail ou un malaise et contribuer à la prévention dans l'entreprise. Certificat SST (référentiel INRS).", m:"Formation initiale · 2 jours (14 h)", prix:"300 € / participant",
+    p:[["Programme SST initial","1O_z0gvrlcEzquFdxlbBFRalpGu-oshkq"]]},
+  {cat:"securite", t:"MAC SST – Maintien et actualisation des compétences", d:"Recyclage obligatoire tous les 24 mois du Sauveteur Secouriste du Travail : actualisation des gestes de secours et de la prévention, prolongation du certificat SST.", m:"Recyclage · 1 jour (7 h)", prix:"180 € / participant",
+    p:[["Programme MAC SST","fiches/FP_MAC_SST.pdf"]]},
+  {cat:"ergonomie", t:"Prévention des risques liés à l'activité physique (PRAP)", d:"Devenir acteur de sa propre prévention : analyse de sa situation de travail, principes de sécurité physique et d'économie d'effort.", m:"PRAP IBC · Formation initiale · 2 jours (14 h)", prix:"300 € / participant",
+    p:[["Programme PRAP IBC","1voY3SCcVj6-JY4-9ROn_fUcF3N_Un5Yt"]]},
+  {cat:"ergonomie", t:"MAC Acteur PRAP IBC – Maintien et actualisation des compétences", d:"Recyclage tous les 24 mois de l'acteur PRAP IBC : réanalyse de sa situation de travail, propositions d'amélioration et principes d'économie d'effort, prolongation du certificat.", m:"Recyclage · 1 jour (7 h)", prix:"180 € / participant",
+    p:[["Programme MAC PRAP IBC","fiches/FP_MAC_PRAP_IBC.pdf"]]},
   {cat:"securite", t:"AIPR – opérateur, encadrant, concepteur", d:"Réglementation DT-DICT, lecture de plans, travaux à proximité des réseaux. Examen QCM officiel du Ministère.", m:"Examen inclus",
     p:[["Programme AIPR opérateur","1a187E5yOs8deRI12vYUFQzAB0erg6IuQ"],["Programme AIPR encadrant","1LSMhaCQ0-jYDBYQ3rVkabI0Fe7poZ5lr"]]},
   {cat:"securite", t:"Habilitation électrique (H0B0, BS, BE manœuvre, HE)", d:"Travailler en sécurité sur ou à proximité d'installations électriques, conformément à la norme NF C 18-510.", m:"Non électricien",
     p:[["Programme H0B0","1jGKVgbWlCDP5bV3bGNM26VYCHH6xCSdi"],["Programme BS / BE / HE","1v_jafVGi_nNNwDuUqCrEmvCfTzgsKLjf"]]},
-  {cat:"securite", t:"Travail en hauteur et port du harnais", d:"Identifier les risques de chute, choisir un ancrage, régler et utiliser un harnais antichute.", m:"1 ou 2 jours",
+  {cat:"securite", t:"Travail en hauteur et port du harnais", d:"Identifier les risques de chute, choisir un ancrage, régler et utiliser un harnais antichute.", m:"1 ou 2 jours", prix:"180 € (1 jour) · 300 € (2 jours) / participant",
     p:[["Programme 1 jour","13YTjJwW0OVPFFI-AJ3T5ktNJKiyc21wo"],["Programme 2 jours","1cqB6Vgsz7CRuNdzbW7ajYYOJ8ZA-1PZ3"]]},
   {cat:"incendie", t:"Manipulation des extincteurs", d:"Connaître le triangle du feu, les classes de feux et les types d'extincteurs, et savoir intervenir sur un départ de feu.", m:"Théorie et pratique",
     p:[["Programme extincteurs","1veywfLVl0lDRtOG6cNHb_LWiI7jGNb__"]]},
@@ -449,7 +453,7 @@ function render(filter){
     const progs = (f.p||[]).map(([l,id])=>`<a class="dl" href="${DL(id)}" target="_blank" rel="noopener">⬇ ${l} (PDF)</a>`).join("");
     el.innerHTML = `<span class="tag ${f.cat==='tp'?'tp':''}">${LABEL[f.cat]}</span>
       <h3>${f.t}</h3>
-      <div class="meta">${f.m}</div>${f.cat==='tp'?'<div class="meta app">Possible en apprentissage</div>':''}
+      <div class="meta">${f.m}</div>${f.prix?`<div class="prix">${f.prix}</div>`:""}${f.cat==='tp'?'<div class="meta app">Possible en apprentissage</div>':''}
       <details class="fold"><summary><span class="ouvrir">Voir le détail et les programmes</span><span class="fermer">Masquer le détail</span></summary>
         <p>${f.d}</p>
         <div class="progs">${progs || '<span class="noprog">Programme détaillé sur simple demande</span>'}</div>
@@ -539,6 +543,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
 .formation{padding:18px 20px}
 .formation h3{font-size:1.05rem;margin:8px 0 6px}
 .formation .meta{font-size:.88rem}
+.formation .prix{display:inline-block;margin-top:6px;background:#FDEBDC;color:#B4500F;font-weight:700;font-size:.85rem;border-radius:999px;padding:3px 10px;width:fit-content;align-self:flex-start}
 .fold{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}
 .fold summary{cursor:pointer;font-weight:600;color:var(--navy);list-style:none;font-size:.92rem}
 .fold summary::-webkit-details-marker{display:none}
