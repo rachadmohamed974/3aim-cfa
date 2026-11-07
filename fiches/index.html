@@ -18,6 +18,7 @@
   <div class="wrap nav">
     <a class="logo" href="#accueil"><span class="mark">3A<b>i</b></span>3AIM CFA</a>
     <nav class="menu">
+      <a href="#accueil">Accueil</a>
       <a href="#formations">Formations</a>
       <a href="#calendrier">Calendrier</a>
       <a href="#apprentissage">Apprentissage</a>
@@ -75,7 +76,7 @@
   <div class="wrap">
     <span class="eyebrow">Catalogue</span>
     <h2>Nos formations</h2>
-    <p class="lead">Toutes nos formations sont réalisables en inter ou en intra-entreprise. La durée, les objectifs, les prérequis, les méthodes et les modalités d'évaluation figurent dans le programme de chaque formation, téléchargeable ci-dessous ou envoyé sur simple demande. Les dates sont dans le <a href="#calendrier">calendrier</a> ; les tarifs sont communiqués sur devis, selon le nombre de participants et le lieu.</p>
+    <p class="lead">Toutes nos formations sont réalisables en inter ou en intra-entreprise. La durée, les objectifs, les prérequis, les méthodes et les modalités d'évaluation figurent dans le programme de chaque formation, téléchargeable ci-dessous ou envoyé sur simple demande. Les dates sont dans le <a href="#calendrier">calendrier</a> . Le tarif par participant est indiqué sur chaque formation ; un devis précis est établi selon le nombre de participants et le lieu.</p>
     <div class="filters">
       <button class="chip active" data-f="all">Toutes</button>
       <button class="chip" data-f="securite">Prévention & sécurité</button>
@@ -152,10 +153,10 @@
   F.addEventListener("click",function(e){var b=e.target.closest("button");if(b){OFF=b.getAttribute("data-c");render()}});
   L.addEventListener("click",function(e){var a=e.target.closest("[data-i]");if(!a)return;e.preventDefault();inscrire(ALL[+a.getAttribute("data-i")],a.getAttribute("data-t"))});
   fetch(API,{credentials:"omit",redirect:"follow"}).then(function(r){return r.json()}).then(function(d){
-    if(!d||d.ok===false)throw new Error("indispo");
-    var t=today();ALL=(d.sessions||[]).filter(function(s){return P(s.e||s.d)>=t}).sort(function(a,b){return a.d.localeCompare(b.d)});
+    if(!d||d.ok===false)throw new Error("indispo");window.RES_DATA=(d.sessions||[]).filter(function(x){return x&&x._res})[0]||null;if(window.resUpdated)window.resUpdated();d.sessions=(d.sessions||[]).filter(function(x){return x&&!x._res});
+    var t=today();ALL=(d.sessions||[]).filter(function(s){return P(s.e||s.d)>=t}).sort(function(a,b){return a.d.localeCompare(b.d)});window.CAL_SESS=ALL;if(window.calUpdated)window.calUpdated();
     if(d.maj)M.textContent="Mis à jour le "+new Date(d.maj).toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"});render()
-  }).catch(function(){L.innerHTML='<p class="cal-msg">Le calendrier est momentanément indisponible. Appelez-nous au 0692 09 85 92 ou <a href="#demande">faites une demande</a>.</p>'});
+  }).catch(function(){window.RES_FAIL=true;if(window.resUpdated)window.resUpdated();L.innerHTML='<p class="cal-msg">Le calendrier est momentanément indisponible. Appelez-nous au 0692 09 85 92 ou <a href="#demande">faites une demande</a>.</p>'});
 })();
 </script>
 
@@ -205,7 +206,28 @@
   <div class="wrap">
     <span class="eyebrow">Qualité & résultats</span>
     <h2>Nos indicateurs de résultats</h2>
-    <p class="lead">Chiffres calculés sur les formations terminées, mis à jour chaque trimestre.</p>
+    <p class="lead">Chiffres calculés automatiquement à partir des formations terminées, mis à jour à chaque fin de session.</p>
+    <div id="res-live"><p class="cal-msg">Chargement des résultats…</p></div>
+    <p class="note">Méthode : taux de satisfaction = participants ayant donné la note 3 ou 4 sur 4 au questionnaire de fin de formation ÷ répondants ; une absence de réponse n'est pas comptée comme une insatisfaction. Taux de réussite = stagiaires certifiés, déclarés aptes ou ayant obtenu un avis favorable ÷ stagiaires présentés à l'évaluation finale. Données agrégées, sans information nominative.</p>
+    <p class="note"><b>Apprentissage :</b> les taux d'obtention du diplôme, de poursuite d'études, d'interruption en cours de formation et d'insertion professionnelle (dispositif InserJeunes) seront publiés dès la fin de la première promotion d'apprentis.</p>
+    <p><a class="btn out" href="#resultats-anterieurs">Voir nos résultats antérieurs (2025 – 2026) →</a></p>
+
+    <div class="cert">
+      <div>
+        <b style="font-size:1.05rem;color:var(--navy)">3AIM CFA est certifié Qualiopi</b> – certificat n° 535011-1 (Certifopac), valable jusqu'au 10/02/2028.<br>
+        La certification qualité a été délivrée au titre de la catégorie d'actions suivante : <b>actions de formation</b>.<br>
+        <span style="color:var(--muted);font-size:.88rem">Déclaration d'activité n° 04973634297 (cet enregistrement ne vaut pas agrément de l'État).</span>
+      </div>
+      <a class="btn" href="https://drive.google.com/uc?export=download&id=1KRCLfm2cR58u3-cPsYJyE75qorBFBVvh" target="_blank" rel="noopener">Télécharger le certificat (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<section id="resultats-anterieurs" data-page="anterieurs">
+  <div class="wrap">
+    <span class="eyebrow">Historique</span>
+    <h2>Résultats antérieurs</h2>
+    <p class="lead">Nos résultats des années 2025 et 2026, calculés sur les formations terminées.</p>
 
     <div class="kpis">
       <div class="kpi">
@@ -256,16 +278,7 @@
     </details>
 
     <p class="note">Méthode : taux de satisfaction = avis « satisfait » ou « très satisfait » (notes 3 à 5 sur 5) ÷ avis exploitables du questionnaire de fin de formation ; une absence de réponse n'est pas comptée comme une insatisfaction. Taux de réussite = stagiaires certifiés ou déclarés aptes ÷ stagiaires présentés à l'évaluation finale. Données agrégées, sans information nominative. Mise à jour le 05/11/2026.</p>
-    <p class="note"><b>Apprentissage :</b> les taux d'obtention du diplôme, de poursuite d'études, d'interruption en cours de formation et d'insertion professionnelle (dispositif InserJeunes) seront publiés dès la fin de la première promotion d'apprentis.</p>
-
-    <div class="cert">
-      <div>
-        <b style="font-size:1.05rem;color:var(--navy)">3AIM CFA est certifié Qualiopi</b> – certificat n° 535011-1 (Certifopac), valable jusqu'au 10/02/2028.<br>
-        La certification qualité a été délivrée au titre de la catégorie d'actions suivante : <b>actions de formation</b>.<br>
-        <span style="color:var(--muted);font-size:.88rem">Déclaration d'activité n° 04973634297 (cet enregistrement ne vaut pas agrément de l'État).</span>
-      </div>
-      <a class="btn" href="https://drive.google.com/uc?export=download&id=1KRCLfm2cR58u3-cPsYJyE75qorBFBVvh" target="_blank" rel="noopener">Télécharger le certificat (PDF)</a>
-    </div>
+    <p><a class="btn out" href="#qualite">← Voir les résultats en cours</a></p>
   </div>
 </section>
 
@@ -291,6 +304,7 @@
       <p class="lead">Remplissez ce formulaire : nous revenons vers vous sous 48 h ouvrées avec une proposition adaptée et les solutions de financement possibles.</p>
       <ul class="contact-list">
         <li><span>📞</span><span><a href="tel:+262692098592">0692 09 85 92</a></span></li>
+        <li><span>💬</span><span><a href="https://wa.me/262692098592?text=Bonjour%203AIM%20CFA%2C%20je%20souhaite%20des%20informations%20sur%20une%20formation." target="_blank" rel="noopener">Discuter sur WhatsApp</a></span></li>
         <li><span>🏢</span><span>Entreprises : <a href="mailto:contact@3aim.fr">contact@3aim.fr</a></span></li>
         <li><span>🎓</span><span>Stagiaires : <a href="mailto:stagiaire@3aim.fr">stagiaire@3aim.fr</a></span></li>
       </ul>
@@ -357,7 +371,7 @@
   </div>
 </section>
 
-<section class="cta-band" data-page="accueil formations calendrier apprentissage qualite">
+<section class="cta-band" data-page="accueil formations calendrier apprentissage qualite anterieurs">
   <div class="wrap">
     <div><h2>Un projet de formation ?</h2><p>Réponse sous 48 h ouvrées avec un devis et les solutions de financement.</p></div>
     <div class="ctas"><a class="btn" href="#demande">Demander un devis</a><a class="btn ghost" href="tel:+262692098592">0692 09 85 92</a></div>
@@ -377,7 +391,7 @@
       </div>
       <div>
         <h4>Informations</h4>
-        <a href="mentions-legales.html">Mentions légales</a><br><a href="mentions-legales.html#rgpd">Confidentialité</a><br><a href="#accessibilite">Accessibilité</a>
+        <a href="#qualite">Résultats & qualité</a><br><a href="#resultats-anterieurs">Résultats antérieurs</a><br><a href="mentions-legales.html">Mentions légales</a><br><a href="mentions-legales.html#rgpd">Confidentialité</a><br><a href="#accessibilite">Accessibilité</a>
       </div>
     </div>
     <div class="legal">© <span id="year"></span> 3AIM CFA · SIRET 937 988 905 00017 · NDA 04973634297 · Certifié Qualiopi n° 535011-1</div>
@@ -389,25 +403,29 @@
 // cat : "securite" | "conduite" | "tp" (titre professionnel)
 // p : programmes PDF téléchargeables -> [libellé, identifiant du fichier Google Drive partagé "lecture par lien"]
 const FORMATIONS = [
-  {cat:"securite", t:"Sauveteur Secouriste du Travail (SST)", d:"Intervenir face à un accident du travail ou un malaise et contribuer à la prévention dans l'entreprise. Certificat SST (référentiel INRS).", m:"Formation initiale · MAC",
-    p:[["Programme SST initial","1O_z0gvrlcEzquFdxlbBFRalpGu-oshkq"],["Programme MAC SST (recyclage)","fiches/FP_MAC_SST.pdf"]]},
-  {cat:"ergonomie", t:"Prévention des risques liés à l'activité physique (PRAP)", d:"Devenir acteur de sa propre prévention : analyse de sa situation de travail, principes de sécurité physique et d'économie d'effort.", m:"PRAP IBC · Formation initiale · MAC",
-    p:[["Programme PRAP IBC","1voY3SCcVj6-JY4-9ROn_fUcF3N_Un5Yt"],["Programme MAC PRAP IBC (recyclage)","fiches/FP_MAC_PRAP_IBC.pdf"]]},
-  {cat:"securite", t:"AIPR – opérateur, encadrant, concepteur", d:"Réglementation DT-DICT, lecture de plans, travaux à proximité des réseaux. Examen QCM officiel du Ministère.", m:"Examen inclus",
+  {cat:"securite", t:"Sauveteur Secouriste du Travail (SST)", k:["sst"], d:"Intervenir face à un accident du travail ou un malaise et contribuer à la prévention dans l'entreprise. Certificat SST (référentiel INRS).", m:"Formation initiale · 2 jours (14 h)", prix:"300 € / participant",
+    p:[["Programme SST initial","1O_z0gvrlcEzquFdxlbBFRalpGu-oshkq"]]},
+  {cat:"securite", t:"MAC SST – Maintien et actualisation des compétences", k:["sst"], d:"Recyclage obligatoire tous les 24 mois du Sauveteur Secouriste du Travail : actualisation des gestes de secours et de la prévention, prolongation du certificat SST.", m:"Recyclage · 1 jour (7 h)", prix:"180 € / participant",
+    p:[["Programme MAC SST","fiches/FP_MAC_SST.pdf"]]},
+  {cat:"ergonomie", t:"Prévention des risques liés à l'activité physique (PRAP)", k:["prap"], d:"Devenir acteur de sa propre prévention : analyse de sa situation de travail, principes de sécurité physique et d'économie d'effort.", m:"PRAP IBC · Formation initiale · 2 jours (14 h)", prix:"300 € / participant",
+    p:[["Programme PRAP IBC","1voY3SCcVj6-JY4-9ROn_fUcF3N_Un5Yt"]]},
+  {cat:"ergonomie", t:"MAC Acteur PRAP IBC – Maintien et actualisation des compétences", k:["prap"], d:"Recyclage tous les 24 mois de l'acteur PRAP IBC : réanalyse de sa situation de travail, propositions d'amélioration et principes d'économie d'effort, prolongation du certificat.", m:"Recyclage · 1 jour (7 h)", prix:"180 € / participant",
+    p:[["Programme MAC PRAP IBC","fiches/FP_MAC_PRAP_IBC.pdf"]]},
+  {cat:"securite", t:"AIPR – opérateur, encadrant, concepteur", k:["aipr"], d:"Réglementation DT-DICT, lecture de plans, travaux à proximité des réseaux. Examen QCM officiel du Ministère.", m:"1 jour (7 h) · examen inclus", prix:"Opérateur 180 € · Encadrant 250 € / participant",
     p:[["Programme AIPR opérateur","1a187E5yOs8deRI12vYUFQzAB0erg6IuQ"],["Programme AIPR encadrant","1LSMhaCQ0-jYDBYQ3rVkabI0Fe7poZ5lr"]]},
-  {cat:"securite", t:"Habilitation électrique (H0B0, BS, BE manœuvre, HE)", d:"Travailler en sécurité sur ou à proximité d'installations électriques, conformément à la norme NF C 18-510.", m:"Non électricien",
+  {cat:"securite", t:"Habilitation électrique (H0B0, BS, BE manœuvre, HE)", k:["habilitation","h0b0","b0","bs","be manoeuvre"], d:"Travailler en sécurité sur ou à proximité d'installations électriques, conformément à la norme NF C 18-510.", m:"Non électricien · 1 jour (7 h)", prix:"180 € / participant",
     p:[["Programme H0B0","1jGKVgbWlCDP5bV3bGNM26VYCHH6xCSdi"],["Programme BS / BE / HE","1v_jafVGi_nNNwDuUqCrEmvCfTzgsKLjf"]]},
-  {cat:"securite", t:"Travail en hauteur et port du harnais", d:"Identifier les risques de chute, choisir un ancrage, régler et utiliser un harnais antichute.", m:"1 ou 2 jours",
+  {cat:"securite", t:"Travail en hauteur et port du harnais", k:["hauteur","harnais"], d:"Identifier les risques de chute, choisir un ancrage, régler et utiliser un harnais antichute.", m:"1 ou 2 jours", prix:"180 € (1 jour) · 300 € (2 jours) / participant",
     p:[["Programme 1 jour","13YTjJwW0OVPFFI-AJ3T5ktNJKiyc21wo"],["Programme 2 jours","1cqB6Vgsz7CRuNdzbW7ajYYOJ8ZA-1PZ3"]]},
-  {cat:"incendie", t:"Manipulation des extincteurs", d:"Connaître le triangle du feu, les classes de feux et les types d'extincteurs, et savoir intervenir sur un départ de feu.", m:"Théorie et pratique",
+  {cat:"incendie", t:"Manipulation des extincteurs", k:["extincteur","extincteurs","incendie"], d:"Connaître le triangle du feu, les classes de feux et les types d'extincteurs, et savoir intervenir sur un départ de feu.", m:"Théorie et pratique · ½ journée", prix:"100 € / participant",
     p:[["Programme extincteurs","1veywfLVl0lDRtOG6cNHb_LWiI7jGNb__"]]},
-  {cat:"conduite", t:"Autorisation de conduite – nacelles (PEMP)", d:"Conduite en sécurité des plates-formes élévatrices mobiles de personnes. Évaluations théorique et pratique.", m:"Initial et recyclage",
+  {cat:"conduite", t:"Autorisation de conduite – nacelles (PEMP)", k:["nacelle","nacelles","pemp"], d:"Conduite en sécurité des plates-formes élévatrices mobiles de personnes. Évaluations théorique et pratique.", m:"Initial 2 jours · recyclage 1 jour", prix:"Initial 300 € · Recyclage 180 € / participant",
     p:[["Programme initial","1nWUT4UuIwHdrqBvhQhjMVv7mmE3recHs"],["Programme recyclage","1gjKoYgoDGiSYHpuGoNTr7QAXQOJq9i57"]]},
-  {cat:"conduite", t:"Autorisation de conduite – engins de chantier", d:"Pelles, chargeuses, tractopelles, mini-engins… Réglementation, vérifications, conduite en situation réelle.", m:"3 ou 5 jours",
-    p:[["Programme 3 jours","1Tng3gtPg4sgdxe-zOorq3yn7Oa7czv9D"],["Programme 5 jours","1O_YOlXvgOO6Opcf7q0ZsWYUE4WJWilFs"]]},
-  {cat:"conduite", t:"Autorisation de conduite – grue de chargement", d:"Stabilisation, lecture d'abaques, élingage et manutention de charges en sécurité.", m:"Initial et recyclage",
+  {cat:"conduite", t:"Autorisation de conduite – engins de chantier", k:["engins de chantier","engin de chantier","r482"], d:"Pelles, chargeuses, tractopelles, mini-engins… Réglementation, vérifications, conduite en situation réelle.", m:"Initial 3 jours · recyclage 2 jours", prix:"Initial 450 € · Recyclage 300 € / participant",
+    p:[["Programme initial (3 jours)","1Tng3gtPg4sgdxe-zOorq3yn7Oa7czv9D"],["Programme recyclage (2 jours)","fiches/FP_ENGINS_CHANTIER_RECYCLAGE.pdf"]]},
+  {cat:"conduite", t:"Autorisation de conduite – grue de chargement", k:["grue"], d:"Stabilisation, lecture d'abaques, élingage et manutention de charges en sécurité.", m:"Initial 3 jours · recyclage 2 jours", prix:"Initial 450 € · Recyclage 300 € / participant",
     p:[["Programme initial","1JTatyid3s5h4XLOYIebFQIHryJ4LCyAw"],["Programme recyclage","1mfQ-9evkvyvp6QQQUuRooMfoNBBSe0nv"]]},
-  {cat:"conduite", t:"Autorisation de conduite – chariots élévateurs", d:"Conduite en sécurité des chariots automoteurs à conducteur porté : règles de circulation, stabilité, manutention.", m:"Initial et recyclage",
+  {cat:"conduite", t:"Autorisation de conduite – chariots élévateurs", k:["chariot","chariots","r489"], d:"Conduite en sécurité des chariots automoteurs à conducteur porté : règles de circulation, stabilité, manutention.", m:"Initial 3 jours · recyclage 2 jours", prix:"Initial 450 € · Recyclage 300 € / participant",
     p:[["Programme initial","1-Oyo8lMPJoQ-4xTJNwT7VFaCgs4hnCC2"],["Programme recyclage","1beBHq2Rxzm6STdUNksD-b6snU8yO7t8V"]]},
   {cat:"tp", t:"Agent de médiation, information, services (AMIS)", d:"Titre professionnel – accueillir, informer, orienter et assurer une présence de médiation auprès des publics.", m:"Titre professionnel · niveau 3",
     p:[["Fiche programme – formation continue", "1GyIy12FJF4ouWIYDojUUq343MSuvOEcs"], ["Fiche programme – apprentissage", "fiches/FP_TP_AMIS_APPRENTISSAGE.pdf"]]},
@@ -417,7 +435,7 @@ const FORMATIONS = [
     p:[["Fiche programme – formation continue", "fiches/FP_TP_CIP.pdf"], ["Fiche programme – apprentissage", "fiches/FP_TP_CIP_APPRENTISSAGE.pdf"]]},
   {cat:"tp", t:"Formateur professionnel d'adultes (FPA)", d:"Titre professionnel – préparer, animer et évaluer des actions de formation pour adultes.", m:"Titre professionnel · niveau 5",
     p:[["Fiche programme – formation continue", "fiches/FP_TP_FPA.pdf"], ["Fiche programme – apprentissage", "fiches/FP_TP_FPA_APPRENTISSAGE.pdf"]]},
-  {cat:"tp", t:"Assistant de direction", d:"Titre professionnel – assister un dirigeant dans l'organisation, la communication et le suivi des dossiers.", m:"Titre professionnel · niveau 5",
+  {cat:"tp", t:"Assistant de direction", k:["assistant de direction"], d:"Titre professionnel – assister un dirigeant dans l'organisation, la communication et le suivi des dossiers.", m:"Titre professionnel · niveau 5",
     p:[["Fiche programme – formation continue", "fiches/FP_TP_AD.pdf"], ["Fiche programme – apprentissage", "fiches/FP_TP_AD_APPRENTISSAGE.pdf"]]},
   {cat:"tp", t:"Secrétaire assistant médico-administratif (SAMA)", d:"Titre professionnel – accueil, gestion administrative et coordination dans les structures médicales et médico-sociales.", m:"Titre professionnel · niveau 4",
     p:[["Fiche programme – formation continue", "fiches/FP_TP_SAMA.pdf"], ["Fiche programme – apprentissage", "fiches/FP_TP_SAMA_APPRENTISSAGE.pdf"]]},
@@ -429,9 +447,9 @@ const FORMATIONS = [
     p:[["Fiche programme – formation continue", "fiches/FP_TP_AMB.pdf"], ["Fiche programme – apprentissage", "fiches/FP_TP_AMB_APPRENTISSAGE.pdf"]]},
   {cat:"tp", t:"Chargé d'accueil et de gestion administrative (CADGA)", d:"Titre professionnel – accueillir, informer et orienter les publics, et gérer les activités administratives courantes d'une structure.", m:"Titre professionnel · niveau 4",
     p:[["Fiche programme – formation continue", "fiches/FP_TP_CADGA.pdf"], ["Fiche programme – apprentissage", "fiches/FP_TP_CADGA_APPRENTISSAGE.pdf"]]},
-  {cat:"tp", t:"Conseiller commercial", d:"Titre professionnel – prospecter, conseiller et vendre auprès d'une clientèle de professionnels ou de particuliers.", m:"Titre professionnel · niveau 4",
+  {cat:"tp", t:"Conseiller commercial", k:["conseiller commercial"], d:"Titre professionnel – prospecter, conseiller et vendre auprès d'une clientèle de professionnels ou de particuliers.", m:"Titre professionnel · niveau 4",
     p:[["Fiche programme – formation continue", "fiches/FP_TP_CC.pdf"], ["Fiche programme – apprentissage", "fiches/FP_TP_CC_APPRENTISSAGE.pdf"]]},
-  {cat:"tp", t:"Conseiller de vente", d:"Titre professionnel – accueillir, conseiller et vendre en magasin, participer à la tenue de l'espace de vente.", m:"Titre professionnel · niveau 4",
+  {cat:"tp", t:"Conseiller de vente", k:["conseiller de vente"], d:"Titre professionnel – accueillir, conseiller et vendre en magasin, participer à la tenue de l'espace de vente.", m:"Titre professionnel · niveau 4",
     p:[["Fiche programme – formation continue", "fiches/FP_TP_CV.pdf"], ["Fiche programme – apprentissage", "fiches/FP_TP_CV_APPRENTISSAGE.pdf"]]},
 ];
 
@@ -440,7 +458,30 @@ const grid = document.getElementById("formations-grid");
 const select = document.getElementById("f-formation");
 const LABEL = {securite:"Prévention & sécurité", ergonomie:"Ergonomie", incendie:"Incendie", conduite:"Autorisation de conduite", tp:"Titre professionnel"};
 
+// ===== Prochaine session (lue dans le calendrier, alimenté par Lakaz) =====
+const norm = x => String(x||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();
+function keysOf(f){ if(f.k) return f.k; const m=f.t.match(/\(([A-Z0-9]{2,8})\)/); return [m?m[1].toLowerCase():norm(f.t.split(/ [–-] /)[0])]; }
+function sessFor(f){
+  const mac=/^mac /i.test(f.t), ks=keysOf(f).map(norm);
+  return (window.CAL_SESS||[]).filter(s=>{const t=" "+norm((s.f||"")+" "+(s.code||""))+" ";
+    if((/ mac /.test(t))!==mac) return false;
+    return ks.some(k=>t.indexOf(" "+k+" ")>=0);});
+}
+function nextHTML(f){
+  const L=sessFor(f); if(!L.length) return "";
+  const libre=x=>!(x.st==="complet"||((+x.pl||0)&&(+x.ins||0)>=(+x.pl)));
+  const s=L.find(libre)||L[0], d=new Date(s.d+"T12:00:00");
+  const date=d.toLocaleDateString("fr-FR",d.getFullYear()===new Date().getFullYear()?{day:"numeric",month:"long"}:{day:"numeric",month:"long",year:"numeric"});
+  const pl=+s.pl||0, rest=pl?Math.max(0,pl-(+s.ins||0)):null, full=s.st==="complet"||(pl&&rest===0);
+  const etat=full?"complet":rest==null?"places disponibles":rest+" place"+(rest>1?"s":"");
+  const autres=L.length>1?` · +${L.length-1} autre${L.length>2?"s":""} date${L.length>2?"s":""}`:"";
+  return `<a class="next${full?" full":""}" href="#calendrier">📅 Prochaine session : <b>${date}</b> · ${etat}${autres}</a>`;
+}
+let CUR = "all";
+window.calUpdated = () => render(CUR);
+
 function render(filter){
+  CUR = filter;
   grid.innerHTML = "";
   FORMATIONS.filter(f => filter==="all" || f.cat===filter).forEach(f=>{
     const el = document.createElement("article");
@@ -448,7 +489,7 @@ function render(filter){
     const progs = (f.p||[]).map(([l,id])=>`<a class="dl" href="${DL(id)}" target="_blank" rel="noopener">⬇ ${l} (PDF)</a>`).join("");
     el.innerHTML = `<span class="tag ${f.cat==='tp'?'tp':''}">${LABEL[f.cat]}</span>
       <h3>${f.t}</h3>
-      <div class="meta">${f.m}</div>${f.cat==='tp'?'<div class="meta app">Possible en apprentissage</div>':''}
+      <div class="meta">${f.m}</div>${nextHTML(f)}${f.prix?`<div class="prix">${f.prix}</div>`:""}${f.cat==='tp'?'<div class="meta app">Possible en apprentissage</div>':''}
       <details class="fold"><summary><span class="ouvrir">Voir le détail et les programmes</span><span class="fermer">Masquer le détail</span></summary>
         <p>${f.d}</p>
         <div class="progs">${progs || '<span class="noprog">Programme détaillé sur simple demande</span>'}</div>
@@ -534,10 +575,16 @@ document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 <style>
 [data-page][hidden]{display:none!important}
+.btn.out{background:#fff!important;color:var(--navy)!important;border:1px solid var(--line)!important;box-shadow:none!important}
 #formations-grid{align-items:start}
 .formation{padding:18px 20px}
 .formation h3{font-size:1.05rem;margin:8px 0 6px}
 .formation .meta{font-size:.88rem}
+.formation .next{display:block;margin-top:6px;font-size:.86rem;color:#1E7A4C;text-decoration:none;font-weight:500}
+.formation .next b{font-weight:700}
+.formation .next.full{color:var(--muted)}
+.formation .next:hover{text-decoration:underline}
+.formation .prix{display:inline-block;margin-top:6px;background:#FDEBDC;color:#B4500F;font-weight:700;font-size:.85rem;border-radius:999px;padding:3px 10px;width:fit-content;align-self:flex-start}
 .fold{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}
 .fold summary{cursor:pointer;font-weight:600;color:var(--navy);list-style:none;font-size:.92rem}
 .fold summary::-webkit-details-marker{display:none}
@@ -563,14 +610,14 @@ section[data-page]{scroll-margin-top:84px}
 <script>
 // ===== Navigation par pages (un seul fichier, une "page" par rubrique) =====
 (function(){
-  const TITRES={accueil:"3AIM CFA – Centre de formation & CFA à Saint-André, La Réunion",formations:"Formations – 3AIM CFA",calendrier:"Calendrier des sessions – 3AIM CFA",apprentissage:"Apprentissage – 3AIM CFA",qualite:"Résultats, qualité et handicap – 3AIM CFA",contact:"Devis et contact – 3AIM CFA"};
+  const TITRES={accueil:"3AIM CFA – Centre de formation & CFA à Saint-André, La Réunion",formations:"Formations – 3AIM CFA",calendrier:"Calendrier des sessions – 3AIM CFA",apprentissage:"Apprentissage – 3AIM CFA",qualite:"Résultats, qualité et handicap – 3AIM CFA",anterieurs:"Résultats antérieurs – 3AIM CFA",contact:"Devis et contact – 3AIM CFA"};
   const secs=[...document.querySelectorAll("[data-page]")];
   function route(){
     const id=decodeURIComponent(location.hash.slice(1));
     let el=id&&id!=="accueil"?document.getElementById(id):null, page="accueil";
     if(el){const s=el.closest("[data-page]");if(s)page=s.dataset.page.split(" ")[0];}
     secs.forEach(s=>s.hidden=!s.dataset.page.split(" ").includes(page));
-    document.querySelectorAll(".menu a").forEach(a=>{const t=document.getElementById(a.getAttribute("href").slice(1));a.classList.toggle("on",!!t&&t.closest("[data-page]").dataset.page===page&&page!=="accueil")});
+    document.querySelectorAll(".menu a").forEach(a=>{const t=document.getElementById(a.getAttribute("href").slice(1));const h=a.getAttribute("href").slice(1);const pg=page==="anterieurs"?"qualite":page;a.classList.toggle("on",h==="accueil"?page==="accueil":!!t&&t.closest("[data-page]").dataset.page===pg&&page!=="accueil")});
     document.title=TITRES[page]||TITRES.accueil;
     const first=secs.find(s=>!s.hidden);
     if(!el||el===first) window.scrollTo(0,0); else el.scrollIntoView();
@@ -581,5 +628,39 @@ section[data-page]{scroll-margin-top:84px}
 })();
 </script>
 
+
+<script>
+// ===== Résultats en cours : calculés par Lakaz et publiés avec le calendrier =====
+(function(){
+  const box=document.getElementById("res-live");
+  const pc=x=>x==null||isNaN(x)?"—":Math.round(x*100)+" %";
+  const fd=d=>d?new Date(d+"T12:00:00").toLocaleDateString("fr-FR"):"";
+  const vide='<div class="cal-msg"><b>Donnée non disponible — première session en cours.</b><br>Les résultats s\'afficheront ici automatiquement dès la fin des premières sessions suivies dans notre nouvel outil de gestion. En attendant, consultez <a href="#resultats-anterieurs">nos résultats antérieurs (2025 – 2026)</a>.</div>';
+  window.resUpdated=function(){
+    const R=window.RES_DATA, A=(R&&R.annees||[]).filter(a=>a.s>0).sort((a,b)=>b.y-a.y);
+    if(!A.length){box.innerHTML=window.RES_FAIL?'<div class="cal-msg">Résultats momentanément indisponibles. Consultez <a href="#resultats-anterieurs">nos résultats antérieurs</a>.</div>':vide;return}
+    const a=A[0], enCours=a.y===new Date().getFullYear()?" (en cours)":"";
+    let h=`<div class="kpis"><div class="kpi"><div class="lab">Taux de satisfaction ${a.y}${enCours}</div><div class="val">${pc(a.sat)}</div><p>Calculé sur <b>${a.rep} répondant${a.rep>1?"s":""}</b>${a.moy?` · note moyenne ${a.moy.toFixed(2).replace(".",",")}/4`:""}<br>${a.s} session${a.s>1?"s":""} · ${a.nb} participant${a.nb>1?"s":""}<br>Période : du ${fd(a.deb)} au ${fd(a.fin)}</p></div>
+      <div class="kpi navy"><div class="lab">Taux de réussite ${a.y}${enCours}</div><div class="val">${pc(a.tr)}</div><p>${a.pres?`<b>${a.reus} stagiaire${a.reus>1?"s":""} ${a.reus>1?"ont":"a"} réussi</b> sur ${a.pres} présenté${a.pres>1?"s":""} à l'évaluation`:"Résultats d'évaluation en cours de saisie"}<br>Période : du ${fd(a.deb)} au ${fd(a.fin)}</p></div></div>`;
+    h+=`<div class="tbl-wrap"><table class="ind"><thead><tr><th>Année</th><th>Satisfaction</th><th>Réussite</th><th>Répondants</th><th>Sessions · participants</th><th>Période</th></tr></thead><tbody>${A.map(x=>`<tr><td>${x.y}${x.y===new Date().getFullYear()?" (en cours)":""}</td><td>${pc(x.sat)}</td><td>${pc(x.tr)}</td><td>${x.rep}</td><td>${x.s} · ${x.nb}</td><td>${fd(x.deb)} – ${fd(x.fin)}</td></tr>`).join("")}</tbody></table></div>`;
+    const rows=A.flatMap(x=>(x.fams||[]).map(f=>`<tr><td>${x.y}</td><td>${f.fam}</td><td>${f.s}</td><td>${f.nb}</td><td>${f.rep}</td><td>${f.rep?pc(f.sat):"pas d'avis exploitable"}</td><td>${pc(f.tr)}</td></tr>`).concat(`<tr class="tot"><td>${x.y}</td><td>Toutes formations</td><td>${x.s}</td><td>${x.nb}</td><td>${x.rep}</td><td>${pc(x.sat)}</td><td>${pc(x.tr)}</td></tr>`));
+    h+=`<details class="detail"><summary>Voir le détail par formation</summary><div class="tbl-wrap"><table class="ind"><thead><tr><th>Année</th><th>Formation</th><th>Sessions</th><th>Participants</th><th>Répondants</th><th>Satisfaction</th><th>Réussite</th></tr></thead><tbody>${rows.join("")}</tbody></table></div></details>`;
+    if(R.maj)h+=`<p class="note">Dernière mise à jour : ${new Date(R.maj).toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"})}.</p>`;
+    box.innerHTML=h;
+  };
+  if(window.RES_DATA!==undefined||window.RES_FAIL)window.resUpdated();
+})();
+</script>
+
+<a class="wa-float" href="https://wa.me/262692098592?text=Bonjour%203AIM%20CFA%2C%20je%20souhaite%20des%20informations%20sur%20une%20formation." target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2a13.2 13.2 0 0 0 6.6 1.7c7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.7-5.7C5.1 9.9 10 5.1 16 5.1s10.9 4.8 10.9 10.7S22 26.4 16 26.4zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.5 5.5 4.9.8.3 1.4.5 1.9.7.8.2 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+  <span>WhatsApp</span>
+</a>
+<style>
+.wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:8px;background:#25D366;color:#fff;text-decoration:none;font-weight:700;padding:12px 18px 12px 14px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:transform .15s}
+.wa-float:hover{transform:translateY(-2px)}
+.wa-float svg{width:26px;height:26px}
+@media (max-width:640px){.wa-float span{display:none}.wa-float{padding:13px}}
+</style>
 </body>
 </html>
