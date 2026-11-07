@@ -18,6 +18,7 @@
   <div class="wrap nav">
     <a class="logo" href="#accueil"><span class="mark">3A<b>i</b></span>3AIM CFA</a>
     <nav class="menu">
+      <a href="#accueil">Accueil</a>
       <a href="#formations">Formations</a>
       <a href="#calendrier">Calendrier</a>
       <a href="#apprentissage">Apprentissage</a>
@@ -79,6 +80,8 @@
     <div class="filters">
       <button class="chip active" data-f="all">Toutes</button>
       <button class="chip" data-f="securite">Prévention & sécurité</button>
+      <button class="chip" data-f="ergonomie">Ergonomie</button>
+      <button class="chip" data-f="incendie">Incendie</button>
       <button class="chip" data-f="conduite">Autorisations de conduite</button>
       <button class="chip" data-f="tp">Titres professionnels</button>
     </div>
@@ -388,24 +391,17 @@
 // p : programmes PDF téléchargeables -> [libellé, identifiant du fichier Google Drive partagé "lecture par lien"]
 const FORMATIONS = [
   {cat:"securite", t:"Sauveteur Secouriste du Travail (SST)", d:"Intervenir face à un accident du travail ou un malaise et contribuer à la prévention dans l'entreprise. Certificat SST (référentiel INRS).", m:"Formation initiale · MAC",
-    p:[["Programme SST initial","1O_z0gvrlcEzquFdxlbBFRalpGu-oshkq"],["Programme MAC SST","1SBPc1f7Y_suKrN1EezI4WGLmjoHkELZV"]]},
-  {cat:"securite", t:"Prévention des risques liés à l'activité physique (PRAP)", d:"Devenir acteur de sa propre prévention : analyse de sa situation de travail, principes de sécurité physique et d'économie d'effort.", m:"PRAP IBC",
-    p:[["Programme PRAP IBC","1voY3SCcVj6-JY4-9ROn_fUcF3N_Un5Yt"]]},
+    p:[["Programme SST initial","1O_z0gvrlcEzquFdxlbBFRalpGu-oshkq"],["Programme MAC SST (recyclage)","fiches/FP_MAC_SST.pdf"]]},
+  {cat:"ergonomie", t:"Prévention des risques liés à l'activité physique (PRAP)", d:"Devenir acteur de sa propre prévention : analyse de sa situation de travail, principes de sécurité physique et d'économie d'effort.", m:"PRAP IBC · Formation initiale · MAC",
+    p:[["Programme PRAP IBC","1voY3SCcVj6-JY4-9ROn_fUcF3N_Un5Yt"],["Programme MAC PRAP IBC (recyclage)","fiches/FP_MAC_PRAP_IBC.pdf"]]},
   {cat:"securite", t:"AIPR – opérateur, encadrant, concepteur", d:"Réglementation DT-DICT, lecture de plans, travaux à proximité des réseaux. Examen QCM officiel du Ministère.", m:"Examen inclus",
     p:[["Programme AIPR opérateur","1a187E5yOs8deRI12vYUFQzAB0erg6IuQ"],["Programme AIPR encadrant","1LSMhaCQ0-jYDBYQ3rVkabI0Fe7poZ5lr"]]},
   {cat:"securite", t:"Habilitation électrique (H0B0, BS, BE manœuvre, HE)", d:"Travailler en sécurité sur ou à proximité d'installations électriques, conformément à la norme NF C 18-510.", m:"Non électricien",
     p:[["Programme H0B0","1jGKVgbWlCDP5bV3bGNM26VYCHH6xCSdi"],["Programme BS / BE / HE","1v_jafVGi_nNNwDuUqCrEmvCfTzgsKLjf"]]},
   {cat:"securite", t:"Travail en hauteur et port du harnais", d:"Identifier les risques de chute, choisir un ancrage, régler et utiliser un harnais antichute.", m:"1 ou 2 jours",
     p:[["Programme 1 jour","13YTjJwW0OVPFFI-AJ3T5ktNJKiyc21wo"],["Programme 2 jours","1cqB6Vgsz7CRuNdzbW7ajYYOJ8ZA-1PZ3"]]},
-  {cat:"securite", t:"Montage et démontage des échafaudages", d:"Monter, démonter et vérifier un échafaudage en sécurité selon la notice du fabricant.", m:"2 jours",
-    p:[["Programme échafaudage","1fsW3ZL3ktphoLREpEEz58e7N92KhQ4Bc"]]},
-  {cat:"securite", t:"Évaluation des risques – Document unique (DUERP)", d:"Conduire l'évaluation des risques, rédiger et mettre à jour le document unique, bâtir un plan d'actions.", m:"Pour dirigeants et référents",
-    p:[["Programme DUERP","1WD7nfM2iFAd_GuRI-h-IQVbbPW4Ktw8E"]]},
-  {cat:"securite", t:"Manipulation des extincteurs", d:"Connaître le triangle du feu, les classes de feux et les types d'extincteurs, et savoir intervenir sur un départ de feu.", m:"Théorie et pratique",
+  {cat:"incendie", t:"Manipulation des extincteurs", d:"Connaître le triangle du feu, les classes de feux et les types d'extincteurs, et savoir intervenir sur un départ de feu.", m:"Théorie et pratique",
     p:[["Programme extincteurs","1veywfLVl0lDRtOG6cNHb_LWiI7jGNb__"]]},
-  {cat:"securite", t:"Gestion des conflits et des incivilités", d:"Prévenir les tensions, adopter la bonne posture et désamorcer les situations conflictuelles avec le public.", m:"Accueil · relation client",
-    p:[["Programme gestion des conflits","1dnVlwLOuu3E4h5QD9B8ZYxYPif6wH1Cy"]]},
-  {cat:"securite", t:"Soudage à l'arc électrode enrobée (111)", d:"Initiation au procédé de soudage à l'arc à l'électrode enrobée : sécurité, réglages et réalisation de cordons.", m:"Initiation"},
   {cat:"conduite", t:"Autorisation de conduite – nacelles (PEMP)", d:"Conduite en sécurité des plates-formes élévatrices mobiles de personnes. Évaluations théorique et pratique.", m:"Initial et recyclage",
     p:[["Programme initial","1nWUT4UuIwHdrqBvhQhjMVv7mmE3recHs"],["Programme recyclage","1gjKoYgoDGiSYHpuGoNTr7QAXQOJq9i57"]]},
   {cat:"conduite", t:"Autorisation de conduite – engins de chantier", d:"Pelles, chargeuses, tractopelles, mini-engins… Réglementation, vérifications, conduite en situation réelle.", m:"3 ou 5 jours",
@@ -443,7 +439,7 @@ const FORMATIONS = [
 const DL = id => id.endsWith(".pdf") ? id : "https://drive.google.com/uc?export=download&id=" + id;
 const grid = document.getElementById("formations-grid");
 const select = document.getElementById("f-formation");
-const LABEL = {securite:"Prévention & sécurité", conduite:"Autorisation de conduite", tp:"Titre professionnel"};
+const LABEL = {securite:"Prévention & sécurité", ergonomie:"Ergonomie", incendie:"Incendie", conduite:"Autorisation de conduite", tp:"Titre professionnel"};
 
 function render(filter){
   grid.innerHTML = "";
@@ -452,13 +448,14 @@ function render(filter){
     el.className = "card formation";
     const progs = (f.p||[]).map(([l,id])=>`<a class="dl" href="${DL(id)}" target="_blank" rel="noopener">⬇ ${l} (PDF)</a>`).join("");
     el.innerHTML = `<span class="tag ${f.cat==='tp'?'tp':''}">${LABEL[f.cat]}</span>
-      <h3>${f.t}</h3><p>${f.d}</p>
+      <h3>${f.t}</h3>
       <div class="meta">${f.m}</div>${f.cat==='tp'?'<div class="meta app">Possible en apprentissage</div>':''}
-      <div class="progs">${progs || '<span class="noprog">Programme détaillé sur simple demande</span>'}</div>
-      <details class="acces"><summary>Modalités et délai d'accès</summary>
-        <p><b>Accès :</b> inscription via le formulaire, par mail (contact@3aim.fr) ou par téléphone (0692 09 85 92). Devis et programme envoyés ; inscription confirmée à réception du devis signé ou de l'accord de prise en charge. Questionnaire de positionnement avant l'entrée en formation.</p>
+      <details class="fold"><summary><span class="ouvrir">Voir le détail et les programmes</span><span class="fermer">Masquer le détail</span></summary>
+        <p>${f.d}</p>
+        <div class="progs">${progs || '<span class="noprog">Programme détaillé sur simple demande</span>'}</div>
+        <div class="acces-in"><p><b>Accès :</b> inscription via le formulaire, par mail (contact@3aim.fr) ou par téléphone (0692 09 85 92). Devis et programme envoyés ; inscription confirmée à réception du devis signé ou de l'accord de prise en charge. Questionnaire de positionnement avant l'entrée en formation.</p>
         <p><b>Délai :</b> 1 mois en moyenne entre la demande et le début de la formation, selon les dates de session, les places et le délai de prise en charge du financeur.</p>
-        <p><b>Handicap :</b> formation accessible – contactez notre référent handicap, Rachad MOHAMED (0692 09 85 92).</p>
+        <p><b>Handicap :</b> formation accessible – contactez notre référent handicap, Rachad MOHAMED (0692 09 85 92).</p></div>
       </details>
       <a class="ask" href="#demande" data-f="${f.t}">Demander un devis / s'inscrire →</a>`;
     grid.appendChild(el);
@@ -467,7 +464,7 @@ function render(filter){
 render("all");
 
 // options du formulaire
-["securite","conduite","tp"].forEach(c=>{
+["securite","ergonomie","incendie","conduite","tp"].forEach(c=>{
   const g = document.createElement("optgroup"); g.label = LABEL[c];
   FORMATIONS.filter(f=>f.cat===c).forEach(f=>{const o=document.createElement("option");o.textContent=f.t;g.appendChild(o);});
   select.appendChild(g);
@@ -538,6 +535,21 @@ document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 <style>
 [data-page][hidden]{display:none!important}
+#formations-grid{align-items:start}
+.formation{padding:18px 20px}
+.formation h3{font-size:1.05rem;margin:8px 0 6px}
+.formation .meta{font-size:.88rem}
+.fold{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}
+.fold summary{cursor:pointer;font-weight:600;color:var(--navy);list-style:none;font-size:.92rem}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary::before{content:"▸ ";color:var(--orange)}
+.fold[open] summary::before{content:"▾ "}
+.fold .fermer{display:none}.fold[open] .ouvrir{display:none}.fold[open] .fermer{display:inline}
+.fold>p{color:var(--muted);font-size:.92rem;margin:10px 0}
+.acces-in{font-size:.85rem;color:var(--muted);margin-top:8px}
+.acces-in p{margin:.4em 0}
+.formation .ask{display:inline-block;margin-top:10px}
+
 section[data-page]{scroll-margin-top:84px}
 .menu a.on{color:var(--orange)}
 .menu a.btn.on{color:#fff}
@@ -559,7 +571,7 @@ section[data-page]{scroll-margin-top:84px}
     let el=id&&id!=="accueil"?document.getElementById(id):null, page="accueil";
     if(el){const s=el.closest("[data-page]");if(s)page=s.dataset.page.split(" ")[0];}
     secs.forEach(s=>s.hidden=!s.dataset.page.split(" ").includes(page));
-    document.querySelectorAll(".menu a").forEach(a=>{const t=document.getElementById(a.getAttribute("href").slice(1));a.classList.toggle("on",!!t&&t.closest("[data-page]").dataset.page===page&&page!=="accueil")});
+    document.querySelectorAll(".menu a").forEach(a=>{const t=document.getElementById(a.getAttribute("href").slice(1));const h=a.getAttribute("href").slice(1);a.classList.toggle("on",h==="accueil"?page==="accueil":!!t&&t.closest("[data-page]").dataset.page===page&&page!=="accueil")});
     document.title=TITRES[page]||TITRES.accueil;
     const first=secs.find(s=>!s.hidden);
     if(!el||el===first) window.scrollTo(0,0); else el.scrollIntoView();
