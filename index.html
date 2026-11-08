@@ -26,6 +26,10 @@ section.pg-hero .ph{margin-bottom:0}
 section.pg .kpi,section.pg .tbl-wrap,section.pg .tp-note,section.pg .card,section.pg #res-live>div,section.pg .cal-list>*,section.pg-c .grid>div,section.pg form{background:#fff;border-radius:14px;box-shadow:0 8px 26px rgba(18,33,63,.08);border:1px solid #e6ebf3}
 section.pg-c .grid>div{padding:26px}
 section.pg .tp-note{padding:16px 20px}
+section.pg2{background:linear-gradient(180deg,#e9eff8 0%,#f3f6fb 100%)}
+section.pg2 .card,section.pg .access-box{background:#fff;border-radius:14px;box-shadow:0 8px 26px rgba(18,33,63,.08);border:1px solid #e6ebf3}
+.band.band-ph{background:transparent;padding:0;border-radius:0}
+.ph .band .stat{background:rgba(255,255,255,.08);border-radius:14px}
 #contact.soft{background:linear-gradient(180deg,#e9eff8 0%,#f7f9fc 100%)}
 @media(max-width:700px){.ph{padding:40px 0 46px}}
 </style>
@@ -99,12 +103,14 @@ section.pg .tp-note{padding:16px 20px}
   </div>
 </section>
 
-<section id="formations" class="soft" data-page="formations">
-  <div class="wrap">
+<section id="formations" class="pg" data-page="formations">
+  <div class="ph"><div class="wrap">
     <span class="eyebrow">Catalogue</span>
     <h2>Nos formations</h2>
     <p class="lead">Toutes nos formations sont réalisables en inter ou en intra-entreprise. La durée, les objectifs, les prérequis, les méthodes et les modalités d'évaluation figurent dans le programme de chaque formation, téléchargeable ci-dessous ou envoyé sur simple demande. Les dates sont dans le <a href="#calendrier">calendrier</a> . Le tarif par participant est indiqué sur chaque formation ; un devis précis est établi selon le nombre de participants et le lieu. Tous nos tarifs sont indiqués hors taxe : 3AIM CFA est exonéré de TVA au titre de la formation professionnelle continue (article 261-4-4° a du CGI), aucune TVA ne s'y ajoute.</p>
     <p style="margin:14px 0 4px"><a class="btn" href="documents/Catalogue_formations_3AIM_CFA.pdf" target="_blank" rel="noopener" download>⬇ Télécharger le catalogue complet (PDF)</a></p>
+  </div></div>
+  <div class="wrap">
     <div class="filters">
       <button class="chip active" data-f="all">Toutes</button>
       <button class="chip" data-f="securite">Prévention & sécurité</button>
@@ -200,9 +206,9 @@ section.pg .tp-note{padding:16px 20px}
 })();
 </script>
 
-<section id="apprentissage" data-page="apprentissage">
-  <div class="wrap">
-    <div class="band">
+<section id="apprentissage" class="pg" data-page="apprentissage">
+  <div class="ph"><div class="wrap">
+    <div class="band band-ph">
       <div>
         <span class="eyebrow">Apprentissage · inscriptions ouvertes</span>
         <h2>Nos titres professionnels en apprentissage</h2>
@@ -216,6 +222,8 @@ section.pg .tp-note{padding:16px 20px}
         <div class="stat"><b>Diplôme</b><span>titre professionnel reconnu</span></div>
       </div>
     </div>
+  </div></div>
+  <div class="wrap">
     <div class="access-box">
       <h3>Conditions et modalités d'accès en apprentissage</h3>
       <p><b>Public :</b> jeunes de 16 à 29 ans révolus. Sans limite d'âge pour les personnes en situation de handicap, et dans les autres cas prévus par le Code du travail.</p>
@@ -229,7 +237,7 @@ section.pg .tp-note{padding:16px 20px}
   </div>
 </section>
 
-<section id="apprentis-infos" class="soft" data-page="apprentissage">
+<section id="apprentis-infos" class="pg2" data-page="apprentissage">
   <div class="wrap">
     <span class="eyebrow">Apprentis & employeurs</span>
     <h2>Tout savoir sur le contrat d'apprentissage</h2>
