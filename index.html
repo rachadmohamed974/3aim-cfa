@@ -12,6 +12,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+section.pg{padding:0 0 72px;background:linear-gradient(180deg,#f3f6fb 0%,#e9eff8 100%)}
+section.pg-c{padding-top:48px}
+section.pg-hero{padding:0}
+.ph{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:58px 0 66px;margin-bottom:40px;position:relative;overflow:hidden}
+section.pg-hero .ph{margin-bottom:0}
+.ph::after{content:"";position:absolute;right:-110px;top:-130px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(232,119,34,.38) 0%,rgba(232,119,34,0) 70%)}
+.ph::before{content:"";position:absolute;left:-80px;bottom:-140px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.10) 0%,rgba(255,255,255,0) 70%)}
+.ph .wrap{position:relative;z-index:1}
+.ph h2{color:#fff}.ph .eyebrow{color:var(--orange-2)}.ph p,.ph .lead{color:#d7dfec}.ph p a{color:#ffd29b}
+.ph-cta{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+section.pg .kpi,section.pg .tbl-wrap,section.pg .tp-note,section.pg .card,section.pg #res-live>div,section.pg .cal-list>*,section.pg-c .grid>div,section.pg form{background:#fff;border-radius:14px;box-shadow:0 8px 26px rgba(18,33,63,.08);border:1px solid #e6ebf3}
+section.pg-c .grid>div{padding:26px}
+section.pg .tp-note{padding:16px 20px}
+#contact.soft{background:linear-gradient(180deg,#e9eff8 0%,#f7f9fc 100%)}
+@media(max-width:700px){.ph{padding:40px 0 46px}}
+</style>
 </head>
 <body>
 
@@ -106,11 +123,13 @@
   </div>
 </section>
 
-<section id="calendrier" data-page="calendrier">
-  <div class="wrap">
+<section id="calendrier" data-page="calendrier" class="pg">
+  <div class="ph"><div class="wrap">
     <span class="eyebrow">Prochaines sessions</span>
     <h2>Calendrier des formations</h2>
     <p class="cal-intro">Les sessions ouvertes à Saint-André, mises à jour en continu. Une autre date ou une formation dans vos locaux ? <a href="#demande">Demandez un devis</a>.</p>
+  </div></div>
+  <div class="wrap">
     <div class="cal-f" id="cal-f" aria-label="Filtrer par formation"></div>
     <div id="cal-list" class="cal-list"><p class="cal-msg">Chargement des sessions…</p></div>
     <p class="cal-maj" id="cal-maj"></p>
@@ -265,11 +284,13 @@
   </div>
 </section>
 
-<section id="qualite" data-page="qualite">
-  <div class="wrap">
+<section id="qualite" data-page="qualite" class="pg">
+  <div class="ph"><div class="wrap">
     <span class="eyebrow">Qualité & résultats</span>
     <h2>Nos indicateurs de résultats</h2>
     <p class="lead">Chiffres calculés automatiquement à partir des formations terminées, mis à jour à chaque fin de session.</p>
+  </div></div>
+  <div class="wrap">
     <div id="res-live"><p class="cal-msg">Chargement des résultats…</p></div>
     <p class="note">Méthode : taux de satisfaction = participants ayant donné la note 3 ou 4 sur 4 au questionnaire de fin de formation ÷ répondants ; une absence de réponse n'est pas comptée comme une insatisfaction. Taux de réussite = stagiaires certifiés, déclarés aptes ou ayant obtenu un avis favorable ÷ stagiaires présentés à l'évaluation finale. Données agrégées, sans information nominative. Échelle de notation : nos questionnaires actuels sont notés de 1 à 4, alors que nos résultats antérieurs (2025 – 2026) proviennent d'anciens questionnaires notés de 1 à 5 ; dans les deux cas, seules les réponses « satisfait » et « très satisfait » sont comptées comme satisfaites.</p>
     <p class="note"><b>Apprentissage :</b> les taux d'obtention du diplôme, de poursuite d'études, d'interruption en cours de formation et d'insertion professionnelle (dispositif InserJeunes) seront publiés dès la fin de la première promotion d'apprentis.</p>
@@ -373,11 +394,13 @@
   </div>
 </section>
 
-<section id="resultats-anterieurs" data-page="anterieurs">
-  <div class="wrap">
+<section id="resultats-anterieurs" data-page="anterieurs" class="pg">
+  <div class="ph"><div class="wrap">
     <span class="eyebrow">Historique</span>
     <h2>Résultats antérieurs</h2>
     <p class="lead">Nos résultats des années 2025 et 2026, calculés sur les formations terminées.</p>
+  </div></div>
+  <div class="wrap">
 
     <div class="kpis">
       <div class="kpi">
@@ -431,11 +454,13 @@
     <p><a class="btn out" href="#qualite">← Voir les résultats en cours</a></p>
   </div>
 </section>
-<section id="resultats-certifications" data-page="certifications">
-  <div class="wrap">
+<section id="resultats-certifications" data-page="certifications" class="pg">
+  <div class="ph"><div class="wrap">
     <span class="eyebrow">Indicateur 3</span>
     <h2>Résultats des certifications</h2>
     <p class="lead">Les titres professionnels que nous préparons, leurs blocs de compétences, leurs débouchés, leurs passerelles et nos résultats aux examens.</p>
+  </div></div>
+  <div class="wrap">
     <div class="tp-note"><p><b>Nos résultats aux examens :</b> nos premières promotions de titres professionnels sont en cours (formation continue) et nos premiers apprentis entrent en novembre 2026. Aucune session d'examen n'a encore eu lieu : nous n'avons donc pas encore de taux d'obtention à publier. Pour chaque titre, nous publierons le taux d'obtention du titre complet et des blocs, le taux de présentation à l'examen et le taux d'interruption, dans le mois qui suit chaque session d'examen, séparément pour la formation continue et l'apprentissage.</p>
     <p><b>Apprentissage :</b> les indicateurs officiels (taux d'obtention, poursuite d'études, interruption en cours de formation, insertion professionnelle à 6 et 12 mois, valeur ajoutée) sont calculés par l'État (dispositif InserJeunes) et seront repris ici dès leur publication pour notre première promotion.</p>
     <p><b>Pour tous nos titres :</b> Titre professionnel du ministère du Travail, enregistré au RNCP. Chaque bloc (CCP) peut être validé séparément et capitalisé. Accessible en formation continue, en apprentissage, en contrat de professionnalisation et par la VAE. Examen organisé par 3AIM CFA, centre agréé.</p></div>
@@ -500,7 +525,15 @@
   </div>
 </section>
 
-<section id="demande" data-page="contact">
+<section class="pg-hero" data-page="contact">
+  <div class="ph"><div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h2>Une question, un projet de formation ?</h2>
+    <p class="lead">Écrivez-nous ou appelez-nous : nous vous répondons sous 48 h ouvrées, avec une proposition adaptée et les financements possibles.</p>
+    <p class="ph-cta"><a class="btn" href="tel:+262692098592">📞 0692 09 85 92</a> <a class="btn ghost" href="mailto:contact@3aim.fr">✉️ contact@3aim.fr</a></p>
+  </div></div>
+</section>
+<section id="demande" class="pg pg-c" data-page="contact">
   <div class="wrap grid g2" style="align-items:start">
     <div>
       <span class="eyebrow">Demande de devis ou d'inscription</span>
