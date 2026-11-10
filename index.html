@@ -36,7 +36,7 @@ section.pg2 .card,section.pg .access-box{background:#fff;border-radius:14px;box-
 @media(max-width:700px){.ph,.hero{height:auto;padding:44px 0!important}}
 #contact.soft{background:linear-gradient(180deg,#e9eff8 0%,#f7f9fc 100%)}
 @media(max-width:700px){.ph{padding:40px 0 46px}}
-</style>
+.cand-btn{display:inline-block;margin:8px 0 4px}.cal-tp{display:block;font-size:13px;opacity:.8;margin-top:6px}</style>
 </head>
 <body>
 
@@ -186,7 +186,7 @@ section.pg2 .card,section.pg .access-box{background:#fff;border-radius:14px;box-
     return '<article class="cal-c"><div class="cal-d"><b>'+d.getDate()+'</b><span>'+d.toLocaleDateString("fr-FR",{month:"short"})+'</span></div>'+
       '<div class="cal-i"><h3>'+esc(s.f)+'</h3><div class="cal-w">'+esc(when)+(s.j?' · '+s.j+' jour'+(s.j>1?'s':''):'')+(s.h?' · '+s.h+' h':'')+' · '+esc(s.lieu||"Saint-André")+'</div>'+
       '<div class="cal-p '+(full?"full":rest!=null&&rest<=3?"low":"")+'">'+(full?"Complet":rest==null?"Places disponibles":rest+" place"+(rest>1?"s":"")+" restante"+(rest>1?"s":""))+'</div></div>'+
-      '<div class="cal-a">'+(full?'<span class="btn ghost" aria-disabled="true">Complet</span>':'<a class="btn" href="#demande" data-i="'+i+'" data-t="i">S\'inscrire</a>')+'<a class="btn ghost" href="#demande" data-i="'+i+'" data-t="d">Demander un devis</a></div></article>'}
+      '<div class="cal-a">'+(s.tp?'<a class="btn" href="'+esc(s.lien||"#demande")+'" target="_blank" rel="noopener">Je candidate</a><span class="cal-tp">Formation financée · Région, France Travail</span>':(full?'<span class="btn ghost" aria-disabled="true">Complet</span>':'<a class="btn" href="#demande" data-i="'+i+'" data-t="i">S\'inscrire</a>')+'<a class="btn ghost" href="#demande" data-i="'+i+'" data-t="d">Demander un devis</a>')+'</div></article>'}
   function render(){var V=ALL.filter(function(s){return !OFF||code(s)===OFF}),codes=[];
     ALL.forEach(function(s){if(codes.indexOf(code(s))<0)codes.push(code(s))});
     F.innerHTML=codes.length>1?['<button type="button" data-c="" aria-pressed="'+(!OFF)+'">Toutes</button>'].concat(codes.map(function(c){return '<button type="button" data-c="'+esc(c)+'" aria-pressed="'+(OFF===c)+'">'+esc(c)+'</button>'})).join(""):"";
@@ -701,6 +701,14 @@ const grid = document.getElementById("formations-grid");
 const select = document.getElementById("f-formation");
 const LABEL = {securite:"Prévention & sécurité", ergonomie:"Ergonomie", incendie:"Incendie", conduite:"Autorisation de conduite", tp:"Titre professionnel"};
 
+
+// ===== Candidature aux titres professionnels (formulaire en ligne, relevé par Lakaz) =====
+const CAND_FORM="https://airtable.com/appbzCmuIdP4oeurx/pagzZHMKAtcQbMdqV/form";
+const CAND_T={"assistant de vie aux familles":"ADVF","agent de mediation information services":"AMIS","conseiller en insertion professionnelle":"CIP","mediateur social acces aux droits et services":"MSADS","charge d accueil et de gestion administrative":"CADGA","formateur professionnel d adultes":"FPA","secretaire assistant medico administratif":"SAMA","agent de proprete et d hygiene":"APH","assistant de direction":"AD","conseiller de vente":"CV"};
+const CAND_L={ADVF:"Assistant de vie aux familles",AMIS:"Agent de médiation, information, services",CIP:"Conseiller en insertion professionnelle",MSADS:"Médiateur social accès aux droits et services",CADGA:"Chargé d'accueil et de gestion administrative",FPA:"Formateur professionnel d'adultes",SAMA:"Secrétaire assistant médico-administratif",APH:"Agent de propreté et d'hygiène",AD:"Assistant de direction",CV:"Conseiller de vente"};
+function candBtn(f){const n=norm(f.t);let c="";for(const k in CAND_T){if(n.indexOf(k)>=0){c=CAND_T[k];break}}
+  const u=CAND_FORM+"?"+(c?"prefill_Titre+pro="+encodeURIComponent(c+" – "+CAND_L[c])+"&":"")+"prefill_Origine="+encodeURIComponent("Site internet");
+  return `<a class="btn cand-btn" href="${u}" target="_blank" rel="noopener">Je candidate</a>`}
 // ===== Prochaine session (lue dans le calendrier, alimenté par Lakaz) =====
 const norm = x => String(x||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();
 function keysOf(f){ if(f.k) return f.k; const m=f.t.match(/\(([A-Z0-9]{2,8})\)/); return [m?m[1].toLowerCase():norm(f.t.split(/ [–-] /)[0])]; }
@@ -733,7 +741,7 @@ function render(filter){
     const progs = (f.p||[]).map(([l,id])=>`<a class="dl" href="${DL(id)}" target="_blank" rel="noopener">⬇ ${l} (PDF)</a>`).join("");
     el.innerHTML = `${FIMG[f.t]?`<img class="f-img" src="${FIMG[f.t]}" alt="" loading="lazy">`:''}<span class="tag ${f.cat==='tp'?'tp':''}">${LABEL[f.cat]}</span>
       <h3>${f.t}</h3>
-      <div class="meta">${f.m}${f.rncp?` · ${f.rncp}`:''}</div>${nextHTML(f)}${f.prix?`<div class="prix">${f.prix}${f.cat!=='tp'?' · HT':''}</div>`:""}${f.cat==='tp'?'<div class="meta app">Possible en apprentissage</div>':''}
+      <div class="meta">${f.m}${f.rncp?` · ${f.rncp}`:''}</div>${nextHTML(f)}${f.prix?`<div class="prix">${f.prix}${f.cat!=='tp'?' · HT':''}</div>`:""}${f.cat==='tp'?'<div class="meta app">Possible en apprentissage</div>'+candBtn(f):''}
       <details class="fold"><summary><span class="ouvrir">Voir le détail et les programmes</span><span class="fermer">Masquer le détail</span></summary>
         <p>${f.d}</p>
         ${f.rncp?`<div class="acces-in tp-info"><p><b>Certification :</b> titre professionnel du Ministère du Travail, enregistré au RNCP sous le n° <a href="https://www.francecompetences.fr/recherche/rncp/${f.rncp.slice(4)}/" target="_blank" rel="noopener">${f.rncp}</a>. Composé de blocs de compétences (CCP) validables séparément ; également accessible par la VAE. Examen organisé par 3AIM CFA, centre agréé.</p>
