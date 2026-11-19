@@ -167,7 +167,7 @@ section.pg2 .card,section.pg .access-box{background:#fff;border-radius:14px;box-
 @media (max-width:900px){.hero-grid{grid-template-columns:minmax(0,1fr)}.photo-duo{grid-template-columns:minmax(0,1fr)}.photo-duo img{height:220px}}
 .formation{overflow:hidden}.f-img{display:block;width:calc(100% + 40px);max-width:none;height:auto;margin:-18px -20px 12px}
 .logo-img{display:block;height:52px;width:auto}.flag{display:block;height:28px;width:auto;margin-left:16px;flex-shrink:0}@media (max-width:900px){.logo-img{height:44px}.flag{height:24px;margin-left:10px}.burger{margin-left:auto}}
-.cert td{vertical-align:top;font-size:.9em}.cert ol.ccp{margin:0;padding-left:1.1em}.cert tr.hl td{background:rgba(232,119,34,.08)}.tp-note{border-left:4px solid #E87722;padding:10px 16px;margin:16px 0;background:rgba(232,119,34,.06);border-radius:6px}.tp-note p{margin:6px 0}.hint-s{font-size:.85em;opacity:.75;margin-top:10px}</style>
+.cert td{vertical-align:top;font-size:.9em}.cert ol.ccp{margin:0;padding-left:1.1em}.cert tr.hl td{background:rgba(232,119,34,.08)}.tp-note{border-left:4px solid #E87722;padding:10px 16px;margin:16px 0;background:rgba(232,119,34,.06);border-radius:6px}.tp-note p{margin:6px 0}.hint-s{font-size:.85em;opacity:.75;margin-top:10px}.lk-l{font-size:.9rem;color:var(--ink);margin:6px 0 0;line-height:1.4}.lk-d{margin:10px 0}.lk-b{border-left:3px solid var(--orange);padding:4px 0 4px 12px;margin:10px 0}.lk-b h4{margin:0 0 6px;font-size:.98rem}.lk-b p{margin:4px 0}.lk-b ul{margin:4px 0 6px;padding-left:1.2em}.lk-maj{font-size:.8rem;color:var(--muted);margin:10px 0 0}</style>
 <script>
 (function(){
   var API="https://script.google.com/macros/s/AKfycbzvDHiH-K_2A-6OOURXzBS1TFoKk2f2l53gyByWcNJ9qgaxssqEnTOeM1M7Ijnqo9ct/exec?api=calendrier";
@@ -195,7 +195,7 @@ section.pg2 .card,section.pg .access-box{background:#fff;border-radius:14px;box-
   F.addEventListener("click",function(e){var b=e.target.closest("button");if(b){OFF=b.getAttribute("data-c");render()}});
   L.addEventListener("click",function(e){var a=e.target.closest("[data-i]");if(!a)return;e.preventDefault();inscrire(ALL[+a.getAttribute("data-i")],a.getAttribute("data-t"))});
   fetch(API,{credentials:"omit",redirect:"follow"}).then(function(r){return r.json()}).then(function(d){
-    if(!d||d.ok===false)throw new Error("indispo");window.RES_DATA=(d.sessions||[]).filter(function(x){return x&&x._res})[0]||null;if(window.resUpdated)window.resUpdated();d.sessions=(d.sessions||[]).filter(function(x){return x&&!x._res});
+    if(!d||d.ok===false)throw new Error("indispo");window.RES_DATA=(d.sessions||[]).filter(function(x){return x&&x._res})[0]||null;if(window.resUpdated)window.resUpdated();window.CAT_DATA=(d.sessions||[]).filter(function(x){return x&&x._cat})[0]||null;d.sessions=(d.sessions||[]).filter(function(x){return x&&!x._res&&!x._cat});
     var t=today();ALL=(d.sessions||[]).filter(function(s){return P(s.e||s.d)>=t}).sort(function(a,b){return a.d.localeCompare(b.d)});window.CAL_SESS=ALL;if(window.calUpdated)window.calUpdated();
     if(d.maj)M.textContent="Mis à jour le "+new Date(d.maj).toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"});render()
   }).catch(function(){window.RES_FAIL=true;if(window.resUpdated)window.resUpdated();L.innerHTML='<p class="cal-msg">Le calendrier est momentanément indisponible. Appelez-nous au 0692 09 85 92 ou <a href="#demande">faites une demande</a>.</p>'});
@@ -728,6 +728,45 @@ function nextHTML(f){
   const autres=L.length>1?` · +${L.length-1} autre${L.length>2?"s":""} date${L.length>2?"s":""}`:"";
   return `<a class="next${full?" full":""}" href="#calendrier">📅 Prochaine session : <b>${date}</b> · ${etat}${autres}</a>`;
 }
+
+// ===== Catalogue alimenté par Lakaz (Programmes › « 🌐 Publier sur le site ») =====
+// Lakaz envoie, pour chaque programme : durée, prérequis, public, objectifs, méthodes, évaluation, validation (+ prix si renseigné).
+// Si Lakaz ne répond pas, les cartes restent telles qu'écrites ci-dessus.
+const LK_MAP={"Sauveteur Secouriste du Travail (SST)":["SST"],"MAC SST – Maintien et actualisation des compétences":["MAC-SST"],
+  "Prévention des risques liés à l'activité physique (PRAP)":["PRAP IBC"],"MAC Acteur PRAP IBC – Maintien et actualisation des compétences":["MAC-PRAP-IBC"],
+  "AIPR – opérateur, encadrant, concepteur":["AIPR"],"Habilitation électrique (H0B0, BS, BE manœuvre, HE)":["H0B0","BS-BE-HE"],
+  "Travail en hauteur et port du harnais":["HARNAIS-1J","HARNAIS-2J"],"Manipulation des extincteurs":["EXTINCTEURS"],"Équipier de première intervention (EPI)":["EPI"],
+  "Autorisation de conduite – nacelles (PEMP)":["R486-INITIAL","R486-RECYCLAGE"],"Autorisation de conduite – engins de chantier":["R482-INITIAL","R482-RECYCLAGE"],
+  "Autorisation de conduite – grue de chargement":["R490-INITIAL","R490-RECYCLAGE"],"Autorisation de conduite – chariots élévateurs":["R489-INITIAL","R489-RECYCLAGE"],
+  "Agent de médiation, information, services (AMIS)":["TP-AMIS"],"Médiateur social accès aux droits et services (MSADS)":["TP-MSADS"],"Conseiller en insertion professionnelle (CIP)":["TP-CIP"],
+  "Formateur professionnel d'adultes (FPA)":["TP-FPA"],"Assistant de direction":["TP-AD"],"Secrétaire assistant médico-administratif (SAMA)":["TP-SAMA"],
+  "Assistant de vie aux familles (ADVF)":["TP-ADVF"],"Agent de propreté et d'hygiène (APH)":["TP-APH"],"Chargé d'accueil et de gestion administrative (CADGA)":["TP-CADGA"],"Conseiller de vente":["TP-CV"]};
+const lkE=x=>String(x==null?"":x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const lkN=x=>String(x||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"");
+const lkH=v=>Number(v).toLocaleString("fr-FR");
+function lkProgs(f){const C=window.CAT_DATA;if(!C||!C.progs)return null;const codes=f.lk||LK_MAP[f.t];if(!codes)return null;
+  const pick=(code,ap)=>{const L=C.progs.filter(p=>lkN(p.code)===lkN(code)&&(ap==null||!!p.ap===ap));return L.find(p=>p.e3)||L[0]||null};
+  return f.cat==="tp"?[pick(codes[0],false),pick(codes[0],true)].filter(Boolean):codes.map(c=>pick(c,null)).filter(Boolean)}
+function lkPre(p){const s=String(p&&p.pre||"").trim();return !s||/non indiqu|pas indiqu|indiqu[ée]+ dans la fiche|à compléter|a completer/i.test(s)?"Aucun prérequis":s}
+function lkShort(s,n){s=String(s||"").split(/ · |;|\.\s/)[0].trim();return s.length>n?s.slice(0,n-1).trim()+"…":s}
+function lkDur(p){return p.h?lkH(p.h)+" h"+(p.j?" ("+lkH(p.j)+" jour"+(p.j>1?"s":"")+")":""):lkShort(p.dur,60)}
+function lkFace(f,L){if(!L||!L.length)return"";let h="";
+  if(f.cat==="tp"){const fc=L.find(p=>!p.ap),ap=L.find(p=>p.ap);const d=[fc?lkDur(fc)+" en formation continue":"",ap?lkDur(ap)+" en apprentissage":""].filter(Boolean).join(" · ");
+    if(d)h+=`<div class="lk-l"><b>Durée :</b> ${lkE(d)}</div>`;h+=`<div class="lk-l"><b>Prérequis :</b> ${lkE(lkShort(lkPre(fc||ap),130))}</div>`}
+  else h+=`<div class="lk-l"><b>Prérequis :</b> ${lkE(lkShort(lkPre(L[0]),130))}</div>`;
+  return h}
+function lkPrix(f,L){if(!L||!L.length)return f.prix;const P=L.filter(p=>p.prix);if(!P.length)return f.prix;return P.length===L.length?P.map(p=>p.prix).join(" · "):f.prix}
+function lkDetail(f,L){if(!L||!L.length)return"";const one=L.length===1;
+  return `<div class="lk-d">`+L.map(p=>{const tt=one?"":(f.cat==="tp"?(p.ap?"En apprentissage":"En formation continue"):p.t);
+    const row=(l,v)=>v?`<p><b>${l} :</b> ${lkE(v)}</p>`:"";
+    return `<div class="lk-b">${tt?`<h4>${lkE(tt)}</h4>`:""}${row("Public",p.pub)}${row("Prérequis",lkPre(p))}${row("Durée",p.dur||lkDur(p))}
+      ${p.obj&&p.obj.length?`<p><b>Objectifs :</b></p><ul>${p.obj.map(o=>`<li>${lkE(o)}</li>`).join("")}</ul>`:""}${row("Méthodes",p.met)}${row("Évaluation",p.eva)}${row("Validation",p.val)}</div>`}).join("")+`</div>`}
+function lkNew(){const C=window.CAT_DATA;if(!C||!C.progs)return[];const used=new Set();FORMATIONS.forEach(f=>(f.lk||LK_MAP[f.t]||[]).forEach(c=>used.add(lkN(c))));
+  const seen=new Set();return C.progs.filter(p=>p.sur&&!p.hors&&p.e3&&!used.has(lkN(p.code))).filter(p=>{const k=lkN(p.code)+"|"+(p.ap?1:0);if(seen.has(k))return false;seen.add(k);return true})
+    .map(p=>({cat:p.cat||(p.type==="certifiant"?"tp":"securite"),t:p.t,k:[String(p.code||"").toLowerCase()],lk:[p.code],d:p.pub||"",m:lkDur(p),prix:p.prix||"",rncp:p.cat==="tp"||(!p.cat&&p.type==="certifiant")?(p.rncp||""):"",res:"",deb:"",pas:"",p:p.f?[["Programme",p.f]]:[],_new:1}))}
+function lkMaj(){const C=window.CAT_DATA,g=document.getElementById("formations-grid");if(!g)return;let el=document.getElementById("lk-maj");
+  if(!el){el=document.createElement("p");el.id="lk-maj";el.className="lk-maj";g.insertAdjacentElement("afterend",el)}
+  el.textContent=C&&C.maj?"Durées, prérequis et contenus mis à jour le "+new Date(C.maj).toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"})+" à partir de nos programmes.":""}
 let CUR = "all";
 window.calUpdated = () => render(CUR);
 
@@ -735,15 +774,16 @@ const FIMG={"Sauveteur Secouriste du Travail (SST)": "data:image/jpeg;base64,/9j
 function render(filter){
   CUR = filter;
   grid.innerHTML = "";
-  FORMATIONS.filter(f => filter==="all" || f.cat===filter).forEach(f=>{
+  FORMATIONS.concat(lkNew()).filter(f => filter==="all" || f.cat===filter).forEach(f=>{
+    const LK=lkProgs(f);if(LK&&LK.length&&LK.every(p=>p.hors))return;
     const el = document.createElement("article");
     el.className = "card formation";
     const progs = (f.p||[]).map(([l,id])=>`<a class="dl" href="${DL(id)}" target="_blank" rel="noopener">⬇ ${l} (PDF)</a>`).join("");
     el.innerHTML = `${FIMG[f.t]?`<img class="f-img" src="${FIMG[f.t]}" alt="" loading="lazy">`:''}<span class="tag ${f.cat==='tp'?'tp':''}">${LABEL[f.cat]}</span>
       <h3>${f.t}</h3>
-      <div class="meta">${f.m}${f.rncp?` · ${f.rncp}`:''}</div>${nextHTML(f)}${f.prix?`<div class="prix">${f.prix}${f.cat!=='tp'?' · HT':''}</div>`:""}${f.cat==='tp'?'<div class="meta app">Possible en apprentissage</div>'+candBtn(f):''}
+      <div class="meta">${f.m}${f.rncp?` · ${f.rncp}`:''}</div>${lkFace(f,LK)}${nextHTML(f)}${lkPrix(f,LK)?`<div class="prix">${lkPrix(f,LK)}${f.cat!=='tp'?' · HT':''}</div>`:""}${f.cat==='tp'?'<div class="meta app">Possible en apprentissage</div>'+candBtn(f):''}
       <details class="fold"><summary><span class="ouvrir">Voir le détail et les programmes</span><span class="fermer">Masquer le détail</span></summary>
-        <p>${f.d}</p>
+        <p>${f.d}</p>${lkDetail(f,LK)}
         ${f.rncp?`<div class="acces-in tp-info"><p><b>Certification :</b> titre professionnel du Ministère du Travail, enregistré au RNCP sous le n° <a href="https://www.francecompetences.fr/recherche/rncp/${f.rncp.slice(4)}/" target="_blank" rel="noopener">${f.rncp}</a>. Composé de blocs de compétences (CCP) validables séparément ; également accessible par la VAE. Examen organisé par 3AIM CFA, centre agréé.</p>
         <p><b>Résultats :</b> ${f.res}</p>
         <p><b>Débouchés :</b> ${f.deb}</p>
@@ -757,7 +797,8 @@ function render(filter){
     grid.appendChild(el);
   });
 }
-render("all");
+render("all");lkMaj();
+{const _cu=window.calUpdated;window.calUpdated=()=>{_cu&&_cu();lkMaj()}}
 
 // options du formulaire
 ["securite","ergonomie","incendie","conduite","tp"].forEach(c=>{
