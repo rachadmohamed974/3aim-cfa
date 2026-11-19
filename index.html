@@ -766,7 +766,11 @@ function lkNew(){const C=window.CAT_DATA;if(!C||!C.progs)return[];const used=new
     .map(p=>({cat:p.cat||(p.type==="certifiant"?"tp":"securite"),t:p.t,k:[String(p.code||"").toLowerCase()],lk:[p.code],d:p.pub||"",m:lkDur(p),prix:p.prix||"",rncp:p.cat==="tp"||(!p.cat&&p.type==="certifiant")?(p.rncp||""):"",res:"",deb:"",pas:"",p:p.f?[["Programme",p.f]]:[],_new:1}))}
 function lkMaj(){const C=window.CAT_DATA,g=document.getElementById("formations-grid");if(!g)return;let el=document.getElementById("lk-maj");
   if(!el){el=document.createElement("p");el.id="lk-maj";el.className="lk-maj";g.insertAdjacentElement("afterend",el)}
-  el.textContent=C&&C.maj?"Durées, prérequis et contenus mis à jour le "+new Date(C.maj).toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"})+" à partir de nos programmes.":""}
+  el.textContent=C&&C.maj?"Durées, prérequis et contenus mis à jour le "+new Date(C.maj).toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"})+" à partir de nos programmes.":""
+  try{const a=document.querySelector('#formations a[data-lkcat]')||document.querySelector('#formations a[href*="Catalogue_formations_3AIM_CFA.pdf"]:not(.lk-res)');
+    if(a&&C&&C.catPdf){if(!a.dataset.lkcat){a.dataset.lkcat="1";a.insertAdjacentHTML("afterend",' <a class="lk-res" href="documents/Catalogue_formations_3AIM_CFA.pdf" target="_blank" rel="noopener" download style="margin-left:10px;font-size:.9rem">ou le catalogue résumé</a>')}
+      a.href="https://drive.google.com/uc?export=download&id="+encodeURIComponent(C.catPdf);a.removeAttribute("download");a.target="_blank";a.rel="noopener";
+      a.textContent="⬇ Télécharger le catalogue complet (PDF, toutes les fiches programme)";a.title="Toutes nos fiches programme en un seul PDF"+(C.catPdfMaj?", mis à jour le "+new Date(C.catPdfMaj).toLocaleDateString("fr-FR"):"")}}catch(e){}}
 let CUR = "all";
 window.calUpdated = () => render(CUR);
 
